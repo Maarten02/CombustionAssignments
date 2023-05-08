@@ -2,6 +2,7 @@ from JANNAF.get_cp import get_cp
 from JANNAF.get_jannaf import get_jannaf
 from JANNAF.get_cp_mix import get_cp_mix
 from JANNAF.get_LHS_ethylene import get_LHS_ethylene
+from JANNAF.get_RHS import get_RHS
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -94,7 +95,8 @@ while running:
     next_RHS = get_RHS(next_aft)
 
     if abs(next_RHS - LHS) < tol:
-        running = false
+        running = False
+        print("Bisection converged to AFT = {:.2f} [K]".format(next_RHS))
 
     elif next_RHS > LHS:
         next_left_aft = next_RHS
