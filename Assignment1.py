@@ -1,6 +1,7 @@
 from JANNAF.get_cp import get_cp
 from JANNAF.get_jannaf import get_jannaf
 from JANNAF.get_cp_mix import get_cp_mix
+from JANNAF.get_LHS_ethylene import get_LHS_ethylene
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -62,5 +63,53 @@ for i in range(len(phi_arr)):
 
 plt.legend()
 plt.show()
+
+
+#======== PART 1 | ITEM 3 ========
+# Compute and plot the flame adiabatic temperature for complete combustion of H 2/air and
+# reactant temperature at 1100K for the same equivalence ratios. Compare this with the adiabatic
+# flame temperature in the case of ethylene/air combustion.
+
+# determine summation of Y and delta_h0 = LHS
+LHS = get_LHS_ethylene(phi)
+
+# make guess for AFT
+aft_0 = 999
+aft_1 = 9999
+AFT_list = [aft_0, aft_1]
+RHS_list = [get_RHS(aft_0), aft_RHS(aft_1)]
+
+if RHS_list[0] > LHS:
+    raise Exception("Left point invalid")
+if RHS_list[1] < LHS:
+    raise Exception("Right point invalid")
+
+running = True
+it = 0
+tol = 1e-3
+while running:
+    next_aft = (AFT_list[-2] + AFT_list[-1]) * 0.5
+    msg = "Starting iteration {:02} with next AFT of {:04} [K]".format(it, next_aft)
+    print(msg)
+    next_RHS = get_RHS(next_aft)
+
+    if abs(next_RHS - LHS) < tol:
+        running = false
+
+    elif next_RHS > LHS:
+        next_left_aft = next_RHS
+        next_right_aft = RHS_list[-1]
+        RHS_list.extend([next_left_aft, next_right_aft])
+        it += 1
+
+    else:
+        next_left_aft = RHS_list[-2]
+        next_right_aft = next_RHS
+        RHS_list.extend([next_left_aft, next_right_aft])
+        it += 1
+
+
+
+
 
 
