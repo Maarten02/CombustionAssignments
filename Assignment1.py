@@ -33,7 +33,7 @@ for i, (compound, coef1, coef2) in enumerate(zip(compounds, coefs1, coefs2)):
     cp_list = np.empty(N_points)
     temp_list = np.empty(N_points)
     for j, temp in enumerate(np.linspace(600, 2500, N_points)):
-        cp_list[j] = get_cp(coef1, coef2, temp)
+        cp_list[j] = get_cp_ethylene(coef1, coef2, temp)
         temp_list[j] = temp
 
     cp_list *= R_bar[i]
@@ -60,7 +60,7 @@ temp_arr = np.empty(N_points)
 
 for i, phi in enumerate(phi_arr):
     for j, temp in enumerate(np.linspace(600, 2500, N_points)):
-        cp_reac, cp_prod = get_cp_mix(phi, temp)
+        cp_reac, cp_prod = get_cp_mix_ethylene(phi, temp)
         cp_reac_arr[i,j] = cp_reac
         cp_prod_arr[i,j] = cp_prod
 

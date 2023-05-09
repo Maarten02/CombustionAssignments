@@ -13,9 +13,9 @@ def integrate_cp(T_left, T_right, h, phi, reac):
 
         cp_reac_mix, cp_prod_mix = get_cp_mix(phi, temp)
         if reac:
-            cp_vec[i] = cp_prod_mix
-        else:
             cp_vec[i] = cp_reac_mix
+        else:
+            cp_vec[i] = cp_prod_mix
 
     stencil = 2 * np.ones(N)
     stencil[0] = 1

@@ -2,7 +2,7 @@ import numpy as np
 from .get_cp import get_cp
 from .get_jannaf import get_jannaf
 
-def get_LHS_ethylene(phi,temp):
+def get_LHS_ethylene(phi):
     W_c2h4 = 28.05
     W_o2 = 31.999
     W_n2 = 28.01
