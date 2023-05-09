@@ -5,6 +5,7 @@ def get_cp(coef1, coef2, temp):
     T_high = 3500
 
     if temp < T_low or temp > T_high:
+        print(temp)
         raise Exception('Temperature out of range')
 
     elif temp < T_mid:

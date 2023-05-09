@@ -1,8 +1,18 @@
-from JANNAF.get_cp import get_cp
-from JANNAF.get_jannaf import get_jannaf
-from JANNAF.get_cp_mix import get_cp_mix
-from JANNAF.get_LHS_ethylene import get_LHS_ethylene
-from JANNAF.get_RHS import get_RHS
+# Ethylene imports
+from JANNAF_C2H4.get_cp import get_cp as get_cp_ethylene
+from JANNAF_C2H4.get_jannaf import get_jannaf as get_jannaf_ethylene
+from JANNAF_C2H4.get_cp_mix import get_cp_mix as get_cp_mix_ethylene
+from JANNAF_C2H4.get_LHS_ethylene import get_LHS_ethylene
+from JANNAF_C2H4.get_RHS import get_RHS as get_RHS_ethylene
+
+# H2 imports
+from JANNAF_H2.get_cp import get_cp as get_cp_h2
+from JANNAF_H2.get_jannaf import get_jannaf as get_jannaf_h2
+from JANNAF_H2.get_cp_mix import get_cp_mix as get_cp_mix_h2
+from JANNAF_H2.get_LHS_H2 import get_LHS_h2
+from JANNAF_H2.get_RHS import get_RHS as get_RHS_h2
+
+# other imports
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -11,11 +21,11 @@ import matplotlib.pyplot as plt
 # for H 2, O 2, N 2, CO 2 and H 2O from 600 to 2500
 # Calculate the same also for ethylene (C2H 4)
 
-compounds, coefs1, coefs2 = get_jannaf()
+compounds, coefs1, coefs2 = get_jannaf_ethylene()
 fig, ax = plt.subplots()
 N_points = 100
 #                  W_H2,  W_O2,   W_N2,  W_CO2, W_H2O, W_C2H4
-w_list = np.array([2.016, 31.999, 28.01, 44.01, 78.01, 28.05])
+w_list = np.array([2.016, 31.999, 28.01, 44.01, 18.01528, 28.05])
 R = 8.314 #/mol
 R_bar = R / w_list  #/g
 
@@ -70,46 +80,116 @@ plt.show()
 # Compute and plot the flame adiabatic temperature for complete combustion of H 2/air and
 # reactant temperature at 1100K for the same equivalence ratios. Compare this with the adiabatic
 # flame temperature in the case of ethylene/air combustion.
+c2h4_aft_list = []
+h2_aft_list = []
+tol = 1e-1
 
-# determine summation of Y and delta_h0 = LHS
-LHS = get_LHS_ethylene(phi)
+phi_arr = np.linspace(0.4, 1.6, 7)
+for phi in phi_arr:
 
-# make guess for AFT
-aft_0 = 999
-aft_1 = 9999
-AFT_list = [aft_0, aft_1]
-RHS_list = [get_RHS(aft_0), aft_RHS(aft_1)]
+    # LHS for ethylene
+    LHS = get_LHS_ethylene(phi)
 
-if RHS_list[0] > LHS:
-    raise Exception("Left point invalid")
-if RHS_list[1] < LHS:
-    raise Exception("Right point invalid")
+    # make guess for AFT
+    aft_0 = 1000
+    aft_1 = 3499
+    AFT_list = [aft_0, aft_1]
+    RHS_list = [get_RHS_ethylene(phi, aft_0), get_RHS_ethylene(phi, aft_1)]
 
-running = True
-it = 0
-tol = 1e-3
-while running:
-    next_aft = (AFT_list[-2] + AFT_list[-1]) * 0.5
-    msg = "Starting iteration {:02} with next AFT of {:04} [K]".format(it, next_aft)
-    print(msg)
-    next_RHS = get_RHS(next_aft)
+    if RHS_list[0] > LHS:
+        raise Exception("Left point invalid")
+    if RHS_list[1] < LHS:
+        raise Exception("Right point invalid")
 
-    if abs(next_RHS - LHS) < tol:
-        running = False
-        print("Bisection converged to AFT = {:.2f} [K]".format(next_RHS))
+    # Ethylene AFT
+    running = True
+    it = 0
 
-    elif next_RHS > LHS:
-        next_left_aft = next_RHS
-        next_right_aft = RHS_list[-1]
-        RHS_list.extend([next_left_aft, next_right_aft])
-        it += 1
+    while running:
+        #print(AFT_list)
+        next_aft = (AFT_list[-2] + AFT_list[-1]) * 0.5
+        #msg = "[C2H4] Starting iteration {:02} for phi = {:.1f} with next AFT of {:04.3f} [K]".format(it, phi, next_aft)
+        #print(msg)
+        next_RHS = get_RHS_ethylene(phi, next_aft)
 
-    else:
-        next_left_aft = RHS_list[-2]
-        next_right_aft = next_RHS
-        RHS_list.extend([next_left_aft, next_right_aft])
-        it += 1
+        if abs(next_RHS - LHS) < tol:
+            running = False
+            print("[C2H4] Bisection converged for phi = {:.1f} to AFT = {:.3f} [K]".format(phi, next_aft))
+            c2h4_aft_list.append(next_aft)
 
+        elif next_RHS > LHS:
+            next_left_aft = AFT_list[-2]
+            next_right_aft = next_aft
+            AFT_list.extend([next_left_aft, next_right_aft])
+            #print('extended list')
+            it += 1
+
+        else:
+            next_left_aft = next_aft
+            next_right_aft = AFT_list[-1]
+            AFT_list.extend([next_left_aft, next_right_aft])
+            #print('extended list')
+            it += 1
+
+
+
+    #=============== H2 AFT =======================
+
+
+    # LHS for h2
+    LHS = get_LHS_h2(phi)
+
+    # make guess for AFT
+    aft_0 = 1000
+    aft_1 = 3499
+    AFT_list = [aft_0, aft_1]
+    RHS_list = [get_RHS_h2(phi, aft_0), get_RHS_h2(phi, aft_1)]
+
+    if RHS_list[0] > LHS:
+        raise Exception("Left point invalid")
+    if RHS_list[1] < LHS:
+        raise Exception("Right point invalid")
+
+    # H2 AFT
+    running = True
+    it = 0
+
+    while running:
+        #print(AFT_list)
+        next_aft = (AFT_list[-2] + AFT_list[-1]) * 0.5
+        #msg = "[H2] Starting iteration {:02} for phi = {:.1f} with next AFT of {:04.3f} [K]".format(it, phi, next_aft)
+        #print(msg)
+        next_RHS = get_RHS_h2(phi, next_aft)
+
+        if abs(next_RHS - LHS) < tol:
+            running = False
+            print("[H2] Bisection converged for phi = {:.1f} to AFT = {:.3f} [K]".format(phi, next_aft))
+            h2_aft_list.append(next_aft)
+
+        elif next_RHS > LHS:
+            next_left_aft = AFT_list[-2]
+            next_right_aft = next_aft
+            AFT_list.extend([next_left_aft, next_right_aft])
+            #print('extended list')
+            it += 1
+
+        else:
+            next_left_aft = next_aft
+            next_right_aft = AFT_list[-1]
+            AFT_list.extend([next_left_aft, next_right_aft])
+            #print('extended list')
+            it += 1
+
+fig, ax = plt.subplots()
+ax.plot(phi_arr, np.array(c2h4_aft_list), label='C2H4')
+ax.plot(phi_arr, np.array(h2_aft_list), label='H2')
+ax.set_title('Variation of AFT with $\phi$')
+ax.set_xlabel('$\phi$ [-]')
+ax.set_ylabel('AFT [K]')
+plt.legend()
+plt.grid()
+plt.show()
+#plt.savefig('./figures/phiAFT.pdf')
 
 
 

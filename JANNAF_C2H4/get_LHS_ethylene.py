@@ -1,12 +1,12 @@
 import numpy as np
-from get_cp import get_cp
-from get_jannaf import get_jannaf
+from .get_cp import get_cp
+from .get_jannaf import get_jannaf
 
 def get_LHS_ethylene(phi,temp):
     W_c2h4 = 28.05
     W_o2 = 31.999
     W_n2 = 28.01
-    W_h2o = 78.01
+    W_h2o = 18.01528
     W_co2 = 44.01
 
     X_c2h4_reac = 1

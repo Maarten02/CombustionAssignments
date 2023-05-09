@@ -1,7 +1,7 @@
 import numpy as np
 
 def get_jannaf():
-    filename = 'C:/Users/maart/OneDrive/Documents/MSc/Combustion/CombustionAssignments/JANNAF/processed_jannaf.dat'
+    filename = './JANNAF_H2/processed_jannaf.dat'
 
     # initialize empty lists to store data
     compounds = []

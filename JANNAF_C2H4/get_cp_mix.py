@@ -1,12 +1,12 @@
 import numpy as np
-from get_cp import get_cp
-from get_jannaf import get_jannaf
+from .get_cp import get_cp
+from .get_jannaf import get_jannaf
 
 def get_cp_mix(phi, temp):
     W_c2h4 = 28.05
     W_o2 = 31.999
     W_n2 = 28.01
-    W_h2o = 78.01
+    W_h2o = 18.01528
     W_co2 = 44.01
 
     X_c2h4_reac = 1
@@ -43,7 +43,7 @@ def get_cp_mix(phi, temp):
         cp_list[i] = get_cp(coef1, coef2, temp)
 
     #                  W_H2,  W_O2,   W_N2,  W_CO2, W_H2O, W_C2H4
-    w_list = np.array([2.016, 31.999, 28.01, 44.01, 78.01, 28.05])
+    w_list = np.array([2.016, 31.999, 28.01, 44.01, 18.01528, 28.05])
     R = 8.314  # /mol
     R_bar = R / w_list  # /g
 
