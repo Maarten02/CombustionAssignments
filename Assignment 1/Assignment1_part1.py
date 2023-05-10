@@ -45,7 +45,7 @@ ax.set_xlabel('Temperature [K]')
 ax.set_ylabel('$C_p$ [x]')
 ax.set_title('$C_p$ variation with temperature for different compounds')
 #plt.savefig('figures/cp_compounds.pdf')
-plt.savefig('figures/cp_comp.png')
+plt.savefig('figures/cp_comp.pdf')
 
 #======== PART 1 | ITEM 2 ========
 # Calculate and plot (in the same figure) the variation of 𝐶!,#$% for reactants and combustion
@@ -73,7 +73,7 @@ for i in range(len(phi_arr)):
     ax.plot(temp_arr, cp_prod_arr[i], label=lbl_p)
 
 plt.legend()
-plt.savefig('figures/cp_mix.png')
+plt.savefig('figures/cp_mix.pdf')
 
 
 #======== PART 1 | ITEM 3 ========
@@ -188,7 +188,7 @@ ax.set_xlabel('$\phi$ [-]')
 ax.set_ylabel('AFT [K]')
 plt.legend()
 plt.grid()
-plt.savefig('figures/phiAFT.png')
+plt.savefig('figures/phi_aft.pdf')
 
 
 

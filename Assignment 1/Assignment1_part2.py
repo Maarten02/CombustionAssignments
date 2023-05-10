@@ -3,10 +3,12 @@ import matplotlib.pyplot as plt
 # Open the file and read the lines
 
 # Get path to file, run and plot
-h2_filenames = ['h2_p', 'h2_phi', 'h2_phi_600']
-c2h4_filenames = ['c2h4_p', 'c2h4_phi', 'h2_phi_600']
-x_vars = ['p', 'phi', 'phi']
-y_vars = ['t', 't', 'NO']
+h2_filenames = ['h2_p', 'h2_phi', 'h2_phi_600', 'h2_phi_600']
+c2h4_filenames = ['c2h4_p', 'c2h4_phi', 'c2h4_phi_600', 'c2h4_phi_600']
+x_vars = ['p', 'phi', 'phi', 'phi']
+y_vars = ['t', 't', 'NO', 'NO2']
+x_units = [' [Bar]', ' [-]', ' [-]', ' [-]']
+y_units = [' [K]', ' [K]', ' [-]', ' [-]']
 folder = './CEA_plt/'
 extension = '.plt'
 
@@ -33,37 +35,34 @@ def readFile(path, x_var, y_var, figname, compound):
 
     return col_names, data
 
-def plot_vars(col_names, data, x_var, y_var, figname, compound, hold=False, plotin=False, fig=None, ax=None):
-        temp_col=col_names.index('t')
-        eq_ratio_col = col_names.index('phi')
+def plot_vars(col_names, h2_data, c2h4_data, x_var, x_unit, y_var, y_unit, figname):
+        x_col = col_names.index(x_var)
+        y_col = col_names.index(y_var)
 
-        if not plotin:
-            fig, ax = plt.subplots()
-            ax.set_xlabel(x_var)
-            ax.set_ylabel(y_var)
+        fig, ax = plt.subplots()
+        xlab = x_var.upper() + x_unit
+        ax.set_xlabel(xlab)
+        ylab = y_var.upper() + y_unit
+        ax.set_ylabel(ylab)
 
-        ax.plot(data[:,eq_ratio_col], data[:,temp_col], label=y_var)
-        tit = x_var + 'versus' + y_var + 'for ' + compound
+        ax.plot(h2_data[:,x_col], h2_data[:,y_col], label='H2')
+        ax.plot(c2h4_data[:,x_col], c2h4_data[:,y_col], label='C2H4')
+
+        tit = y_var.upper() + ' versus ' + x_var.upper() + ' for H2 and C2H4'
         ax.set_title(tit)
         ax.legend()
-        if not hold:
-            plt.savefig(figname)
-        else:
-            return fig, ax
+        ax.grid()
+        plt.savefig(figname)
 
-for compound_files, compound in zip([h2_filenames, c2h4_filenames], ['H2', 'C2H4']):
-    for file, x_var, y_var in zip(compound_files, x_vars, y_vars):
-        path = folder + file + extension
-        figname = './figures/' + x_var + '_' + y_var + '_' + compound + '_plot.pdf'
 
-        col_names, data = readFile(path, x_var, y_var, figname, compound)
-        if file[-3:] == '600':
-            fig, ax = plot_vars(col_names, data, x_var, y_var, figname, compound, True)
-            y_var += '2'
-            col_names, data = readFile(path, x_var, y_var, figname, compound)
-            plot_vars(col_names, data, x_var, y_var, figname, compound, False, True, fig, ax)
+for x_var, y_var, h2_file, c2h4_file, x_unit, y_unit in zip(x_vars, y_vars, h2_filenames, c2h4_filenames, x_units, y_units):
+        h2_path = folder + h2_file + extension
+        c2h4_path = folder + c2h4_file + extension
+        figname = './figures/' + x_var + '_' + y_var + '_plot.pdf'
 
-        else:
-            plot_vars(col_names, data, x_var, y_var, figname, compound)
+        col_names, h2_data = readFile(h2_path, x_var, y_var, figname, 'H2')
+        col_names, c2h4_data = readFile(c2h4_path, x_var, y_var, figname, 'C2H4')
+
+        plot_vars(col_names, h2_data, c2h4_data, x_var, x_unit, y_var, y_unit, figname)
 
 
