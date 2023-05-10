@@ -46,7 +46,7 @@ def get_cp_mix(phi, temp):
     w_list = np.array([2.016, 31.999, 28.01, 44.01, 18.01528, 28.05]) # [g/mol]
     R = 8.314  # J/mol K
     R_bar = R / w_list  # kJ/kg K = [J/mol K] / [g/mol]
-    print('C2H4 R bar = ', R_bar)
+    #print('C2H4 R bar = ', R_bar)
 
     #cp_h2 = cp_list[0]*R_bar[0]
     cp_o2 = cp_list[1]*R_bar[1] # [kJ/kg K] = [-] * [kJ/kg K]

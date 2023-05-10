@@ -65,14 +65,19 @@ for i, phi in enumerate(phi_arr):
         cp_prod_arr[i,j] = cp_prod
 
 
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=(10,6))
 for i in range(len(phi_arr)):
     lbl_r = "Reactants, $\phi$ = {:.1f}".format(phi_arr[i])
     lbl_p = "Products, $\phi$ = {:.1f}".format(phi_arr[i])
     ax.plot(temp_arr, cp_reac_arr[i], label=lbl_r)
     ax.plot(temp_arr, cp_prod_arr[i], label=lbl_p)
 
-plt.legend()
+ax.grid()
+fig.subplots_adjust(left=0.35, right=0.9, top=0.9, bottom=0.1)
+ax.legend(loc='center left', bbox_to_anchor=(-0.6, 0.5))
+ax.set_xlabel('T [K]')
+ax.set_ylabel('$C_p$ [$kJ/kg K$]')
+fig.suptitle('$C_p$ of the reactant and products mixture for different equivalence ratios', x=0.5)
 plt.savefig('figures/cp_mix.pdf')
 
 
