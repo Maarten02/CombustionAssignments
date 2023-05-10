@@ -37,11 +37,11 @@ def get_LHS_ethylene(phi):
     Y_co2 = X_co2 * W_co2 / W_prod
     Y_h2o = X_h2o * W_h2o / W_prod
 
-    h0_c2h4 = 52.10/W_c2h4 *10**3 #kj/mol to j/g
+    h0_c2h4 = 52.50/W_c2h4 *10**3 #kj/mol to j/g
     h0_o2 = 0
     h0_n2 = 0
-    h0_co2 = -393.5/W_co2 *10**3
-    h0_h2o = -241.81/ W_h2o *10**3
+    h0_co2 = -393.509/W_co2 *10**3
+    h0_h2o = -241.818/ W_h2o *10**3
 
     LHS = (Y_c2h4_reac - Y_c2h4_prod)*h0_c2h4 + (Y_o2_reac -Y_o2_prod)*h0_o2 + \
           (Y_n2_reac- Y_n2_prod)*h0_n2 - Y_co2*h0_co2 - Y_h2o*h0_h2o

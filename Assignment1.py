@@ -45,11 +45,11 @@ ax.set_xlabel('Temperature [K]')
 ax.set_ylabel('$C_p$ [x]')
 ax.set_title('$C_p$ variation with temperature for different compounds')
 #plt.savefig('figures/cp_compounds.pdf')
-plt.show()
+plt.savefig('figures/cp_comp.png')
 
 #======== PART 1 | ITEM 2 ========
 # Calculate and plot (in the same figure) the variation of 𝐶!,#$% for reactants and combustion
-# products from 300 to 2400K, assuming the reactants to be air and ethylene at equivalence ratios
+# products from 600 to 2400K, assuming the reactants to be air and ethylene at equivalence ratios
 # 0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6. Assume complete combustion
 
 # Compute combustion products from equivalence ratio
@@ -59,7 +59,7 @@ cp_prod_arr = np.empty((len(phi_arr), N_points))
 temp_arr = np.empty(N_points)
 
 for i, phi in enumerate(phi_arr):
-    for j, temp in enumerate(np.linspace(600, 2500, N_points)):
+    for j, temp in enumerate(np.linspace(600, 2400, N_points)):
         cp_reac, cp_prod = get_cp_mix_ethylene(phi, temp)
         cp_reac_arr[i,j] = cp_reac
         cp_prod_arr[i,j] = cp_prod
@@ -73,7 +73,7 @@ for i in range(len(phi_arr)):
     ax.plot(temp_arr, cp_prod_arr[i], label=lbl_p)
 
 plt.legend()
-plt.show()
+plt.savefig('figures/cp_mix.png')
 
 
 #======== PART 1 | ITEM 3 ========
@@ -188,8 +188,7 @@ ax.set_xlabel('$\phi$ [-]')
 ax.set_ylabel('AFT [K]')
 plt.legend()
 plt.grid()
-plt.show()
-#plt.savefig('./figures/phiAFT.pdf')
+plt.savefig('figures/phiAFT.png')
 
 
 

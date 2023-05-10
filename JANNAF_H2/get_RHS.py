@@ -37,6 +37,6 @@ def get_RHS(phi, T_ad):
 
     RHS = prod_int - reac_int
 
-    return RHS
+    return RHS # kJ / kg
 
 

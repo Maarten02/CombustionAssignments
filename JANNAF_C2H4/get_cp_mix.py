@@ -43,20 +43,21 @@ def get_cp_mix(phi, temp):
         cp_list[i] = get_cp(coef1, coef2, temp)
 
     #                  W_H2,  W_O2,   W_N2,  W_CO2, W_H2O, W_C2H4
-    w_list = np.array([2.016, 31.999, 28.01, 44.01, 18.01528, 28.05])
-    R = 8.314  # /mol
-    R_bar = R / w_list  # /g
+    w_list = np.array([2.016, 31.999, 28.01, 44.01, 18.01528, 28.05]) # [g/mol]
+    R = 8.314  # J/mol K
+    R_bar = R / w_list  # kJ/kg K = [J/mol K] / [g/mol]
+    print('C2H4 R bar = ', R_bar)
 
     #cp_h2 = cp_list[0]*R_bar[0]
-    cp_o2 = cp_list[1]*R_bar[1]
-    cp_n2 = cp_list[2]*R_bar[2]
-    cp_co2 = cp_list[3]*R_bar[3]
-    cp_h2o = cp_list[4]*R_bar[4]
-    cp_c2h4 = cp_list[5]*R_bar[5]
+    cp_o2 = cp_list[1]*R_bar[1] # [kJ/kg K] = [-] * [kJ/kg K]
+    cp_n2 = cp_list[2]*R_bar[2] # [kJ/kg K] = [-] * [kJ/kg K]
+    cp_co2 = cp_list[3]*R_bar[3] # [kJ/kg K] = [-] * [kJ/kg K]
+    cp_h2o = cp_list[4]*R_bar[4] # [kJ/kg K] = [-] * [kJ/kg K]
+    cp_c2h4 = cp_list[5]*R_bar[5] # [kJ/kg K] = [-] * [kJ/kg K]
     cp_reac_mix = Y_c2h4_reac*cp_c2h4 + Y_o2_reac*cp_o2 + Y_n2_reac*cp_n2
     cp_prod_mix = Y_c2h4_prod*cp_c2h4 + Y_o2_prod*cp_o2 + Y_n2_prod*cp_n2 + Y_co2*cp_co2 + Y_h2o*cp_h2o
 
-    return cp_reac_mix, cp_prod_mix
+    return cp_reac_mix, cp_prod_mix # kJ/kg K | kJ/kg K
 
 
 
