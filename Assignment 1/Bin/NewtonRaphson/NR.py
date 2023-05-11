@@ -18,3 +18,4 @@ def NR(f, dfdx, x_0, tol_y):
 
         print(f'Iteration {it:03d} finished with adiabatic flame temperature = {x_i_plus_1:04.2f} [K]')
 
+    return x_i_plus_1
