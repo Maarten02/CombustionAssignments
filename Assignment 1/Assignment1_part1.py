@@ -1,14 +1,11 @@
 # Ethylene imports
-from JANNAF_C2H4.get_cp import get_cp as get_cp_ethylene
-from JANNAF_C2H4.get_jannaf import get_jannaf as get_jannaf_ethylene
-from JANNAF_C2H4.get_cp_mix import get_cp_mix as get_cp_mix_ethylene
-from JANNAF_C2H4.get_LHS_ethylene import get_LHS_ethylene
-from JANNAF_C2H4.get_RHS import get_RHS as get_RHS_ethylene
+from Bin.JANNAF_C2H4.get_cp import get_cp as get_cp_ethylene
+from Bin.JANNAF_C2H4.get_jannaf import get_jannaf as get_jannaf_ethylene
+from Bin.JANNAF_C2H4.get_cp_mix import get_cp_mix as get_cp_mix_ethylene
+from Bin.JANNAF_C2H4.get_LHS_ethylene import get_LHS_ethylene
+from Bin.JANNAF_C2H4.get_RHS import get_RHS as get_RHS_ethylene
 
 # H2 imports
-from JANNAF_H2.get_cp import get_cp as get_cp_h2
-from JANNAF_H2.get_jannaf import get_jannaf as get_jannaf_h2
-from JANNAF_H2.get_cp_mix import get_cp_mix as get_cp_mix_h2
 from JANNAF_H2.get_LHS_H2 import get_LHS_h2
 from JANNAF_H2.get_RHS import get_RHS as get_RHS_h2
 

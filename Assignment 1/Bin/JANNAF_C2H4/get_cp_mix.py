@@ -39,7 +39,7 @@ def get_cp_mix(phi, temp):
 
     compounds, coefs1, coefs2 = get_jannaf()
     cp_list = np.empty(len(compounds))
-    for i,(coef1, coef2) in enumerate(zip(coefs1, coefs2)):
+    for i, (coef1, coef2) in enumerate(zip(coefs1, coefs2)):
         cp_list[i] = get_cp(coef1, coef2, temp)
 
     #                  W_H2,  W_O2,   W_N2,  W_CO2, W_H2O, W_C2H4
