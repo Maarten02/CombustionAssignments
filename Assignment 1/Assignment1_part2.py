@@ -9,7 +9,7 @@ x_vars = ['p', 'phi', 'phi', 'phi']
 y_vars = ['t', 't', 'NO', 'NO2']
 x_units = [' [Bar]', ' [-]', ' [-]', ' [-]']
 y_units = [' [K]', ' [K]', ' [-]', ' [-]']
-folder = './CEA_plt/'
+folder = './Bin/CEA_plt/'
 extension = '.plt'
 
 def readFile(path, x_var, y_var, figname, compound):
@@ -58,7 +58,7 @@ def plot_vars(col_names, h2_data, c2h4_data, x_var, x_unit, y_var, y_unit, figna
 for x_var, y_var, h2_file, c2h4_file, x_unit, y_unit in zip(x_vars, y_vars, h2_filenames, c2h4_filenames, x_units, y_units):
         h2_path = folder + h2_file + extension
         c2h4_path = folder + c2h4_file + extension
-        figname = './figures/' + x_var + '_' + y_var + '_plot.pdf'
+        figname = './Bin/figures/' + x_var + '_' + y_var + '_plot.pdf'
 
         col_names, h2_data = readFile(h2_path, x_var, y_var, figname, 'H2')
         col_names, c2h4_data = readFile(c2h4_path, x_var, y_var, figname, 'C2H4')
