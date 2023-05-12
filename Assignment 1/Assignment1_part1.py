@@ -8,6 +8,7 @@ from Bin.JANNAF_C2H4.get_RHS import get_RHS as get_RHS_ethylene
 # H2 imports
 from Bin.JANNAF_H2.get_LHS_H2 import get_LHS_h2
 from Bin.JANNAF_H2.get_RHS import get_RHS as get_RHS_h2
+from Bin.JANNAF_H2.get_cp_mix import get_cp_mix as get_cp_mix_h2
 
 # other imports
 import numpy as np
@@ -43,7 +44,7 @@ ax.set_xlabel('Temperature [K]')
 ax.set_ylabel('$C_p$ [x]')
 ax.set_title('$C_p$ variation with temperature for different compounds')
 #plt.savefig('figures/cp_compounds.pdf')
-plt.savefig('figures/cp_comp.pdf')
+plt.savefig('Bin/figures/cp_comp.pdf')
 
 #======== PART 1 | ITEM 2 ========
 # Calculate and plot (in the same figure) the variation of 𝐶!,#$% for reactants and combustion
@@ -51,24 +52,27 @@ plt.savefig('figures/cp_comp.pdf')
 # 0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6. Assume complete combustion
 
 # Compute combustion products from equivalence ratio
-phi_arr = np.linspace(0.4, 1.6, 7)
+#phi_arr = np.linspace(0.4, 1.6, 7)
+phi_arr = [1]
 cp_reac_arr = np.empty((len(phi_arr), N_points))
 cp_prod_arr = np.empty((len(phi_arr), N_points))
 temp_arr = np.empty(N_points)
 
 for i, phi in enumerate(phi_arr):
     for j, temp in enumerate(np.linspace(600, 2400, N_points)):
-        cp_reac, cp_prod = get_cp_mix_ethylene(phi, temp)
+        #cp_reac, cp_prod = get_cp_mix_ethylene(phi, temp)
+        cp_reac, cp_prod = get_cp_mix_h2(phi, temp)
         cp_reac_arr[i,j] = cp_reac
         cp_prod_arr[i,j] = cp_prod
+        temp_arr[j] = temp
 
 
 fig, ax = plt.subplots(figsize=(10,6))
 for i in range(len(phi_arr)):
     lbl_r = "Reactants, $\phi$ = {:.1f}".format(phi_arr[i])
     lbl_p = "Products, $\phi$ = {:.1f}".format(phi_arr[i])
-    ax.plot(temp_arr, cp_reac_arr[i], label=lbl_r)
-    ax.plot(temp_arr, cp_prod_arr[i], label=lbl_p)
+    #ax.plot(temp_arr, cp_reac_arr[i], label=lbl_r)
+    ax.plot(temp_arr, cp_prod_arr[i]*24.54/1000, label=lbl_p)
 
 ax.grid()
 fig.subplots_adjust(left=0.35, right=0.9, top=0.9, bottom=0.1)
@@ -76,7 +80,7 @@ ax.legend(loc='center left', bbox_to_anchor=(-0.6, 0.5))
 ax.set_xlabel('T [K]')
 ax.set_ylabel('$C_p$ [$kJ/kg K$]')
 fig.suptitle('$C_p$ of the reactant and products mixture for different equivalence ratios', x=0.5)
-plt.savefig('figures/cp_mix.pdf')
+plt.savefig('Bin/figures/cp_mix_h2.pdf')
 
 
 #======== PART 1 | ITEM 3 ========
@@ -88,9 +92,12 @@ h2_aft_list = []
 
 
 phi_arr = np.linspace(0.4, 1.6, 7)
+#phi_arr = [1]
 for phi in phi_arr:
-    c2h4_aft_list.extend(get_T_ad(phi, 'c2h4', 1100))
-    h2_aft_list.extend(get_T_ad(phi, 'h2', 1100))
+    #tad_c2h4 = get_T_ad(phi, 'c2h4', 1100)
+    #c2h4_aft_list.append(tad_c2h4)
+    tad_h2 = get_T_ad(phi, 'h2', 1100)
+    h2_aft_list.append(tad_h2)
 
 fig, ax = plt.subplots()
 ax.plot(phi_arr, np.array(c2h4_aft_list), label='C2H4')
@@ -100,7 +107,7 @@ ax.set_xlabel('$\phi$ [-]')
 ax.set_ylabel('AFT [K]')
 plt.legend()
 plt.grid()
-plt.savefig('figures/phi_aft.pdf')
+plt.savefig('Bin/figures/phi_aft.pdf')
 
 
 ###############################################################################################

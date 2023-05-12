@@ -38,7 +38,7 @@ def get_cp_mix(phi, temp):
     for i,(coef1, coef2) in enumerate(zip(coefs1, coefs2)):
         cp_list[i] = get_cp(coef1, coef2, temp)
 
-    #                  W_H2,  W_O2,   W_N2,  W_CO2, W_H2O, W_C2H4
+    #                  W_H2,  W_O2,   W_N2,  W_CO2, W_H2O,    W_C2H4
     w_list = np.array([2.016, 31.999, 28.01, 44.01, 18.01528, 28.05])
     R = 8.314  # /mol
     R_bar = R / w_list  # /g
