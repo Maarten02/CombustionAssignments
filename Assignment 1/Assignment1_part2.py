@@ -12,7 +12,7 @@ y_units = [' [K]', ' [K]', ' [-]', ' [-]']
 folder = './Bin/CEA_plt/'
 extension = '.plt'
 
-def readFile(path, x_var, y_var, figname, compound):
+def readFile(path):
     with open(path, 'r') as f:
         lines = f.readlines()
 
@@ -60,9 +60,15 @@ for x_var, y_var, h2_file, c2h4_file, x_unit, y_unit in zip(x_vars, y_vars, h2_f
         c2h4_path = folder + c2h4_file + extension
         figname = './Bin/figures/' + x_var + '_' + y_var + '_plot.pdf'
 
-        col_names, h2_data = readFile(h2_path, x_var, y_var, figname, 'H2')
-        col_names, c2h4_data = readFile(c2h4_path, x_var, y_var, figname, 'C2H4')
+        col_names, h2_data = readFile(h2_path)
+        col_names, c2h4_data = readFile(c2h4_path)
 
         plot_vars(col_names, h2_data, c2h4_data, x_var, x_unit, y_var, y_unit, figname)
 
+# reacT plot
+col_names, reacT_data = readFile('./Bin/CEA_plt/c2h4_h2_reacT.txt')
+h2_data = reacT_data[:, [0, 1]]
+col_names = ['T_reactants', 't']
+c2h4_data = reacT_data[:, [0, 2]]
+plot_vars(col_names, h2_data, c2h4_data, 'T_reactants', ' [K]', 't', ' [K]', './Bin/figures/Treac_Tad_plot.pdf')
 
