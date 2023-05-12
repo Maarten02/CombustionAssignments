@@ -8,19 +8,30 @@ def get_cp_mix(phi, temp):
     W_h2o = 18.01528
     W_n2 = 28.01
 
-    X_h2_reac = 1
-    X_o2_reac = 0.5/ phi
-    X_n2_reac = 0.5 / phi * 3.76
-    X_o2_prod = 0
-    X_h2_prod = 0
-    X_n2_prod = 0.5 / phi * 3.76
-    X_h2o = 1
+    n_tot_reac = 1 + 0.5 / phi + 0.5 / phi * 3.76
+    n_h2_reac = 1
+    n_o2_reac = 0.5 / phi
+    n_n2_reac = 0.5 / phi * 3.76
+    n_o2_prod = 0
+    n_h2_prod = 0
+    n_n2_prod = 0.5 / phi * 3.76
+    n_h2o = 1
+    n_tot_prod = 1 + 0.5 * 3.76
     if phi > 1:
-        X_h2_prod = 1 - 1/phi
-        X_h2o = 1/phi
-
+        n_h2_prod = 1 - 1 / phi
+        n_h2o = 1 / phi
+        n_tot_prod = 1 / phi + 1 - 1 / phi + 0.5 / phi * 3.76
     if phi < 1:
-        X_o2_prod = (1/phi - 1)*0.5
+        n_o2_prod = (1 / phi - 1) * 0.5
+        n_tot_prod = (1 / phi - 1) * 0.5 + 1 + 0.5 / phi * 3.76
+
+    X_h2_reac = n_h2_reac / n_tot_reac
+    X_o2_reac = n_o2_reac / n_tot_reac
+    X_n2_reac = n_n2_reac / n_tot_reac
+    X_o2_prod = n_o2_prod / n_tot_prod
+    X_h2_prod = n_h2_prod / n_tot_prod
+    X_n2_prod = n_n2_prod / n_tot_prod
+    X_h2o = n_h2o / n_tot_prod
 
     W_reac = X_h2_reac*W_h2 + X_o2_reac*W_o2 + X_n2_reac*W_n2
     W_prod = X_h2_prod*W_h2 + X_o2_prod*W_o2 + X_n2_prod*W_n2 + X_h2o*W_h2o

@@ -28,7 +28,7 @@ def intcph2(phi, T0, Tad, Tr):
     X_h2_reac = n_h2_reac / n_tot_reac
     X_o2_reac = n_o2_reac / n_tot_reac
     X_n2_reac = n_n2_reac / n_tot_reac
-    X_o2_prod = n_o2_prod / n_o2_prod
+    X_o2_prod = n_o2_prod / n_tot_prod
     X_h2_prod = n_h2_prod / n_tot_prod
     X_n2_prod = n_n2_prod / n_tot_prod
     X_h2o = n_h2o / n_tot_prod
