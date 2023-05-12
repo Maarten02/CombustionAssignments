@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 h2_filenames = ['h2_p', 'h2_phi', 'h2_phi_600', 'h2_phi_600']
 c2h4_filenames = ['c2h4_p', 'c2h4_phi', 'c2h4_phi_600', 'c2h4_phi_600']
 x_vars = ['p', 'phi', 'phi', 'phi']
-y_vars = ['t', 't', 'NO', 'NO2']
+y_vars = ['aft', 'aft', 'NO', 'NO2']
 x_units = [' [Bar]', ' [-]', ' [-]', ' [-]']
 y_units = [' [K]', ' [K]', ' [-]', ' [-]']
 folder = './Bin/CEA_plt/'
@@ -68,7 +68,7 @@ for x_var, y_var, h2_file, c2h4_file, x_unit, y_unit in zip(x_vars, y_vars, h2_f
 # reacT plot
 col_names, reacT_data = readFile('./Bin/CEA_plt/c2h4_h2_reacT.txt')
 h2_data = reacT_data[:, [0, 1]]
-col_names = ['T_reactants', 't']
+col_names = ['T_reactants', 'aft']
 c2h4_data = reacT_data[:, [0, 2]]
-plot_vars(col_names, h2_data, c2h4_data, 'T_reactants', ' [K]', 't', ' [K]', './Bin/figures/Treac_Tad_plot.pdf')
+plot_vars(col_names, h2_data, c2h4_data, 'T_reactants', ' [K]', 'aft', ' [K]', './Bin/figures/Treac_Tad_plot.pdf')
 
