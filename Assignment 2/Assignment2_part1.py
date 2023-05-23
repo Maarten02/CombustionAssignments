@@ -294,7 +294,7 @@ X_points /= 1000
 # find Di @ x=0.5 +- h to determine for the diffusive mass flux gradient
 # find rho @ x=0.5 +- h
 
-def get_sp_m_flux_grad_non_abundant(rho_arr, D_arr, Y_arr):
+def get_sp_m_flux_grad_non_ab(rho_arr, D_arr, Y_arr):
     mid_index = int((N-1)/2)
     dx = L/(N-1)
     dY_dx = (Y_arr[mid_index+1] - Y_arr[mid_index-1])/(2*dx)
@@ -311,26 +311,40 @@ def get_sp_m_flux_grad_non_abundant(rho_arr, D_arr, Y_arr):
 
     return -1*dJdx, J, J_x_min_h, J_x_plus_h
 
-d_rho_dt_fick_h2, J_h2, J_h2_min_1, J_h2_plus_1 = get_sp_m_flux_grad_non_abundant(rho, d_h2n2_fick, Y_1)
-d_rho_dt_fick_o2, J_o2, J_o2_min_1, J_o2_plus_1 = get_sp_m_flux_grad_non_abundant(rho, d_o2n2_fick, Y_2)
+dx = L / (N-1)
+
+d_rho_dt_fick_h2, J_h2, J_h2_min_1, J_h2_plus_1 = get_sp_m_flux_grad_non_ab(rho, d_h2n2_fick, Y_1)
+d_rho_dt_fick_o2, J_o2, J_o2_min_1, J_o2_plus_1 = get_sp_m_flux_grad_non_ab(rho, d_o2n2_fick, Y_2)
 
 # use sum of YV=0
-dx = L / (N-1)
 rhoYV_n2 = 0 - (J_h2+J_o2)
 rhoYV_n2_plus_1 = 0 - (J_h2_plus_1+J_o2_plus_1)
 rhoYV_n2_min_1 = 0 - (J_h2_min_1+J_o2_min_1)
 grad_J_n2 = -1 * (rhoYV_n2_plus_1 - rhoYV_n2_min_1)/(2*dx)
 
-print(f'h2 mass flux = {d_rho_dt_fick_h2:.2f} kg/s m2')
-print(f'o2 mass flux = {d_rho_dt_fick_o2:.2f} kg/s m2')
-print(f'n2 mass flux = {grad_J_n2:.2f} kg/s m2')
+print(f'h2 mass flux (fick) = {d_rho_dt_fick_h2:.2f} kg/m3 s')
+print(f'o2 mass flux (fick) = {d_rho_dt_fick_o2:.2f} kg/s m3')
+print(f'n2 mass flux (fick) = {grad_J_n2:.2f} kg/m3 s')
 # FICK 02 species mass flux
 
 # FICK N2 species mass flux
 
 
 # Le = const H2 mass flux
+dx = L / (N-1)
 
+d_rho_dt_Lec_h2, J_h2, J_h2_min_1, J_h2_plus_1 = get_sp_m_flux_grad_non_ab(rho, D_Le_const_h2, Y_1)
+d_rho_dt_Lec_o2, J_o2, J_o2_min_1, J_o2_plus_1 = get_sp_m_flux_grad_non_ab(rho, D_Le_const_o2, Y_2)
+
+# use sum of YV=0
+rhoYV_n2 = 0 - (J_h2+J_o2)
+rhoYV_n2_plus_1 = 0 - (J_h2_plus_1+J_o2_plus_1)
+rhoYV_n2_min_1 = 0 - (J_h2_min_1+J_o2_min_1)
+grad_J_n2 = -1 * (rhoYV_n2_plus_1 - rhoYV_n2_min_1)/(2*dx)
+
+print(f'h2 mass flux (Le=const) = {d_rho_dt_Lec_h2:.2f} kg/m3 s')
+print(f'o2 mass flux (Le=const) = {d_rho_dt_Lec_o2:.2f} kg/s m3')
+print(f'n2 mass flux (Le=const) = {grad_J_n2:.2f} kg/m3 s')
 
 
 # e) Explain how difference in hydrogen diffusive flux could have an impact on flame speed [5 pts].1
