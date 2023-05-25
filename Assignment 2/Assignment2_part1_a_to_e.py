@@ -7,7 +7,10 @@ import numpy as np
 1. How to compute density
 2. fick's law, should we do D_NN
 3. Le = 1 , do we use cp and lambda and density from mixture?
-4. Le = 1, something wrong with dimensions? """
+4. Le = 1, something wrong with dimensions? 
+5. can we assume v (mean bulk velocity) is zero in the species mass flux equation?
+6. We evaluate the species mass flux at t=0 because the problem is transient
+"""
 
 
 
@@ -180,7 +183,7 @@ ax.set_ylabel('Y [-]')
 ax.set_title('Species Mass Fraction over Length of Domain')
 ax.grid()
 ax.legend()
-plt.savefig('figures/species_mass_fractions.pdf')
+plt.savefig('figures/h2/species_mass_fractions_h2.pdf')
 
 #species mole fractions
 fig, ax = plt.subplots()
@@ -192,7 +195,7 @@ ax.set_ylabel('X [-]')
 ax.set_title('Species Mole Fraction Over Length Of Domain. ')
 ax.grid()
 ax.legend()
-plt.savefig('figures/species_mole_fractions.pdf')
+plt.savefig('figures/h2/species_mole_fractions_h2.pdf')
 
 
 # mean molar mass
@@ -202,7 +205,7 @@ ax.set_xlabel('x [mm]')
 ax.set_ylabel('W [g/mol]')
 ax.set_title('Mean Molar Mass Over Length Of Domain. ')
 ax.grid()
-plt.savefig('figures/mean_molar_mass.pdf')
+plt.savefig('figures/h2/mean_molar_mass_h2.pdf')
 
 #density
 fig, ax = plt.subplots()
@@ -211,7 +214,7 @@ ax.set_xlabel('x [mm]')
 ax.set_ylabel(r'$\rho$ [kg/m3]')
 ax.set_title('Mean Density Over Length Of Domain. ')
 ax.grid()
-plt.savefig('figures/mean_density.pdf')
+plt.savefig('figures/h2/mean_density_h2.pdf')
 
 # b) Thermal conductivity of the mixture (see appendix)
 fig, ax = plt.subplots()
@@ -220,7 +223,7 @@ ax.set_xlabel('x [mm]')
 ax.set_ylabel(r'$\lambda$ [W/(m K)]')
 ax.set_title('Mean Lambda Over Length Of Domain. ')
 ax.grid()
-plt.savefig('figures/mean_lambda.pdf')
+plt.savefig('figures/h2/mean_lambda_h2.pdf')
 
 
 
@@ -239,7 +242,7 @@ ax.set_ylabel(r'$D_{ij}$ [m2/s]')
 ax.set_title('Fick\'s Diffusion Coefficiencts\n Over Length Of Domain.')
 ax.grid()
 ax.legend()
-plt.savefig('figures/fick_diff_coef.pdf', bbox_inches='tight', pad_inches=0.2)
+plt.savefig('figures/h2/fick_diff_coef_h2.pdf', bbox_inches='tight', pad_inches=0.2)
 
 
 ## Model 2: Wilke
@@ -252,7 +255,7 @@ ax.set_ylabel(r'$D_{wilke,i}$ [m2/s]')
 ax.set_title('Wilke Diffusion Coefficients Over Length Of Domain. ')
 ax.grid()
 ax.legend()
-plt.savefig('figures/wilke_diff_coef.pdf')
+plt.savefig('figures/h2/wilke_diff_coef_h2.pdf')
 
 
 
@@ -263,7 +266,7 @@ ax.set_xlabel('x [mm]')
 ax.set_ylabel(r'$D_{Le=1}$ [m2/s]')
 ax.set_title('Le = 1 Diffusion Coefficient Over Length Of Domain. ')
 ax.grid()
-plt.savefig('figures/Le_1_diff_coef.pdf')
+plt.savefig('figures/h2/Le_1_diff_coef_h2.pdf')
 
 ## Model 4: Le=const
 fig, ax = plt.subplots()
@@ -275,7 +278,7 @@ ax.set_ylabel(r'$D_{Le=const,i}$ [m2/s]')
 ax.set_title('Le=const Diffusion Coefficients Over Length Of Domain. ')
 ax.grid()
 ax.legend()
-plt.savefig('figures/Le_const_diff_coef.pdf')
+plt.savefig('figures/h2/Le_const_diff_coef_h2.pdf')
 
 
 
