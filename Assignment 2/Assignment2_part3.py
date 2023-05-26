@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 1. equivalence ratio is specified to be 0.6 both at the left and right boundary
 2. The flame thickness; should this be total thickness, diffusion thickness or the thickness from temperature gradients?
 3. what is consumption speed? (m/s) or mol/s  or kg/s?
+Sc in slides: m/s
+4. what is a normal order or magnitude for mass flux (unit: kg/m2 s)
 
 """
 
@@ -36,12 +38,12 @@ idx = a.index(var) - 1
 data = y[:, idx]
 x_pos = y[:, 0]
 
-print(y.shape)
+# print(y.shape)
 dydx = np.empty(len(data) - 2)
 for i in range(1, len(dydx) + 1):
     dydx[i-1] = (data[i+1] - data[i-1]) / (x_pos[i+1] - x_pos[i-1])
 
-print(dydx)
+# print(dydx)
 
 
 x_pos_plot = x_pos[1:-1]
@@ -60,9 +62,11 @@ b = data_T[data_T > flame_start]
 flame_thickness = x_pos[np.where(data_T == a[0])] - x_pos[np.where(data_T == b[0])] #WRONG!!!!!!!!!!!!1
 print('flame', flame_thickness)
 #
-print(y)
-print(t)
-print(a)
+# print(y)
+# print(t)
+# print(a)
+# Consumption speed
+# determine dot{omega_f} from omega_f
 
 
 # b) Now for the same conditions at strain rates, compute the solutions for hydrogen/air flamelets. Plot
