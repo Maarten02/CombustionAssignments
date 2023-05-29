@@ -112,13 +112,13 @@ for i in range(N):
     m_tot[i] = m_1[i] + m_2[i] + m_3[i]
     # n_1,2,3 --> m_total
     # rho = m_total / V
-    rho[i] = m_tot[i]/ V_total
+    rho[i] = m_tot[i] / V_total
 
     lambda_left_term = 0
     lambda_right_term = 0
     for lambda_i, X_i in zip([lambda_1, lambda_2, lambda_3], [X_1[i], X_2[i], X_3[i]]):
         lambda_left_term += X_i * lambda_i
-        lambda_right_term +=X_i / lambda_i
+        lambda_right_term += X_i / lambda_i
 
     ave_lambda[i] = 0.5 * (lambda_left_term + 1/lambda_right_term)
 
@@ -325,9 +325,10 @@ rhoYV_n2_plus_1 = 0 - (J_h2_plus_1+J_o2_plus_1)
 rhoYV_n2_min_1 = 0 - (J_h2_min_1+J_o2_min_1)
 grad_J_n2 = -1 * (rhoYV_n2_plus_1 - rhoYV_n2_min_1)/(2*dx)
 
-print(f'h2 mass flux (fick) = {d_rho_dt_fick_h2:.2f} kg/m3 s')
-print(f'o2 mass flux (fick) = {d_rho_dt_fick_o2:.2f} kg/s m3')
-print(f'n2 mass flux (fick) = {grad_J_n2:.2f} kg/m3 s')
+
+print(f'h2 mass flux (fick) = {J_h2:.2f} kg/s m^2')
+print(f'o2 mass flux (fick) = {J_o2:.2f} kg/s m^2')
+print(f'n2 mass flux (fick) = {rhoYV_n2:.2f} kg/s m^2')
 # FICK 02 species mass flux
 
 # FICK N2 species mass flux
@@ -345,9 +346,9 @@ rhoYV_n2_plus_1 = 0 - (J_h2_plus_1+J_o2_plus_1)
 rhoYV_n2_min_1 = 0 - (J_h2_min_1+J_o2_min_1)
 grad_J_n2 = -1 * (rhoYV_n2_plus_1 - rhoYV_n2_min_1)/(2*dx)
 
-print(f'h2 mass flux (Le=const) = {d_rho_dt_Lec_h2:.2f} kg/m3 s')
-print(f'o2 mass flux (Le=const) = {d_rho_dt_Lec_o2:.2f} kg/s m3')
-print(f'n2 mass flux (Le=const) = {grad_J_n2:.2f} kg/m3 s')
+print(f'h2 mass flux (Le=const) = {J_h2:.2f} kg/s m^2')
+print(f'o2 mass flux (Le=const) = {J_o2:.2f} kg/s m^2')
+print(f'n2 mass flux (Le=const) = {rhoYV_n2:.2f} kg/s m^2')
 
 
 # e) Explain how difference in hydrogen diffusive flux could have an impact on flame speed [5 pts].1

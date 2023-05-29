@@ -325,9 +325,9 @@ rhoYV_n2_plus_1 = 0 - (J_CH4_plus_1+J_o2_plus_1)
 rhoYV_n2_min_1 = 0 - (J_CH4_min_1+J_o2_min_1)
 grad_J_n2 = -1 * (rhoYV_n2_plus_1 - rhoYV_n2_min_1)/(2*dx)
 
-print(f'CH4 mass flux (fick) = {d_rho_dt_fick_CH4:.2f} kg/m3 s')
-print(f'o2 mass flux (fick) = {d_rho_dt_fick_o2:.2f} kg/s m3')
-print(f'n2 mass flux (fick) = {grad_J_n2:.2f} kg/m3 s')
+print(f'CH4 mass flux (fick) = {J_CH4:.2f} kg/m3 s')
+print(f'o2 mass flux (fick) = {J_o2:.2f} kg/s m3')
+print(f'n2 mass flux (fick) = {rhoYV_n2:.2f} kg/m3 s')
 # FICK 02 species mass flux
 
 # FICK N2 species mass flux
@@ -345,9 +345,9 @@ rhoYV_n2_plus_1 = 0 - (J_CH4_plus_1+J_o2_plus_1)
 rhoYV_n2_min_1 = 0 - (J_CH4_min_1+J_o2_min_1)
 grad_J_n2 = -1 * (rhoYV_n2_plus_1 - rhoYV_n2_min_1)/(2*dx)
 
-print(f'CH4 mass flux (Le=const) = {d_rho_dt_Lec_CH4:.2f} kg/m3 s')
-print(f'o2 mass flux (Le=const) = {d_rho_dt_Lec_o2:.2f} kg/s m3')
-print(f'n2 mass flux (Le=const) = {grad_J_n2:.2f} kg/m3 s')
+print(f'CH4 mass flux (Le=const) = {J_CH4:.2f} kg/m3 s')
+print(f'o2 mass flux (Le=const) = {J_o2:.2f} kg/s m3')
+print(f'n2 mass flux (Le=const) = {rhoYV_n2:.2f} kg/m3 s')
 
 
 # e) Explain how difference in hydrogen diffusive flux could have an impact on flame speed [5 pts].1
