@@ -55,11 +55,19 @@ idxT = a.index(varT) - 1
 data_T = y[:, idxT]
 T_b = data_T[-1]
 T_u = data_T[0]
-flame_end = 0.99 * T_b
-flame_start = 0.01 * T_b # WRONG!!!!!!!!!!!!!11
-a = data_T[data_T > flame_end]
-b = data_T[data_T > flame_start]
-flame_thickness = x_pos[np.where(data_T == a[0])] - x_pos[np.where(data_T == b[0])] #WRONG!!!!!!!!!!!!1
+theta = (data_T - T_u)/(T_b-T_u)
+
+d_theta_dx = np.empty(len(data) - 2)
+for i in range(1, len(d_theta_dx) + 1):
+    d_theta_dx[i-1] = (theta[i+1] - theta[i-1]) / (x_pos[i+1] - x_pos[i-1])
+
+flame_thickness_max_temp_grad = np.max(d_theta_dx) ** -1
+print('flame_thickness_max_temp_grad', flame_thickness_max_temp_grad)
+flame_end = 0.99
+flame_start = 0.01
+a = data_T[theta > flame_end]
+b = data_T[theta > flame_start]
+flame_thickness = x_pos[np.where(data_T == a[0])][0] - x_pos[np.where(data_T == b[0])][0]
 print('flame', flame_thickness)
 #
 # print(y)
