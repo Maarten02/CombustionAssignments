@@ -1,0 +1,596 @@
+==> LogWrite : Opening logfile
+ 
+========================================================================
+ 
+ 
+OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+O                                            O
+O     @@@@  @  @  @@@@  @   @    @  @@@b     O
+O     @     @  @  @     @@ @@   @@  @  @     O
+O     @     @@@@  @@@@  @ @ @    @  @  @     O
+O     @     @  @  @     @   @    @  @  @     O
+O     @@@@  @  @  @@@@  @   @    @  @@@P     O
+O                                            O
+O     A ONE DIMENSIONAL FLAME CODE           O
+O                                            O
+O     Version:                               O
+O     Release: 2012-06-01 08:38:57 +0200     O
+O                                            O
+OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+ 
+ 
+ 
+* Developed at the Eindhoven University of Technology
+ 
+* http://www.combustion.tue.nl
+ 
+========================================================================
+ 
+Reading CHEM1D input files
+    => Start reading chemistry 
+    ==> CheckTroeData : Started
+    ==> CheckTroeData : Finished
+    => Finished reading chemistry
+    => Thermodynamical Data   [OK]
+    ElementName        Mass
+    1  O                 1.5999400E+01
+    2  H                 1.0079700E+00
+    3  C                 1.2011200E+01
+    4  N                 1.4006700E+01
+    5  AR                3.9948000E+01
+
+    SpeciesName        Mass
+    1  H2                2.0159400E+00
+    2  H                 1.0079700E+00
+    3  O                 1.5999400E+01
+    4  O2                3.1998800E+01
+    5  OH                1.7007370E+01
+    6  H2O               1.8015340E+01
+    7  HO2               3.3006770E+01
+    8  CH2               1.4027140E+01
+    9  CH2(S)            1.4027140E+01
+   10  CH3               1.5035110E+01
+   11  CH4               1.6043080E+01
+   12  CO                2.8010600E+01
+   13  CO2               4.4010000E+01
+   14  HCO               2.9018570E+01
+   15  CH2O              3.0026540E+01
+   16  CH3O              3.1034510E+01
+   17  C2H4              2.8054280E+01
+   18  C2H5              2.9062250E+01
+   19  C2H6              3.0070220E+01
+   20  N                 1.4006700E+01
+   21  NO                3.0006100E+01
+   22  N2                2.8013400E+01
+   23  AR                3.9948000E+01
+
+    => Reactions + rate coefficients 
+
+       (1) O + H + M = OH + M
+             A =  5.000E+17  beta = -1.000E+00  Ea/R =  0.000E+00   K
+      Enhanced by:
+      H2          2.00
+      H2O         6.00
+      CH4         2.00
+      CO          1.50
+      CO2         2.00
+      C2H6        3.00
+      AR          0.70
+
+       (2) O + H2 = H + OH
+             A =  5.000E+04  beta =  2.670E+00  Ea/R =  3.167E+03   K
+
+       (3) O + HO2 = OH + O2
+             A =  2.000E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (4) O + CH2 = H + HCO
+             A =  8.000E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (5) O + CH2(S) = H + HCO
+             A =  1.500E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (6) O + CH3 = H + CH2O
+             A =  8.430E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (7) O + CH4 = OH + CH3
+             A =  1.020E+09  beta =  1.500E+00  Ea/R =  4.331E+03   K
+
+       (8) O + CO + M = CO2 + M
+             A =  6.020E+14  beta =  0.000E+00  Ea/R =  1.511E+03   K
+      Enhanced by:
+      H2          2.00
+      O2          6.00
+      H2O         6.00
+      CH4         2.00
+      CO          1.50
+      CO2         3.50
+      C2H6        3.00
+      AR          0.50
+
+       (9) O + HCO = OH + CO
+             A =  3.000E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (10) O + HCO = H + CO2
+             A =  3.000E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (11) O + CH2O = OH + HCO
+             A =  3.900E+13  beta =  0.000E+00  Ea/R =  1.783E+03   K
+
+       (12) O + C2H4 = CH3 + HCO
+             A =  1.920E+07  beta =  1.830E+00  Ea/R =  1.108E+02   K
+
+       (13) O + C2H5 = CH3 + CH2O
+             A =  1.320E+14  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (14) O + C2H6 = OH + C2H5
+             A =  8.980E+07  beta =  1.920E+00  Ea/R =  2.865E+03   K
+
+       (15) O2 + CO = O + CO2
+             A =  2.500E+12  beta =  0.000E+00  Ea/R =  2.407E+04   K
+
+       (16) O2 + CH2O = HO2 + HCO
+             A =  1.000E+14  beta =  0.000E+00  Ea/R =  2.014E+04   K
+
+       (17) H + O2 + M = HO2 + M
+             A =  2.800E+18  beta = -8.600E-01  Ea/R =  0.000E+00   K
+      Enhanced by:
+      O2          0.00
+      H2O         0.00
+      CO          0.75
+      CO2         1.50
+      C2H6        1.50
+      N2          0.00
+      AR          0.00
+
+       (18) H + O2 + O2 = HO2 + O2
+             A =  3.000E+20  beta = -1.720E+00  Ea/R =  0.000E+00   K
+
+       (19) H + O2 + H2O = HO2 + H2O
+             A =  9.380E+18  beta = -7.600E-01  Ea/R =  0.000E+00   K
+
+       (20) H + O2 + N2 = HO2 + N2
+             A =  3.750E+20  beta = -1.720E+00  Ea/R =  0.000E+00   K
+
+       (21) H + O2 + AR = HO2 + AR
+             A =  7.000E+17  beta = -8.000E-01  Ea/R =  0.000E+00   K
+
+       (22) H + O2 = O + OH
+             A =  8.300E+13  beta =  0.000E+00  Ea/R =  7.258E+03   K
+
+       (23) H + H + M = H2 + M
+             A =  1.000E+18  beta = -1.000E+00  Ea/R =  0.000E+00   K
+      Enhanced by:
+      H2          0.00
+      H2O         0.00
+      CH4         2.00
+      CO2         0.00
+      C2H6        3.00
+      AR          0.63
+
+       (24) H + H + H2 = H2 + H2
+             A =  9.000E+16  beta = -6.000E-01  Ea/R =  0.000E+00   K
+
+       (25) H + H + H2O = H2 + H2O
+             A =  6.000E+19  beta = -1.250E+00  Ea/R =  0.000E+00   K
+
+       (26) H + H + CO2 = H2 + CO2
+             A =  5.500E+20  beta = -2.000E+00  Ea/R =  0.000E+00   K
+
+       (27) H + OH + M = H2O + M
+             A =  2.200E+22  beta = -2.000E+00  Ea/R =  0.000E+00   K
+      Enhanced by:
+      H2          0.73
+      H2O         3.65
+      CH4         2.00
+      C2H6        3.00
+      AR          0.38
+
+       (28) H + HO2 = O2 + H2
+             A =  2.800E+13  beta =  0.000E+00  Ea/R =  5.378E+02   K
+
+       (29) H + HO2 = OH + OH
+             A =  1.340E+14  beta =  0.000E+00  Ea/R =  3.198E+02   K
+
+       (30) H + CH2 + M = CH3 + M
+             A =  2.500E+16  beta = -8.000E-01  Ea/R =  0.000E+00   K
+      LOW pressure limit: 
+      A =  3.200E+27  beta = -3.140E+00  Ea/R =  6.194E+02   K
+      TROE centering:
+          a = 0.680E+00
+       T*** = 0.780E+02 K
+         T* = 0.200E+04 K
+        T** = 0.559E+04 K
+      Enhanced by:
+      H2          2.00
+      H2O         6.00
+      CH4         2.00
+      CO          1.50
+      CO2         2.00
+      C2H6        3.00
+      AR          0.70
+
+       (31) H + CH3 + M = CH4 + M
+             A =  1.270E+16  beta = -6.300E-01  Ea/R =  1.929E+02   K
+      LOW pressure limit: 
+      A =  2.477E+33  beta = -4.760E+00  Ea/R =  1.229E+03   K
+      TROE centering:
+          a = 0.783E+00
+       T*** = 0.740E+02 K
+         T* = 0.294E+04 K
+        T** = 0.696E+04 K
+      Enhanced by:
+      H2          2.00
+      H2O         6.00
+      CH4         2.00
+      CO          1.50
+      CO2         2.00
+      C2H6        3.00
+      AR          0.70
+
+       (32) H + CH4 = CH3 + H2
+             A =  6.600E+08  beta =  1.620E+00  Ea/R =  5.459E+03   K
+
+       (33) H + HCO + M = CH2O + M
+             A =  1.090E+12  beta =  4.800E-01  Ea/R = -1.309E+02   K
+      LOW pressure limit: 
+      A =  1.350E+24  beta = -2.570E+00  Ea/R =  7.176E+02   K
+      TROE centering:
+          a = 0.782E+00
+       T*** = 0.271E+03 K
+         T* = 0.276E+04 K
+        T** = 0.657E+04 K
+      Enhanced by:
+      H2          2.00
+      H2O         6.00
+      CH4         2.00
+      CO          1.50
+      CO2         2.00
+      C2H6        3.00
+      AR          0.70
+
+       (34) H + HCO = H2 + CO
+             A =  7.340E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (35) H + CH2O + M = CH3O + M
+             A =  5.400E+11  beta =  4.540E-01  Ea/R =  1.309E+03   K
+      LOW pressure limit: 
+      A =  2.200E+30  beta = -4.800E+00  Ea/R =  2.800E+03   K
+      TROE centering:
+          a = 0.758E+00
+       T*** = 0.940E+02 K
+         T* = 0.156E+04 K
+        T** = 0.420E+04 K
+      Enhanced by:
+      H2          2.00
+      H2O         6.00
+      CH4         2.00
+      CO          1.50
+      CO2         2.00
+      C2H6        3.00
+
+       (36) H + CH2O = HCO + H2
+             A =  2.300E+10  beta =  1.050E+00  Ea/R =  1.649E+03   K
+
+       (37) H + CH3O = OH + CH3
+             A =  3.200E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (38) H + C2H4 + M = C2H5 + M
+             A =  1.080E+12  beta =  4.540E-01  Ea/R =  9.165E+02   K
+      LOW pressure limit: 
+      A =  1.200E+42  beta = -7.620E+00  Ea/R =  3.510E+03   K
+      TROE centering:
+          a = 0.975E+00
+       T*** = 0.210E+03 K
+         T* = 0.984E+03 K
+        T** = 0.437E+04 K
+      Enhanced by:
+      H2          2.00
+      H2O         6.00
+      CH4         2.00
+      CO          1.50
+      CO2         2.00
+      C2H6        3.00
+      AR          0.70
+
+       (39) H + C2H5 + M = C2H6 + M
+             A =  5.210E+17  beta = -9.900E-01  Ea/R =  7.956E+02   K
+      LOW pressure limit: 
+      A =  1.990E+41  beta = -7.080E+00  Ea/R =  3.366E+03   K
+      TROE centering:
+          a = 0.842E+00
+       T*** = 0.125E+03 K
+         T* = 0.222E+04 K
+        T** = 0.688E+04 K
+      Enhanced by:
+      H2          2.00
+      H2O         6.00
+      CH4         2.00
+      CO          1.50
+      CO2         2.00
+      C2H6        3.00
+      AR          0.70
+
+       (40) H + C2H6 = C2H5 + H2
+             A =  1.150E+08  beta =  1.900E+00  Ea/R =  3.792E+03   K
+
+       (41) H2 + CO + M = CH2O + M
+             A =  4.300E+07  beta =  1.500E+00  Ea/R =  4.008E+04   K
+      LOW pressure limit: 
+      A =  5.070E+27  beta = -3.420E+00  Ea/R =  4.248E+04   K
+      TROE centering:
+          a = 0.932E+00
+       T*** = 0.197E+03 K
+         T* = 0.154E+04 K
+        T** = 0.103E+05 K
+      Enhanced by:
+      H2          2.00
+      H2O         6.00
+      CH4         2.00
+      CO          1.50
+      CO2         2.00
+      C2H6        3.00
+      AR          0.70
+
+       (42) OH + H2 = H + H2O
+             A =  2.160E+08  beta =  1.510E+00  Ea/R =  1.727E+03   K
+
+       (43) OH + OH = O + H2O
+             A =  3.570E+04  beta =  2.400E+00  Ea/R = -1.063E+03   K
+
+       (44) OH + HO2 = O2 + H2O
+             A =  2.900E+13  beta =  0.000E+00  Ea/R = -2.518E+02   K
+
+       (45) OH + CH2 = H + CH2O
+             A =  2.000E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (46) OH + CH2(S) = H + CH2O
+             A =  3.000E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (47) OH + CH3 = CH2 + H2O
+             A =  5.600E+07  beta =  1.600E+00  Ea/R =  2.729E+03   K
+
+       (48) OH + CH3 = CH2(S) + H2O
+             A =  2.501E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (49) OH + CH4 = CH3 + H2O
+             A =  1.000E+08  beta =  1.600E+00  Ea/R =  1.571E+03   K
+
+       (50) OH + CO = H + CO2
+             A =  4.760E+07  beta =  1.228E+00  Ea/R =  3.525E+01   K
+
+       (51) OH + HCO = H2O + CO
+             A =  5.000E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (52) OH + CH2O = HCO + H2O
+             A =  3.430E+09  beta =  1.180E+00  Ea/R = -2.251E+02   K
+
+       (53) OH + C2H6 = C2H5 + H2O
+             A =  3.540E+06  beta =  2.120E+00  Ea/R =  4.381E+02   K
+
+       (54) HO2 + CH2 = OH + CH2O
+             A =  2.000E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (55) HO2 + CH3 = O2 + CH4
+             A =  1.000E+12  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (56) HO2 + CH3 = OH + CH3O
+             A =  2.000E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (57) HO2 + CO = OH + CO2
+             A =  1.500E+14  beta =  0.000E+00  Ea/R =  1.188E+04   K
+
+       (58) CH2 + O2 = OH + HCO
+             A =  1.320E+13  beta =  0.000E+00  Ea/R =  7.553E+02   K
+
+       (59) CH2 + H2 = H + CH3
+             A =  5.000E+05  beta =  2.000E+00  Ea/R =  3.641E+03   K
+
+       (60) CH2 + CH3 = H + C2H4
+             A =  4.000E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (61) CH2 + CH4 = CH3 + CH3
+             A =  2.460E+06  beta =  2.000E+00  Ea/R =  4.164E+03   K
+
+       (62) CH2(S) + N2 = CH2 + N2
+             A =  1.500E+13  beta =  0.000E+00  Ea/R =  3.021E+02   K
+
+       (63) CH2(S) + AR = CH2 + AR
+             A =  9.000E+12  beta =  0.000E+00  Ea/R =  3.021E+02   K
+
+       (64) CH2(S) + O2 = H + OH + CO
+             A =  2.800E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (65) CH2(S) + O2 = CO + H2O
+             A =  1.200E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (66) CH2(S) + H2 = CH3 + H
+             A =  7.000E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (67) CH2(S) + H2O = CH2 + H2O
+             A =  3.000E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (68) CH2(S) + CH3 = H + C2H4
+             A =  1.200E+13  beta =  0.000E+00  Ea/R = -2.870E+02   K
+
+       (69) CH2(S) + CH4 = CH3 + CH3
+             A =  1.600E+13  beta =  0.000E+00  Ea/R = -2.870E+02   K
+
+       (70) CH2(S) + CO = CH2 + CO
+             A =  9.000E+12  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (71) CH2(S) + CO2 = CH2 + CO2
+             A =  7.000E+12  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (72) CH2(S) + CO2 = CO + CH2O
+             A =  1.400E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (73) CH3 + O2 = O + CH3O
+             A =  2.675E+13  beta =  0.000E+00  Ea/R =  1.450E+04   K
+
+       (74) CH3 + O2 = OH + CH2O
+             A =  3.600E+10  beta =  0.000E+00  Ea/R =  4.502E+03   K
+
+       (75) CH3 + CH3 + M = C2H6 + M
+             A =  2.120E+16  beta = -9.700E-01  Ea/R =  3.122E+02   K
+      LOW pressure limit: 
+      A =  1.770E+50  beta = -9.670E+00  Ea/R =  3.132E+03   K
+      TROE centering:
+          a = 0.532E+00
+       T*** = 0.151E+03 K
+         T* = 0.104E+04 K
+        T** = 0.497E+04 K
+      Enhanced by:
+      H2          2.00
+      H2O         6.00
+      CH4         2.00
+      CO          1.50
+      CO2         2.00
+      C2H6        3.00
+      AR          0.70
+
+       (76) CH3 + CH3 = H + C2H5
+             A =  4.990E+12  beta =  1.000E-01  Ea/R =  5.338E+03   K
+
+       (77) CH3 + HCO = CH4 + CO
+             A =  2.648E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (78) CH3 + CH2O = HCO + CH4
+             A =  3.320E+03  beta =  2.810E+00  Ea/R =  2.951E+03   K
+
+       (79) CH3 + C2H6 = C2H5 + CH4
+             A =  6.140E+06  beta =  1.740E+00  Ea/R =  5.262E+03   K
+
+       (80) HCO + H2O = H + CO + H2O
+             A =  2.244E+18  beta = -1.000E+00  Ea/R =  8.561E+03   K
+
+       (81) HCO + M = H + CO + M
+             A =  1.870E+17  beta = -1.000E+00  Ea/R =  8.561E+03   K
+      Enhanced by:
+      H2          2.00
+      H2O         0.00
+      CH4         2.00
+      CO          1.50
+      CO2         2.00
+      C2H6        3.00
+
+       (82) HCO + O2 = HO2 + CO
+             A =  7.600E+12  beta =  0.000E+00  Ea/R =  2.014E+02   K
+
+       (83) CH3O + O2 = HO2 + CH2O
+             A =  4.280E-13  beta =  7.600E+00  Ea/R = -1.778E+03   K
+
+       (84) C2H5 + O2 = HO2 + C2H4
+             A =  8.400E+11  beta =  0.000E+00  Ea/R =  1.951E+03   K
+
+       (85) N + NO = N2 + O
+             A =  2.700E+13  beta =  0.000E+00  Ea/R =  1.788E+02   K
+
+       (86) N + O2 = NO + O
+             A =  9.000E+09  beta =  1.000E+00  Ea/R =  3.273E+03   K
+
+       (87) N + OH = NO + H
+             A =  3.360E+13  beta =  0.000E+00  Ea/R =  1.939E+02   K
+
+    => Defaultsfile           [OK]
+    => Settingsfile           [OK]
+    => Commandline options    [OK]
+    => Start reading .chm file
+        [MSG] Transport parameters    [OK]
+        [MSG] Conductivity parameters [OK]
+        [MSG] Viscosity parameters    [OK]
+        [MSG] Difusivity parameters   [OK]
+        [MSG] Thermal parameters      [OK]
+    => Reading .chm file      [OK]
+    => CHEM1D datafile        [OK]
+    => Setting grid weights :
+        DENSITY            1.00000
+        TEMP               1.00000
+        CH4                1.00000
+        HEATREL            1.00000
+ 
+ 
+------------------------------------------------------------------------
+ 
+Simulation settings:
+    => Counterflow flame
+    => Stationary solution
+    => Detailed chemistry model
+    => Mixture averaged diffusion model
+    => No radiation model
+    => No model for heat exchanger
+ 
+------------------------------------------------------------------------
+ 
+Variables:
+       Name              BC_Left      BC_Right     Unit
+  1) * H2                0.00000E+00  0.00000E+00  Mass frac.
+  2) * H                 0.00000E+00  0.00000E+00  Mass frac.
+  3) * O                 0.00000E+00  0.00000E+00  Mass frac.
+  4) * O2                2.26592E-01  9.06365E-02  Mass frac.
+  5) * OH                0.00000E+00  0.00000E+00  Mass frac.
+  6) * H2O               0.00000E+00  7.65426E-02  Mass frac.
+  7) * HO2               0.00000E+00  0.00000E+00  Mass frac.
+  8) * CH2               0.00000E+00  0.00000E+00  Mass frac.
+  9) * CH2(S)            0.00000E+00  0.00000E+00  Mass frac.
+ 10) * CH3               0.00000E+00  0.00000E+00  Mass frac.
+ 11) * CH4               3.40818E-02  0.00000E+00  Mass frac.
+ 12) * CO                0.00000E+00  0.00000E+00  Mass frac.
+ 13) * CO2               0.00000E+00  9.34944E-02  Mass frac.
+ 14) * HCO               0.00000E+00  0.00000E+00  Mass frac.
+ 15) * CH2O              0.00000E+00  0.00000E+00  Mass frac.
+ 16) * CH3O              0.00000E+00  0.00000E+00  Mass frac.
+ 17) * C2H4              0.00000E+00  0.00000E+00  Mass frac.
+ 18) * C2H5              0.00000E+00  0.00000E+00  Mass frac.
+ 19) * C2H6              0.00000E+00  0.00000E+00  Mass frac.
+ 20) * N                 0.00000E+00  0.00000E+00  Mass frac.
+ 21) * NO                0.00000E+00  0.00000E+00  Mass frac.
+ 22) * N2                7.39326E-01  7.39326E-01  Mass frac.
+ 23) * AR                0.00000E+00  0.00000E+00  Mass frac.
+ 24) * Temp              3.00000E+02  1.66600E+03  K
+ 25) * Massflow          1.35147E-02  2.43361E-03  gr/(cm2 s)
+ 26) * Enthalpy         -1.56496E+02 -1.73365E+02  J/gr
+ 27) * MixFrac           1.00000E+00  1.00000E+00  -
+ 28) * Stretch           4.24773E+02  1.00100E+03  1/s
+ 29)   Press             1.00000E+05  1.00000E+05  Pa
+ 30)   Density           1.12622E-03  2.02801E-04  gr/cm3
+ 31)   MeanMass          2.80918E+01  2.80918E+01  gr/mol
+ 32)   Surface           0.00000E+00  0.00000E+00  cm2
+ 33)   Porosity          0.00000E+00  0.00000E+00  -
+ 34)   Tsolid            0.00000E+00  0.00000E+00  K
+ 35)   HeatRel           0.00000E+00  0.00000E+00  J/(cm3 s)
+ 36)   Dissipation       0.00000E+00  0.00000E+00  -
+ 
+------------------------------------------------------------------------
+ 
+       0 --- --------- --------- Start solver
+       1 --- --------- --------- Regridding
+       1 --- --------- --------- Jacobian 00001
+       1   1 2.752E-08 1.000E+00 Steady OK
+       2   1 3.102E-09 1.000E+00 Steady OK
+       3   1 1.496E-09 1.000E+00 Steady OK
+       4   1 1.497E-10 1.000E+00 Steady OK
+       5   1 7.350E-11 1.000E+00 Steady OK
+ 
+------------------------------------------------------------------------
+ 
+Simulation stopped:
+  => Converged!
+ 
+------------------------------------------------------------------------
+ 
+Postprocessing output:
+  => Position reaction layer      : -3.3532113E-02 cm
+  => Temperature reaction layer   :  1.4646614E+03 K
+  => Mass burning rate            :  1.9854077E-02 gr/(cm2s)
+  => Burning velocity (unburnt)   :  1.7628913E+01 cm/s
+  => Maximum temperature          :  1.6660000E+03 K
+  => Minimum temperature          :  2.9999952E+02 K
+  => Flame thickness (max grad T) :  7.1984460E-02 cm
+  => Stoichiometric mixture frac. :  0.0000000E+00 -
+  => Position stoich mixture      : -1.3996672E-01 cm
+  => Temperature at stoich mixture:  3.0053951E+02 K
+  => Scalar dissipation at stoich :  2.0361950E-25 1/s
+ 
+========================================================================
+ 
+==> LogClose : Closing logfile
