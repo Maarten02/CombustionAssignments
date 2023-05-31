@@ -30,8 +30,8 @@ def get_consumption_speed(yiend_file, siend_file, fuel, _print=False):
     x_pos = s[:, 0]
 
     rho_col = a_y.index('Density') - 1
-    rho_u = y[0, rho_col]                 # [g/cm^3]
-    Y_fu = y[0, ch4_col]
+    rho_u = y[0, rho_col]                 # [g/cm^3] TODO: CHECK IF THIS IS THE CORRECT DENSITY
+    Y_fu = y[0, ch4_col]                           # TODO: CHECK IF THIS THE CORRECT MIXTURE FRACTION
 
     # Integrate reaction rate on entire domain
     consumption_speed = 0
@@ -68,13 +68,11 @@ fig_cs, ax_cs = plt.subplots()
 fig_rr, ax_rr = plt.subplots()
 fig_ft, ax_ft = plt.subplots()
 
-
-
 for fuel, ftl in zip(fuels, [flame_thickness_lst_CH4, flame_thickness_lst_H2]):
     consumption_speed_lst = []
     H2O_reac_rate_lst = []
 
-    folder = project + '\\' + fuel.lower() + '_out'
+    folder = project + '\\' + fuel.lower()
     for strain in strains:
         yiend_file = 'yi_' + fuel.lower() + '_' + str(strain) + '.dat'
         siend_file = 'si' + fuel.lower() + '_' + str(strain) + '.dat'
@@ -112,11 +110,43 @@ fig_ft.savefig('./figures/strain_vs_flame_thick.pdf', bbox_inches='tight', pad_i
 
 #c) Compute the Markstein length ℒ = − 𝑑𝑠𝑐/𝑑𝐾, where 𝐾 is the stretch rate and 𝑠𝑐 is the consumption
 # speed, for the two mixtures of points a) and b). Explain the differences observed in the results.
+fuels = ['CH4', 'H2']
+project = r'C:\Users\maart\OneDrive\Documents\MSc\Combustion\CombustionAssignments\Assignment 2'
+strains = [100, 200, 500, 1000, 5000, 10000]
 
+fig_ml, ax_ml = plt.subplots()
+
+
+for fuel in fuels:
+
+    ml_arr = []
+    folder = project + '\\' + fuel.lower()
+
+    for strain in strains:
+        step = 1
+        d_cs = 0
+        for h in [1, -1]:
+            yiend_file = 'yi_' + fuel.lower() + '_' + str(int(strain+h*step)) + '.dat'
+            siend_file = 'si' + fuel.lower() + '_' + str(int(strain+h*step)) + '.dat'
+
+            cons_spd = get_consumption_speed(yiend_file, siend_file, fuel)
+            d_cs += cons_spd * h
+        ml = d_cs / (2 * step)
+        ml_arr.append(ml)
+
+    ax_ml.plot(strains, ml_arr, label=fuel)
+
+ax_ml.set_xlabel('Strain Rate [$s^{-1}$]')
+ax_ml.set_ylabel('Markstein Length [$m$]')  # TODO: VERIFY UNIT
+ax_ml.set_title('Flame Thickness vs. Strain rate')
+ax_ml.grid()
+ax_ml.legend()
+fig_ml.savefig('./figures/strain_vs_markstein.pdf', bbox_inches='tight', pad_inches=0.2)
 
 # d) Now for the same strain rates compute, non-premixed flamelets in a methane to air opposite jet
 # configuration. Plot the peak reaction rate of water, and the stoichiometric scalar dissipation rate of
 # mixture fraction versus strain. Now also plot the variation of flame temperature versus mixture fraction
 # for the different strain rates. Comment on
 
-#
+# TODO: FIGURE OUT WHAT STOICHIOMETRIC SCALAR DISSIPATION RATE IS
+# TODO: GET FLAME TEMP (FROM CHEM1D??)
