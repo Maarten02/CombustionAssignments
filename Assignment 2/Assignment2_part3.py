@@ -20,18 +20,28 @@ Sc in slides: m/s
 
 ############################ Q3A/B - CONSUMPTION SPEED ##########################################
 def get_consumption_speed(yiend_file, siend_file, fuel, _print=False):
-    M_fuel = 16.04 # [g/mol]
+    if fuel == 'CH4':
+        M_fuel = 16.04 # [g/mol]
+    elif fuel == "H2":
+        M_fuel = 2.018
+    else:
+        raise Exception('Fuel not recognized')
 
     s, t, a = readchem1d(siend_file)
     y, t_y, a_y = readchem1d(yiend_file)
 
-    ch4_col = a_y.index(fuel) - 1
-    data = s[:, ch4_col]
+    fuel_col = a_y.index(fuel) - 1
+    data = s[:, fuel_col]
     x_pos = s[:, 0]
 
     rho_col = a_y.index('Density') - 1
     rho_u = y[0, rho_col]                 # [g/cm^3] TODO: CHECK IF THIS IS THE CORRECT DENSITY
-    Y_fu = y[0, ch4_col]                           # TODO: CHECK IF THIS THE CORRECT MIXTURE FRACTION
+    Y_fu = y[0, fuel_col]                           # TODO: CHECK IF THIS THE CORRECT MIXTURE FRACTION
+
+    # if fuel == 'H2':
+    #     plt.plot(x_pos, data)
+    #     plt.title('H2 REAC RATE')
+    #     plt.show()
 
     # Integrate reaction rate on entire domain
     consumption_speed = 0
@@ -62,7 +72,7 @@ flame_thickness_lst_CH4 = [100, 200, 500, 1000, 5000, 10000] # TODO: INSERT THE 
 
 ############# Q3A/B - PLOTTING ##########################################
 fuels = ['CH4', 'H2']
-project = r'C:\Users\maart\OneDrive\Documents\MSc\Combustion\CombustionAssignments\Assignment 2'
+project = r'C:/Users/maart/OneDrive/Documents/MSc/Combustion/CombustionAssignments/Assignment 2'
 strains = [100, 200, 500, 1000, 5000, 10000]
 fig_cs, ax_cs = plt.subplots()
 fig_rr, ax_rr = plt.subplots()
@@ -72,14 +82,15 @@ for fuel, ftl in zip(fuels, [flame_thickness_lst_CH4, flame_thickness_lst_H2]):
     consumption_speed_lst = []
     H2O_reac_rate_lst = []
 
-    folder = project + '\\' + fuel.lower()
+    folder = project + '/' + fuel.lower()
     for strain in strains:
-        yiend_file = 'yi_' + fuel.lower() + '_' + str(strain) + '.dat'
-        siend_file = 'si' + fuel.lower() + '_' + str(strain) + '.dat'
+        yiend_file = folder + '/yi_' + fuel.lower() + '_' + str(strain) + '.dat'
+        siend_file = folder + '/si_' + fuel.lower() + '_' + str(strain) + '.dat'
 
         cons_spd = get_consumption_speed(yiend_file, siend_file, fuel)
         H2O_reac_rate = get_H2O_reac_rate(siend_file)
         consumption_speed_lst.append(cons_spd)
+        H2O_reac_rate_lst.append(H2O_reac_rate)
 
     ax_cs.plot(strains, consumption_speed_lst, label=fuel)
     ax_rr.plot(strains, H2O_reac_rate_lst, label=fuel)
@@ -110,24 +121,19 @@ fig_ft.savefig('./figures/strain_vs_flame_thick.pdf', bbox_inches='tight', pad_i
 
 #c) Compute the Markstein length ℒ = − 𝑑𝑠𝑐/𝑑𝐾, where 𝐾 is the stretch rate and 𝑠𝑐 is the consumption
 # speed, for the two mixtures of points a) and b). Explain the differences observed in the results.
-fuels = ['CH4', 'H2']
-project = r'C:\Users\maart\OneDrive\Documents\MSc\Combustion\CombustionAssignments\Assignment 2'
-strains = [100, 200, 500, 1000, 5000, 10000]
-
 fig_ml, ax_ml = plt.subplots()
-
-
+fuels = ['H2']
 for fuel in fuels:
 
     ml_arr = []
-    folder = project + '\\' + fuel.lower()
+    folder = project + '/' + fuel.upper() + '_markenstein'
 
     for strain in strains:
         step = 1
         d_cs = 0
         for h in [1, -1]:
-            yiend_file = 'yi_' + fuel.lower() + '_' + str(int(strain+h*step)) + '.dat'
-            siend_file = 'si' + fuel.lower() + '_' + str(int(strain+h*step)) + '.dat'
+            yiend_file = folder + '/yi_' + fuel.lower() + '_' + str(int(strain+h*step)) + '.dat'
+            siend_file = folder + '/si_' + fuel.lower() + '_' + str(int(strain+h*step)) + '.dat'
 
             cons_spd = get_consumption_speed(yiend_file, siend_file, fuel)
             d_cs += cons_spd * h
