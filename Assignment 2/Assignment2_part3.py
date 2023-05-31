@@ -9,80 +9,106 @@ Sc in slides: m/s
 4. what is a normal order or magnitude for mass flux (unit: kg/m2 s)
 
 """
-
-
-
-# TODO:
-# strained, reactants to products flamelets
-# Treac= 300 K
-# pressure = 1 bar
-# 1 step complete combustion
-# AFT from freely propagating flame
-# no curvature
-
-
 #a) For a methane/air case at equivalence ratio 0.6, compute the flamelet solution in Chem1d for strain
 # rate values of 100 s-1, 200 s-1, 500 s-1, 1000 s-1, 5000 s-1 and 10000 s-1. Plot the peak reaction rate of
 # water, consumption speed and flame thickness with varying strain. Use a logarithmic scale for the x-
 # axis (strain). Explain the behaviour observed
 
-# test
-file = r'C:\Users\maart\OneDrive\Documents\MSc\Combustion\CHEM1D\CHEM1D\yiend.dat'
-y, t, a = readchem1d(file)
-
-y = np.array(y)
-
-var = 'H2O'
-idx = a.index(var) - 1
-
-data = y[:, idx]
-x_pos = y[:, 0]
-
-# print(y.shape)
-dydx = np.empty(len(data) - 2)
-for i in range(1, len(dydx) + 1):
-    dydx[i-1] = (data[i+1] - data[i-1]) / (x_pos[i+1] - x_pos[i-1])
-
-# print(dydx)
-
-
-x_pos_plot = x_pos[1:-1]
-plt.plot(x_pos_plot, dydx)
-plt.show()
-#total thickness
-varT = 'Temp'
-idxT = a.index(varT) - 1
-data_T = y[:, idxT]
-T_b = data_T[-1]
-T_u = data_T[0]
-theta = (data_T - T_u)/(T_b-T_u)
-
-d_theta_dx = np.empty(len(data) - 2)
-for i in range(1, len(d_theta_dx) + 1):
-    d_theta_dx[i-1] = (theta[i+1] - theta[i-1]) / (x_pos[i+1] - x_pos[i-1])
-
-flame_thickness_max_temp_grad = np.max(d_theta_dx) ** -1
-print('flame_thickness_max_temp_grad', flame_thickness_max_temp_grad)
-flame_end = 0.99
-flame_start = 0.01
-a = data_T[theta > flame_end]
-b = data_T[theta > flame_start]
-flame_thickness = x_pos[np.where(data_T == a[0])][0] - x_pos[np.where(data_T == b[0])][0]
-print('flame', flame_thickness)
-#
-# print(y)
-# print(t)
-# print(a)
-# Consumption speed
-# determine dot{omega_f} from omega_f
-
-
 # b) Now for the same conditions at strain rates, compute the solutions for hydrogen/air flamelets. Plot
 # the results of peak reaction rate, consumption speed and flame thickness (add the curves on the same
 # plots used for point a)). Comment on the differences
 
-# find peak reaction rate
-#
+############################ Q3A/B - CONSUMPTION SPEED ##########################################
+def get_consumption_speed(yiend_file, siend_file, fuel, _print=False):
+    M_fuel = 16.04 # [g/mol]
+
+    s, t, a = readchem1d(siend_file)
+    y, t_y, a_y = readchem1d(yiend_file)
+
+    ch4_col = a_y.index(fuel) - 1
+    data = s[:, ch4_col]
+    x_pos = s[:, 0]
+
+    rho_col = a_y.index('Density') - 1
+    rho_u = y[0, rho_col]                 # [g/cm^3]
+    Y_fu = y[0, ch4_col]
+
+    # Integrate reaction rate on entire domain
+    consumption_speed = 0
+    for i in range(len(data) - 1):
+        consumption_speed += (data[i] + data[i+1]) * 0.5 * (x_pos[i+1] - x_pos[i])
+
+    consumption_speed *= M_fuel
+    consumption_speed /= (rho_u * Y_fu)     # [cm/s]
+    consumption_speed /= -100               # [m/s]
+
+    if _print:
+        print(f'Consumption speed integral = {consumption_speed:.10f} [m/s]')
+
+    return consumption_speed
+
+############# Q3A/B - PEAK H2O REACTION RATE ##########################################
+def get_H2O_reac_rate(siend_file):
+    s, t, a = readchem1d(siend_file)
+    H2O_col = a.index('H2O') - 1
+    H2O_reac_rate = np.max(s[:, H2O_col]) # VERIFY THAT REACTION RATES ARE +VE
+
+    return H2O_reac_rate
+
+############# Q3A/B - FLAME THICKNESSES ##########################################
+flame_thickness_lst_H2 = [100, 200, 500, 1000, 5000, 10000] # TODO: INSERT THE ACTUAL THICKNESSES
+flame_thickness_lst_CH4 = [100, 200, 500, 1000, 5000, 10000] # TODO: INSERT THE ACTUAL THICKNESSES
+
+
+############# Q3A/B - PLOTTING ##########################################
+fuels = ['CH4', 'H2']
+project = r'C:\Users\maart\OneDrive\Documents\MSc\Combustion\CombustionAssignments\Assignment 2'
+strains = [100, 200, 500, 1000, 5000, 10000]
+fig_cs, ax_cs = plt.subplots()
+fig_rr, ax_rr = plt.subplots()
+fig_ft, ax_ft = plt.subplots()
+
+
+
+for fuel, ftl in zip(fuels, [flame_thickness_lst_CH4, flame_thickness_lst_H2]):
+    consumption_speed_lst = []
+    H2O_reac_rate_lst = []
+
+    folder = project + '\\' + fuel.lower() + '_out'
+    for strain in strains:
+        yiend_file = 'yi_' + fuel.lower() + '_' + str(strain) + '.dat'
+        siend_file = 'si' + fuel.lower() + '_' + str(strain) + '.dat'
+
+        cons_spd = get_consumption_speed(yiend_file, siend_file, fuel)
+        H2O_reac_rate = get_H2O_reac_rate(siend_file)
+        consumption_speed_lst.append(cons_spd)
+
+    ax_cs.plot(strains, consumption_speed_lst, label=fuel)
+    ax_rr.plot(strains, H2O_reac_rate_lst, label=fuel)
+    ax_ft.plot(strains, ftl, label=fuel)
+
+ax_cs.set_xlabel('Strain Rate [$s^{-1}$]')
+ax_cs.set_ylabel('Consumption Speed ($S_c$) [$m/s$]')
+ax_cs.set_title('Consumption speed vs. Strain rate')
+ax_cs.grid()
+ax_cs.legend()
+fig_cs.savefig('./figures/strain_vs_consspeed.pdf', bbox_inches='tight', pad_inches=0.2)
+
+ax_rr.set_xlabel('Strain Rate [$s^{-1}$]')
+ax_rr.set_ylabel('H2O Reaction Rate [$mole/m^3 s$]')
+ax_rr.set_title('H2O reaction rate vs. Strain rate')
+ax_rr.grid()
+ax_rr.legend()
+fig_rr.savefig('./figures/strain_vs_h2o_rr.pdf', bbox_inches='tight', pad_inches=0.2)
+
+ax_ft.set_xlabel('Strain Rate [$s^{-1}$]')
+ax_ft.set_ylabel('Flame Thickness [$m$]')  # TODO: VERIFY UNIT
+ax_ft.set_title('Flame Thickness vs. Strain rate')
+ax_ft.grid()
+ax_ft.legend()
+fig_ft.savefig('./figures/strain_vs_flame_thick.pdf', bbox_inches='tight', pad_inches=0.2)
+
+
 
 #c) Compute the Markstein length ℒ = − 𝑑𝑠𝑐/𝑑𝐾, where 𝐾 is the stretch rate and 𝑠𝑐 is the consumption
 # speed, for the two mixtures of points a) and b). Explain the differences observed in the results.

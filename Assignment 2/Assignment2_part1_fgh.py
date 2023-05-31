@@ -112,7 +112,7 @@ for i in range(N):
     m_tot[i] = m_1[i] + m_2[i] + m_3[i]
     # n_1,2,3 --> m_total
     # rho = m_total / V
-    rho[i] = m_tot[i]/ V_total
+    rho[i] = m_tot[i] / 1000 / V_total  # g/m^3
 
     lambda_left_term = 0
     lambda_right_term = 0
@@ -171,6 +171,10 @@ for i in range(N):
     D_Le_const_o2[i] = ave_lambda[i] / (Le_o2 * rho[i] * cp_mix)
     D_Le_const_n2[i] = ave_lambda[i] / (Le_n2 * rho[i] * cp_mix)
 
+    if i == 50:
+        print('ave lambda', ave_lambda[i])
+        print(f'cp mix = {cp_mix}')
+
 X_points *= 1000 # [m] -> [mm]
 #plots
 #species mass plot
@@ -211,7 +215,7 @@ plt.savefig('figures/ch4/mean_molar_mass_ch4.pdf')
 fig, ax = plt.subplots()
 ax.plot(X_points, rho)
 ax.set_xlabel('x [mm]')
-ax.set_ylabel(r'$\rho$ [kg/m3]')
+ax.set_ylabel(r'$\rho$ [g/m3]')
 ax.set_title('Mean Density Over Length Of Domain. ')
 ax.grid()
 plt.savefig('figures/ch4/mean_density_ch4.pdf')
@@ -307,7 +311,7 @@ def get_sp_m_flux_grad_non_ab(rho_arr, D_arr, Y_arr):
 
     # get the mass flux grad
     J_x_min_h = rho_arr[mid_index-1] * D_arr[mid_index-1] * dY_dx_min_1
-    J = rho_arr[mid_index] * D_arr[mid_index] * dY_dx
+    J = rho_arr[mid_index] * D_arr[mid_index] * dY_dx * -1
     J_x_plus_h = rho_arr[mid_index+1] * D_arr[mid_index+1] * dY_dx_plus_1
     dJdx = (J_x_plus_h - J_x_min_h) / (2*dx)
 
@@ -325,10 +329,14 @@ rhoYV_n2_plus_1 = 0 - (J_CH4_plus_1+J_o2_plus_1)
 rhoYV_n2_min_1 = 0 - (J_CH4_min_1+J_o2_min_1)
 grad_J_n2 = -1 * (rhoYV_n2_plus_1 - rhoYV_n2_min_1)/(2*dx)
 
-print(f'CH4 mass flux (fick) = {J_CH4:.2f} kg/s m^2')
-print(f'o2 mass flux (fick) = {J_o2:.2f} kg/s m^2')
-print(f'n2 mass flux (fick) = {rhoYV_n2:.2f} kg/s m^2')
-# FICK 02 species mass flux
+print(f'CH4 mass flux (fick) = {J_CH4:.4f} kg/s m^2')
+print(f'O2 mass flux (fick) = {J_o2:.4f} kg/s m^2')
+print(f'N2 mass flux (fick) = {rhoYV_n2:.4f} kg/s m^2')
+# Wilke
+dx = L / (N-1)
+
+d_rho_dt_wilke_CH4, J_CH4_wilke, J_CH4_min_1_wilke, J_CH4_plus_1_wilke = get_sp_m_flux_grad_non_ab(rho, D_CH4_wilke, Y_1)
+d_rho_dt_wilke_o2, J_o2_wilke, J_o2_min_1_wilke, J_o2_plus_1_wilke = get_sp_m_flux_grad_non_ab(rho, D_o2_wilke, Y_2)
 
 # FICK N2 species mass flux
 
@@ -345,9 +353,9 @@ rhoYV_n2_plus_1 = 0 - (J_CH4_plus_1+J_o2_plus_1)
 rhoYV_n2_min_1 = 0 - (J_CH4_min_1+J_o2_min_1)
 grad_J_n2 = -1 * (rhoYV_n2_plus_1 - rhoYV_n2_min_1)/(2*dx)
 
-print(f'CH4 mass flux (Le=const) = {J_CH4:.2f} kg/s m^2')
-print(f'o2 mass flux (Le=const) = {J_o2:.2f} kg/s m^2')
-print(f'n2 mass flux (Le=const) = {rhoYV_n2:.2f} kg/s m^2')
+print(f'CH4 mass flux (Le=const) = {J_CH4:.4f} kg/s m^2')
+print(f'O2 mass flux (Le=const) = {J_o2:.4f} kg/s m^2')
+print(f'N2 mass flux (Le=const) = {rhoYV_n2:.4f} kg/s m^2')
 
 
 # e) Explain how difference in hydrogen diffusive flux could have an impact on flame speed [5 pts].1
