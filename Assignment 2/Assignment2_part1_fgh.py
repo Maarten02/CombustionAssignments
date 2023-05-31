@@ -338,8 +338,31 @@ dx = L / (N-1)
 d_rho_dt_wilke_CH4, J_CH4_wilke, J_CH4_min_1_wilke, J_CH4_plus_1_wilke = get_sp_m_flux_grad_non_ab(rho, D_CH4_wilke, Y_1)
 d_rho_dt_wilke_o2, J_o2_wilke, J_o2_min_1_wilke, J_o2_plus_1_wilke = get_sp_m_flux_grad_non_ab(rho, D_o2_wilke, Y_2)
 
-# FICK N2 species mass flux
+# use sum of YV=0
+rhoYV_n2_wilke = 0 - (J_CH4_wilke+J_o2_wilke)
+rhoYV_n2_plus_1_wilke = 0 - (J_CH4_plus_1_wilke+J_o2_plus_1_wilke)
+rhoYV_n2_min_1_wilke = 0 - (J_CH4_min_1_wilke+J_o2_min_1_wilke)
+grad_J_n2 = -1 * (rhoYV_n2_plus_1_wilke - rhoYV_n2_min_1_wilke)/(2*dx)
 
+print(f'CH4 mass flux (wilke) = {J_CH4_wilke:.4f} kg/s m^2')
+print(f'O2 mass flux (wilke) = {J_o2_wilke:.4f} kg/s m^2')
+print(f'N2 mass flux (wilke) = {rhoYV_n2_wilke:.4f} kg/s m^2')
+
+# Le = 1
+dx = L / (N-1)
+
+d_rho_dt_Le1_CH4, J_CH4_Le1, J_CH4_min_1_Le1, J_CH4_plus_1_Le1 = get_sp_m_flux_grad_non_ab(rho, D_Le_1, Y_1)
+d_rho_dt_Le1_o2, J_o2_Le1, J_o2_min_1_Le1, J_o2_plus_1_Le1 = get_sp_m_flux_grad_non_ab(rho, D_Le_1, Y_2)
+
+# use sum of YV=0
+rhoYV_n2_Le1 = 0 - (J_CH4_Le1+J_o2_Le1)
+rhoYV_n2_plus_1_Le1 = 0 - (J_CH4_plus_1_Le1+J_o2_plus_1_Le1)
+rhoYV_n2_min_1_Le1 = 0 - (J_CH4_min_1_Le1+J_o2_min_1_Le1)
+grad_J_n2_Le1 = -1 * (rhoYV_n2_plus_1_Le1 - rhoYV_n2_min_1_Le1)/(2*dx)
+
+print(f'CH4 mass flux (Le=1) = {J_CH4_Le1:.4f} kg/s m^2')
+print(f'O2 mass flux (Le=1) = {J_o2_Le1:.4f} kg/s m^2')
+print(f'N2 mass flux (Le=1) = {rhoYV_n2_Le1:.4f} kg/s m^2')
 
 # Le = const CH4 mass flux
 dx = L / (N-1)
