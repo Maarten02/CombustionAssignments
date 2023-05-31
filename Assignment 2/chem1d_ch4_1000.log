@@ -1,0 +1,1327 @@
+==> LogWrite : Opening logfile
+ 
+========================================================================
+ 
+ 
+OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+O                                            O
+O     @@@@  @  @  @@@@  @   @    @  @@@b     O
+O     @     @  @  @     @@ @@   @@  @  @     O
+O     @     @@@@  @@@@  @ @ @    @  @  @     O
+O     @     @  @  @     @   @    @  @  @     O
+O     @@@@  @  @  @@@@  @   @    @  @@@P     O
+O                                            O
+O     A ONE DIMENSIONAL FLAME CODE           O
+O                                            O
+O     Version:                               O
+O     Release: 2012-06-01 08:38:57 +0200     O
+O                                            O
+OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+ 
+ 
+ 
+* Developed at the Eindhoven University of Technology
+ 
+* http://www.combustion.tue.nl
+ 
+========================================================================
+ 
+Reading CHEM1D input files
+    => Start reading chemistry 
+    ==> CheckTroeData : Started
+    ==> CheckTroeData : Finished
+    => Finished reading chemistry
+    => Thermodynamical Data   [OK]
+    ElementName        Mass
+    1  O                 1.5999400E+01
+    2  H                 1.0079700E+00
+    3  C                 1.2011200E+01
+    4  N                 1.4006700E+01
+    5  AR                3.9948000E+01
+
+    SpeciesName        Mass
+    1  H2                2.0159400E+00
+    2  H                 1.0079700E+00
+    3  O                 1.5999400E+01
+    4  O2                3.1998800E+01
+    5  OH                1.7007370E+01
+    6  H2O               1.8015340E+01
+    7  HO2               3.3006770E+01
+    8  CH2               1.4027140E+01
+    9  CH2(S)            1.4027140E+01
+   10  CH3               1.5035110E+01
+   11  CH4               1.6043080E+01
+   12  CO                2.8010600E+01
+   13  CO2               4.4010000E+01
+   14  HCO               2.9018570E+01
+   15  CH2O              3.0026540E+01
+   16  CH3O              3.1034510E+01
+   17  C2H4              2.8054280E+01
+   18  C2H5              2.9062250E+01
+   19  C2H6              3.0070220E+01
+   20  N                 1.4006700E+01
+   21  NO                3.0006100E+01
+   22  N2                2.8013400E+01
+   23  AR                3.9948000E+01
+
+    => Reactions + rate coefficients 
+
+       (1) O + H + M = OH + M
+             A =  5.000E+17  beta = -1.000E+00  Ea/R =  0.000E+00   K
+      Enhanced by:
+      H2          2.00
+      H2O         6.00
+      CH4         2.00
+      CO          1.50
+      CO2         2.00
+      C2H6        3.00
+      AR          0.70
+
+       (2) O + H2 = H + OH
+             A =  5.000E+04  beta =  2.670E+00  Ea/R =  3.167E+03   K
+
+       (3) O + HO2 = OH + O2
+             A =  2.000E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (4) O + CH2 = H + HCO
+             A =  8.000E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (5) O + CH2(S) = H + HCO
+             A =  1.500E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (6) O + CH3 = H + CH2O
+             A =  8.430E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (7) O + CH4 = OH + CH3
+             A =  1.020E+09  beta =  1.500E+00  Ea/R =  4.331E+03   K
+
+       (8) O + CO + M = CO2 + M
+             A =  6.020E+14  beta =  0.000E+00  Ea/R =  1.511E+03   K
+      Enhanced by:
+      H2          2.00
+      O2          6.00
+      H2O         6.00
+      CH4         2.00
+      CO          1.50
+      CO2         3.50
+      C2H6        3.00
+      AR          0.50
+
+       (9) O + HCO = OH + CO
+             A =  3.000E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (10) O + HCO = H + CO2
+             A =  3.000E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (11) O + CH2O = OH + HCO
+             A =  3.900E+13  beta =  0.000E+00  Ea/R =  1.783E+03   K
+
+       (12) O + C2H4 = CH3 + HCO
+             A =  1.920E+07  beta =  1.830E+00  Ea/R =  1.108E+02   K
+
+       (13) O + C2H5 = CH3 + CH2O
+             A =  1.320E+14  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (14) O + C2H6 = OH + C2H5
+             A =  8.980E+07  beta =  1.920E+00  Ea/R =  2.865E+03   K
+
+       (15) O2 + CO = O + CO2
+             A =  2.500E+12  beta =  0.000E+00  Ea/R =  2.407E+04   K
+
+       (16) O2 + CH2O = HO2 + HCO
+             A =  1.000E+14  beta =  0.000E+00  Ea/R =  2.014E+04   K
+
+       (17) H + O2 + M = HO2 + M
+             A =  2.800E+18  beta = -8.600E-01  Ea/R =  0.000E+00   K
+      Enhanced by:
+      O2          0.00
+      H2O         0.00
+      CO          0.75
+      CO2         1.50
+      C2H6        1.50
+      N2          0.00
+      AR          0.00
+
+       (18) H + O2 + O2 = HO2 + O2
+             A =  3.000E+20  beta = -1.720E+00  Ea/R =  0.000E+00   K
+
+       (19) H + O2 + H2O = HO2 + H2O
+             A =  9.380E+18  beta = -7.600E-01  Ea/R =  0.000E+00   K
+
+       (20) H + O2 + N2 = HO2 + N2
+             A =  3.750E+20  beta = -1.720E+00  Ea/R =  0.000E+00   K
+
+       (21) H + O2 + AR = HO2 + AR
+             A =  7.000E+17  beta = -8.000E-01  Ea/R =  0.000E+00   K
+
+       (22) H + O2 = O + OH
+             A =  8.300E+13  beta =  0.000E+00  Ea/R =  7.258E+03   K
+
+       (23) H + H + M = H2 + M
+             A =  1.000E+18  beta = -1.000E+00  Ea/R =  0.000E+00   K
+      Enhanced by:
+      H2          0.00
+      H2O         0.00
+      CH4         2.00
+      CO2         0.00
+      C2H6        3.00
+      AR          0.63
+
+       (24) H + H + H2 = H2 + H2
+             A =  9.000E+16  beta = -6.000E-01  Ea/R =  0.000E+00   K
+
+       (25) H + H + H2O = H2 + H2O
+             A =  6.000E+19  beta = -1.250E+00  Ea/R =  0.000E+00   K
+
+       (26) H + H + CO2 = H2 + CO2
+             A =  5.500E+20  beta = -2.000E+00  Ea/R =  0.000E+00   K
+
+       (27) H + OH + M = H2O + M
+             A =  2.200E+22  beta = -2.000E+00  Ea/R =  0.000E+00   K
+      Enhanced by:
+      H2          0.73
+      H2O         3.65
+      CH4         2.00
+      C2H6        3.00
+      AR          0.38
+
+       (28) H + HO2 = O2 + H2
+             A =  2.800E+13  beta =  0.000E+00  Ea/R =  5.378E+02   K
+
+       (29) H + HO2 = OH + OH
+             A =  1.340E+14  beta =  0.000E+00  Ea/R =  3.198E+02   K
+
+       (30) H + CH2 + M = CH3 + M
+             A =  2.500E+16  beta = -8.000E-01  Ea/R =  0.000E+00   K
+      LOW pressure limit: 
+      A =  3.200E+27  beta = -3.140E+00  Ea/R =  6.194E+02   K
+      TROE centering:
+          a = 0.680E+00
+       T*** = 0.780E+02 K
+         T* = 0.200E+04 K
+        T** = 0.559E+04 K
+      Enhanced by:
+      H2          2.00
+      H2O         6.00
+      CH4         2.00
+      CO          1.50
+      CO2         2.00
+      C2H6        3.00
+      AR          0.70
+
+       (31) H + CH3 + M = CH4 + M
+             A =  1.270E+16  beta = -6.300E-01  Ea/R =  1.929E+02   K
+      LOW pressure limit: 
+      A =  2.477E+33  beta = -4.760E+00  Ea/R =  1.229E+03   K
+      TROE centering:
+          a = 0.783E+00
+       T*** = 0.740E+02 K
+         T* = 0.294E+04 K
+        T** = 0.696E+04 K
+      Enhanced by:
+      H2          2.00
+      H2O         6.00
+      CH4         2.00
+      CO          1.50
+      CO2         2.00
+      C2H6        3.00
+      AR          0.70
+
+       (32) H + CH4 = CH3 + H2
+             A =  6.600E+08  beta =  1.620E+00  Ea/R =  5.459E+03   K
+
+       (33) H + HCO + M = CH2O + M
+             A =  1.090E+12  beta =  4.800E-01  Ea/R = -1.309E+02   K
+      LOW pressure limit: 
+      A =  1.350E+24  beta = -2.570E+00  Ea/R =  7.176E+02   K
+      TROE centering:
+          a = 0.782E+00
+       T*** = 0.271E+03 K
+         T* = 0.276E+04 K
+        T** = 0.657E+04 K
+      Enhanced by:
+      H2          2.00
+      H2O         6.00
+      CH4         2.00
+      CO          1.50
+      CO2         2.00
+      C2H6        3.00
+      AR          0.70
+
+       (34) H + HCO = H2 + CO
+             A =  7.340E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (35) H + CH2O + M = CH3O + M
+             A =  5.400E+11  beta =  4.540E-01  Ea/R =  1.309E+03   K
+      LOW pressure limit: 
+      A =  2.200E+30  beta = -4.800E+00  Ea/R =  2.800E+03   K
+      TROE centering:
+          a = 0.758E+00
+       T*** = 0.940E+02 K
+         T* = 0.156E+04 K
+        T** = 0.420E+04 K
+      Enhanced by:
+      H2          2.00
+      H2O         6.00
+      CH4         2.00
+      CO          1.50
+      CO2         2.00
+      C2H6        3.00
+
+       (36) H + CH2O = HCO + H2
+             A =  2.300E+10  beta =  1.050E+00  Ea/R =  1.649E+03   K
+
+       (37) H + CH3O = OH + CH3
+             A =  3.200E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (38) H + C2H4 + M = C2H5 + M
+             A =  1.080E+12  beta =  4.540E-01  Ea/R =  9.165E+02   K
+      LOW pressure limit: 
+      A =  1.200E+42  beta = -7.620E+00  Ea/R =  3.510E+03   K
+      TROE centering:
+          a = 0.975E+00
+       T*** = 0.210E+03 K
+         T* = 0.984E+03 K
+        T** = 0.437E+04 K
+      Enhanced by:
+      H2          2.00
+      H2O         6.00
+      CH4         2.00
+      CO          1.50
+      CO2         2.00
+      C2H6        3.00
+      AR          0.70
+
+       (39) H + C2H5 + M = C2H6 + M
+             A =  5.210E+17  beta = -9.900E-01  Ea/R =  7.956E+02   K
+      LOW pressure limit: 
+      A =  1.990E+41  beta = -7.080E+00  Ea/R =  3.366E+03   K
+      TROE centering:
+          a = 0.842E+00
+       T*** = 0.125E+03 K
+         T* = 0.222E+04 K
+        T** = 0.688E+04 K
+      Enhanced by:
+      H2          2.00
+      H2O         6.00
+      CH4         2.00
+      CO          1.50
+      CO2         2.00
+      C2H6        3.00
+      AR          0.70
+
+       (40) H + C2H6 = C2H5 + H2
+             A =  1.150E+08  beta =  1.900E+00  Ea/R =  3.792E+03   K
+
+       (41) H2 + CO + M = CH2O + M
+             A =  4.300E+07  beta =  1.500E+00  Ea/R =  4.008E+04   K
+      LOW pressure limit: 
+      A =  5.070E+27  beta = -3.420E+00  Ea/R =  4.248E+04   K
+      TROE centering:
+          a = 0.932E+00
+       T*** = 0.197E+03 K
+         T* = 0.154E+04 K
+        T** = 0.103E+05 K
+      Enhanced by:
+      H2          2.00
+      H2O         6.00
+      CH4         2.00
+      CO          1.50
+      CO2         2.00
+      C2H6        3.00
+      AR          0.70
+
+       (42) OH + H2 = H + H2O
+             A =  2.160E+08  beta =  1.510E+00  Ea/R =  1.727E+03   K
+
+       (43) OH + OH = O + H2O
+             A =  3.570E+04  beta =  2.400E+00  Ea/R = -1.063E+03   K
+
+       (44) OH + HO2 = O2 + H2O
+             A =  2.900E+13  beta =  0.000E+00  Ea/R = -2.518E+02   K
+
+       (45) OH + CH2 = H + CH2O
+             A =  2.000E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (46) OH + CH2(S) = H + CH2O
+             A =  3.000E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (47) OH + CH3 = CH2 + H2O
+             A =  5.600E+07  beta =  1.600E+00  Ea/R =  2.729E+03   K
+
+       (48) OH + CH3 = CH2(S) + H2O
+             A =  2.501E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (49) OH + CH4 = CH3 + H2O
+             A =  1.000E+08  beta =  1.600E+00  Ea/R =  1.571E+03   K
+
+       (50) OH + CO = H + CO2
+             A =  4.760E+07  beta =  1.228E+00  Ea/R =  3.525E+01   K
+
+       (51) OH + HCO = H2O + CO
+             A =  5.000E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (52) OH + CH2O = HCO + H2O
+             A =  3.430E+09  beta =  1.180E+00  Ea/R = -2.251E+02   K
+
+       (53) OH + C2H6 = C2H5 + H2O
+             A =  3.540E+06  beta =  2.120E+00  Ea/R =  4.381E+02   K
+
+       (54) HO2 + CH2 = OH + CH2O
+             A =  2.000E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (55) HO2 + CH3 = O2 + CH4
+             A =  1.000E+12  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (56) HO2 + CH3 = OH + CH3O
+             A =  2.000E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (57) HO2 + CO = OH + CO2
+             A =  1.500E+14  beta =  0.000E+00  Ea/R =  1.188E+04   K
+
+       (58) CH2 + O2 = OH + HCO
+             A =  1.320E+13  beta =  0.000E+00  Ea/R =  7.553E+02   K
+
+       (59) CH2 + H2 = H + CH3
+             A =  5.000E+05  beta =  2.000E+00  Ea/R =  3.641E+03   K
+
+       (60) CH2 + CH3 = H + C2H4
+             A =  4.000E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (61) CH2 + CH4 = CH3 + CH3
+             A =  2.460E+06  beta =  2.000E+00  Ea/R =  4.164E+03   K
+
+       (62) CH2(S) + N2 = CH2 + N2
+             A =  1.500E+13  beta =  0.000E+00  Ea/R =  3.021E+02   K
+
+       (63) CH2(S) + AR = CH2 + AR
+             A =  9.000E+12  beta =  0.000E+00  Ea/R =  3.021E+02   K
+
+       (64) CH2(S) + O2 = H + OH + CO
+             A =  2.800E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (65) CH2(S) + O2 = CO + H2O
+             A =  1.200E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (66) CH2(S) + H2 = CH3 + H
+             A =  7.000E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (67) CH2(S) + H2O = CH2 + H2O
+             A =  3.000E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (68) CH2(S) + CH3 = H + C2H4
+             A =  1.200E+13  beta =  0.000E+00  Ea/R = -2.870E+02   K
+
+       (69) CH2(S) + CH4 = CH3 + CH3
+             A =  1.600E+13  beta =  0.000E+00  Ea/R = -2.870E+02   K
+
+       (70) CH2(S) + CO = CH2 + CO
+             A =  9.000E+12  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (71) CH2(S) + CO2 = CH2 + CO2
+             A =  7.000E+12  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (72) CH2(S) + CO2 = CO + CH2O
+             A =  1.400E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (73) CH3 + O2 = O + CH3O
+             A =  2.675E+13  beta =  0.000E+00  Ea/R =  1.450E+04   K
+
+       (74) CH3 + O2 = OH + CH2O
+             A =  3.600E+10  beta =  0.000E+00  Ea/R =  4.502E+03   K
+
+       (75) CH3 + CH3 + M = C2H6 + M
+             A =  2.120E+16  beta = -9.700E-01  Ea/R =  3.122E+02   K
+      LOW pressure limit: 
+      A =  1.770E+50  beta = -9.670E+00  Ea/R =  3.132E+03   K
+      TROE centering:
+          a = 0.532E+00
+       T*** = 0.151E+03 K
+         T* = 0.104E+04 K
+        T** = 0.497E+04 K
+      Enhanced by:
+      H2          2.00
+      H2O         6.00
+      CH4         2.00
+      CO          1.50
+      CO2         2.00
+      C2H6        3.00
+      AR          0.70
+
+       (76) CH3 + CH3 = H + C2H5
+             A =  4.990E+12  beta =  1.000E-01  Ea/R =  5.338E+03   K
+
+       (77) CH3 + HCO = CH4 + CO
+             A =  2.648E+13  beta =  0.000E+00  Ea/R =  0.000E+00   K
+
+       (78) CH3 + CH2O = HCO + CH4
+             A =  3.320E+03  beta =  2.810E+00  Ea/R =  2.951E+03   K
+
+       (79) CH3 + C2H6 = C2H5 + CH4
+             A =  6.140E+06  beta =  1.740E+00  Ea/R =  5.262E+03   K
+
+       (80) HCO + H2O = H + CO + H2O
+             A =  2.244E+18  beta = -1.000E+00  Ea/R =  8.561E+03   K
+
+       (81) HCO + M = H + CO + M
+             A =  1.870E+17  beta = -1.000E+00  Ea/R =  8.561E+03   K
+      Enhanced by:
+      H2          2.00
+      H2O         0.00
+      CH4         2.00
+      CO          1.50
+      CO2         2.00
+      C2H6        3.00
+
+       (82) HCO + O2 = HO2 + CO
+             A =  7.600E+12  beta =  0.000E+00  Ea/R =  2.014E+02   K
+
+       (83) CH3O + O2 = HO2 + CH2O
+             A =  4.280E-13  beta =  7.600E+00  Ea/R = -1.778E+03   K
+
+       (84) C2H5 + O2 = HO2 + C2H4
+             A =  8.400E+11  beta =  0.000E+00  Ea/R =  1.951E+03   K
+
+       (85) N + NO = N2 + O
+             A =  2.700E+13  beta =  0.000E+00  Ea/R =  1.788E+02   K
+
+       (86) N + O2 = NO + O
+             A =  9.000E+09  beta =  1.000E+00  Ea/R =  3.273E+03   K
+
+       (87) N + OH = NO + H
+             A =  3.360E+13  beta =  0.000E+00  Ea/R =  1.939E+02   K
+
+    => Defaultsfile           [OK]
+    => Settingsfile           [OK]
+    => Commandline options    [OK]
+    => Start reading .chm file
+        [MSG] Transport parameters    [OK]
+        [MSG] Conductivity parameters [OK]
+        [MSG] Viscosity parameters    [OK]
+        [MSG] Difusivity parameters   [OK]
+        [MSG] Thermal parameters      [OK]
+    => Reading .chm file      [OK]
+    => CHEM1D datafile        [OK]
+    => Setting grid weights :
+        DENSITY            1.00000
+        TEMP               1.00000
+        CH4                1.00000
+        HEATREL            1.00000
+ 
+ 
+------------------------------------------------------------------------
+ 
+Simulation settings:
+    => Counterflow flame
+    => Stationary solution
+    => Detailed chemistry model
+    => Mixture averaged diffusion model
+    => No radiation model
+    => No model for heat exchanger
+ 
+------------------------------------------------------------------------
+ 
+Variables:
+       Name              BC_Left      BC_Right     Unit
+  1) * H2                0.00000E+00  0.00000E+00  Mass frac.
+  2) * H                 0.00000E+00  0.00000E+00  Mass frac.
+  3) * O                 0.00000E+00  0.00000E+00  Mass frac.
+  4) * O2                2.26592E-01  9.81491E-02  Mass frac.
+  5) * OH                0.00000E+00  0.00000E+00  Mass frac.
+  6) * H2O               0.00000E+00  0.00000E+00  Mass frac.
+  7) * HO2               0.00000E+00  0.00000E+00  Mass frac.
+  8) * CH2               0.00000E+00  0.00000E+00  Mass frac.
+  9) * CH2(S)            0.00000E+00  0.00000E+00  Mass frac.
+ 10) * CH3               0.00000E+00  0.00000E+00  Mass frac.
+ 11) * CH4               3.40818E-02  0.00000E+00  Mass frac.
+ 12) * CO                0.00000E+00  0.00000E+00  Mass frac.
+ 13) * CO2               0.00000E+00  1.01244E-01  Mass frac.
+ 14) * HCO               0.00000E+00  0.00000E+00  Mass frac.
+ 15) * CH2O              0.00000E+00  0.00000E+00  Mass frac.
+ 16) * CH3O              0.00000E+00  0.00000E+00  Mass frac.
+ 17) * C2H4              0.00000E+00  0.00000E+00  Mass frac.
+ 18) * C2H5              0.00000E+00  0.00000E+00  Mass frac.
+ 19) * C2H6              0.00000E+00  0.00000E+00  Mass frac.
+ 20) * N                 0.00000E+00  0.00000E+00  Mass frac.
+ 21) * NO                0.00000E+00  0.00000E+00  Mass frac.
+ 22) * N2                7.39326E-01  8.00607E-01  Mass frac.
+ 23) * AR                0.00000E+00  0.00000E+00  Mass frac.
+ 24) * Temp              3.00000E+02  1.66600E+03  K
+ 25) * Massflow          1.35147E-02  2.55192E-03  gr/(cm2 s)
+ 26) * Enthalpy         -1.56496E+02  6.66297E+02  J/gr
+ 27) * MixFrac           1.00000E+00  1.00000E+00  -
+ 28) * Stretch           4.34541E+02  1.00000E+03  1/s
+ 29)   Press             1.00000E+05  1.00000E+05  Pa
+ 30)   Density           1.12622E-03  2.12660E-04  gr/cm3
+ 31)   MeanMass          2.80918E+01  2.94575E+01  gr/mol
+ 32)   Surface           0.00000E+00  0.00000E+00  cm2
+ 33)   Porosity          0.00000E+00  0.00000E+00  -
+ 34)   Tsolid            0.00000E+00  0.00000E+00  K
+ 35)   HeatRel           0.00000E+00  0.00000E+00  J/(cm3 s)
+ 36)   Dissipation       0.00000E+00  0.00000E+00  -
+ 
+------------------------------------------------------------------------
+ 
+       0 --- --------- --------- Start solver
+       1 --- --------- --------- Regridding
+       1 --- --------- --------- Jacobian 00001
+       1   7 1.293E-04 1.563E-02 Steady OK
+       2   3 1.311E-04 3.906E-03 Steady Fail
+       3 --- --------- --------- Regridding
+       3 --- --------- --------- Jacobian 00002
+       3   8 3.594E-03 3.906E-03 Steady Fail
+       4 --- --------- --------- Regridding
+       4 --- --------- --------- Jacobian 00003
+       4 --- --------- --------- Timestep 1.000E-06
+       4   1 6.557E-06 1.000E-06 Time OK
+       5   1 1.618E-05 2.000E-06 Time OK
+       6   5 1.510E-07 3.000E-06 Time OK
+       7   6 8.123E-08 4.000E-06 Time OK
+       8   7 3.656E-08 5.000E-06 Time OK
+       9   5 5.049E-08 6.000E-06 Time OK
+      10   7 3.198E-08 7.000E-06 Time OK
+      11   7 2.985E-08 8.000E-06 Time OK
+      12   7 2.821E-08 9.000E-06 Time OK
+      13   7 2.696E-08 1.000E-05 Time OK
+      14   7 2.598E-08 1.100E-05 Time OK
+      15   7 2.517E-08 1.200E-05 Time OK
+      16   7 2.447E-08 1.300E-05 Time OK
+      17   7 2.384E-08 1.400E-05 Time OK
+      18   7 2.324E-08 1.500E-05 Time OK
+      19   7 2.268E-08 1.600E-05 Time OK
+      20   7 2.214E-08 1.700E-05 Time OK
+      21   7 2.162E-08 1.800E-05 Time OK
+      22   7 2.112E-08 1.900E-05 Time OK
+      23   7 2.064E-08 2.000E-05 Time OK
+      24   7 2.017E-08 2.100E-05 Time OK
+      25   7 1.972E-08 2.200E-05 Time OK
+      26 --- --------- --------- Regridding
+      26 --- --------- --------- Jacobian 00004
+      26   8 6.189E-04 3.906E-03 Steady Fail
+      27 --- --------- --------- Regridding
+      27 --- --------- --------- Jacobian 00005
+      27 --- --------- --------- Timestep 1.000E-06
+      27   1 5.552E-09 2.300E-05 Time OK
+      28   1 1.150E-08 2.400E-05 Time OK
+      29   1 1.481E-09 2.500E-05 Time OK
+      30   1 1.472E-09 2.600E-05 Time OK
+      31   1 1.542E-09 2.700E-05 Time OK
+      32   1 1.578E-09 2.800E-05 Time OK
+      33   1 1.559E-09 2.900E-05 Time OK
+      34   1 1.500E-09 3.000E-05 Time OK
+      35   1 1.419E-09 3.100E-05 Time OK
+      36   1 1.332E-09 3.200E-05 Time OK
+      37   1 1.248E-09 3.300E-05 Time OK
+      38   1 1.174E-09 3.400E-05 Time OK
+      39   1 1.113E-09 3.500E-05 Time OK
+      40   1 1.067E-09 3.600E-05 Time OK
+      41   1 1.038E-09 3.700E-05 Time OK
+      42   1 1.027E-09 3.800E-05 Time OK
+      43   1 1.031E-09 3.900E-05 Time OK
+      44   1 1.050E-09 4.000E-05 Time OK
+      45   1 1.081E-09 4.100E-05 Time OK
+      46   1 1.124E-09 4.200E-05 Time OK
+      47   1 1.176E-09 4.300E-05 Time OK
+      48   1 1.236E-09 4.400E-05 Time OK
+      49 --- --------- --------- Regridding
+      49 --- --------- --------- Jacobian 00006
+      49   8 5.620E-04 3.906E-03 Steady Fail
+      50 --- --------- --------- Regridding
+      50 --- --------- --------- Jacobian 00007
+      50 --- --------- --------- Timestep 2.000E-06
+      50   1 1.363E-09 4.600E-05 Time OK
+      51   1 3.503E-09 4.800E-05 Time OK
+      52   1 1.528E-09 5.000E-05 Time OK
+      53   1 2.135E-09 5.200E-05 Time OK
+      54   1 2.781E-09 5.400E-05 Time OK
+      55   1 3.472E-09 5.600E-05 Time OK
+      56   1 4.212E-09 5.800E-05 Time OK
+      57   1 5.004E-09 6.000E-05 Time OK
+      58   1 5.847E-09 6.200E-05 Time OK
+      59   1 6.737E-09 6.400E-05 Time OK
+      60   1 7.668E-09 6.600E-05 Time OK
+      61   1 8.639E-09 6.800E-05 Time OK
+      62   1 9.645E-09 7.000E-05 Time OK
+      63   2 5.439E-11 7.200E-05 Time OK
+      64   2 6.377E-11 7.400E-05 Time OK
+      65   2 7.420E-11 7.600E-05 Time OK
+      66   2 8.583E-11 7.800E-05 Time OK
+      67   2 9.877E-11 8.000E-05 Time OK
+      68   2 1.131E-10 8.200E-05 Time OK
+      69   2 1.289E-10 8.400E-05 Time OK
+      70   2 1.462E-10 8.600E-05 Time OK
+      71   2 1.652E-10 8.800E-05 Time OK
+      72 --- --------- --------- Regridding
+      72 --- --------- --------- Jacobian 00008
+      72   8 4.150E-04 3.906E-03 Steady Fail
+      73 --- --------- --------- Regridding
+      73 --- --------- --------- Jacobian 00009
+      73 --- --------- --------- Timestep 4.000E-06
+      73   1 1.601E-08 9.200E-05 Time OK
+      74   1 1.354E-08 9.600E-05 Time OK
+      75   2 2.339E-10 1.000E-04 Time OK
+      76   2 3.610E-10 1.040E-04 Time OK
+      77   2 5.227E-10 1.080E-04 Time OK
+      78   2 7.313E-10 1.120E-04 Time OK
+      79   2 9.921E-10 1.160E-04 Time OK
+      80   2 1.307E-09 1.200E-04 Time OK
+      81   2 1.679E-09 1.240E-04 Time OK
+      82   2 2.110E-09 1.280E-04 Time OK
+      83   2 2.603E-09 1.320E-04 Time OK
+      84   2 3.164E-09 1.360E-04 Time OK
+      85   2 3.796E-09 1.400E-04 Time OK
+      86   2 4.503E-09 1.440E-04 Time OK
+      87   2 5.290E-09 1.480E-04 Time OK
+      88   2 6.160E-09 1.520E-04 Time OK
+      89   2 7.117E-09 1.560E-04 Time OK
+      90   2 8.165E-09 1.600E-04 Time OK
+      91   2 9.308E-09 1.640E-04 Time OK
+      92   2 1.055E-08 1.680E-04 Time OK
+      93   2 1.189E-08 1.720E-04 Time OK
+      94   3 1.761E-10 1.760E-04 Time OK
+      95 --- --------- --------- Regridding
+      95 --- --------- --------- Jacobian 00010
+      95   8 2.536E-04 3.906E-03 Steady Fail
+      96 --- --------- --------- Regridding
+      96 --- --------- --------- Jacobian 00011
+      96 --- --------- --------- Timestep 8.000E-06
+      96   1 2.025E-07 1.840E-04 Time OK
+      97   1 1.866E-07 1.920E-04 Time OK
+      98   2 1.076E-08 2.000E-04 Time OK
+      99   2 1.703E-08 2.080E-04 Time OK
+     100   2 2.585E-08 2.160E-04 Time OK
+     101   2 3.763E-08 2.240E-04 Time OK
+     102   3 7.214E-10 2.320E-04 Time OK
+     103   3 1.139E-09 2.400E-04 Time OK
+     104   3 1.707E-09 2.480E-04 Time OK
+     105   3 2.457E-09 2.560E-04 Time OK
+     106   3 3.423E-09 2.640E-04 Time OK
+     107   3 4.640E-09 2.720E-04 Time OK
+     108   3 6.148E-09 2.800E-04 Time OK
+     109   3 7.986E-09 2.880E-04 Time OK
+     110   3 1.020E-08 2.960E-04 Time OK
+     111   3 1.283E-08 3.040E-04 Time OK
+     112   3 1.593E-08 3.120E-04 Time OK
+     113   3 1.954E-08 3.200E-04 Time OK
+     114   3 2.373E-08 3.280E-04 Time OK
+     115   3 2.854E-08 3.360E-04 Time OK
+     116   3 3.403E-08 3.440E-04 Time OK
+     117   3 4.026E-08 3.520E-04 Time OK
+     118 --- --------- --------- Regridding
+     118 --- --------- --------- Jacobian 00012
+     118   8 1.271E-04 3.906E-03 Steady Fail
+     119 --- --------- --------- Regridding
+     119 --- --------- --------- Jacobian 00013
+     119 --- --------- --------- Timestep 1.600E-05
+     119   2 4.555E-08 3.680E-04 Time OK
+     120   2 1.566E-07 3.840E-04 Time OK
+     121   2 3.091E-07 4.000E-04 Time OK
+     122   3 1.734E-08 4.160E-04 Time OK
+     123   3 3.682E-08 4.320E-04 Time OK
+     124   3 6.739E-08 4.480E-04 Time OK
+     125   3 1.114E-07 4.640E-04 Time OK
+     126   3 1.716E-07 4.800E-04 Time OK
+     127   3 2.509E-07 4.960E-04 Time OK
+     128   3 3.522E-07 5.120E-04 Time OK
+     129   4 3.770E-08 5.280E-04 Time OK
+     130   4 5.365E-08 5.440E-04 Time OK
+     131   4 7.458E-08 5.600E-04 Time OK
+     132   4 1.010E-07 5.760E-04 Time OK
+     133   4 1.336E-07 5.920E-04 Time OK
+     134   4 1.736E-07 6.080E-04 Time OK
+     135   4 2.218E-07 6.240E-04 Time OK
+     136   4 2.795E-07 6.400E-04 Time OK
+     137   4 3.479E-07 6.560E-04 Time OK
+     138   4 4.285E-07 6.720E-04 Time OK
+     139   4 5.230E-07 6.880E-04 Time OK
+     140   4 6.332E-07 7.040E-04 Time OK
+     141 --- --------- --------- Regridding
+     141 --- --------- --------- Jacobian 00014
+     141   8 5.510E-05 3.906E-03 Steady Fail
+     142 --- --------- --------- Regridding
+     142 --- --------- --------- Jacobian 00015
+     142 --- --------- --------- Timestep 3.200E-05
+     142   2 7.609E-07 7.360E-04 Time OK
+     143   3 1.605E-07 7.680E-04 Time OK
+     144   3 5.251E-07 8.000E-04 Time OK
+     145   3 1.246E-06 8.320E-04 Time OK
+     146   4 2.670E-07 8.640E-04 Time OK
+     147   4 5.374E-07 8.960E-04 Time OK
+     148   4 9.745E-07 9.280E-04 Time OK
+     149   4 1.625E-06 9.600E-04 Time OK
+     150   5 7.640E-07 9.920E-04 Time OK
+     151   5 1.186E-06 1.024E-03 Time OK
+     152   8 1.520E-05 3.906E-03 Steady Fail
+     153 --- --------- --------- Regridding
+     153 --- --------- --------- Jacobian 00016
+     153   8 3.780E-05 7.813E-03 Steady OK
+     154   2 1.641E-04 3.906E-03 Steady Fail
+     155 --- --------- --------- Regridding
+     155 --- --------- --------- Jacobian 00017
+     155   8 7.632E-05 3.906E-03 Steady Fail
+     156 --- --------- --------- Regridding
+     156 --- --------- --------- Jacobian 00018
+     156 --- --------- --------- Timestep 3.200E-05
+     156   7 3.389E-07 1.056E-03 Time OK
+     157   3 2.471E-07 1.088E-03 Time OK
+     158   3 4.652E-07 1.120E-03 Time OK
+     159   3 8.104E-07 1.152E-03 Time OK
+     160   3 1.409E-06 1.184E-03 Time OK
+     161   4 2.815E-07 1.216E-03 Time OK
+     162   4 5.312E-07 1.248E-03 Time OK
+     163   4 9.168E-07 1.280E-03 Time OK
+     164   4 1.467E-06 1.312E-03 Time OK
+     165   5 6.254E-07 1.344E-03 Time OK
+     166   5 9.490E-07 1.376E-03 Time OK
+     167   5 1.411E-06 1.408E-03 Time OK
+     168   6 7.953E-07 1.440E-03 Time OK
+     169   6 1.202E-06 1.472E-03 Time OK
+     170   6 1.780E-06 1.504E-03 Time OK
+     171   7 1.252E-06 1.536E-03 Time OK
+     172   7 1.886E-06 1.568E-03 Time OK
+     173   8 1.476E-06 1.600E-03 Time OK
+     174   9 1.459E-06 1.632E-03 Time OK
+     175  10 1.433E-06 1.664E-03 Time OK
+     176  11 1.697E-06 1.696E-03 Time OK
+     177  12 1.989E-06 1.728E-03 Time OK
+     178 --- --------- --------- Regridding
+     178 --- --------- --------- Jacobian 00019
+     178   7 7.526E-05 1.563E-02 Steady OK
+     179   3 1.715E-04 3.906E-03 Steady Fail
+     180 --- --------- --------- Regridding
+     180 --- --------- --------- Jacobian 00020
+     180   8 9.386E-05 3.906E-03 Steady Fail
+     181 --- --------- --------- Regridding
+     181 --- --------- --------- Jacobian 00021
+     181 --- --------- --------- Timestep 1.600E-05
+     181   2 2.294E-07 1.744E-03 Time OK
+     182   2 5.049E-07 1.760E-03 Time OK
+     183   3 8.368E-09 1.776E-03 Time OK
+     184   3 9.515E-09 1.792E-03 Time OK
+     185   3 1.381E-08 1.808E-03 Time OK
+     186   3 2.167E-08 1.824E-03 Time OK
+     187   3 3.291E-08 1.840E-03 Time OK
+     188   3 4.804E-08 1.856E-03 Time OK
+     189   3 6.750E-08 1.872E-03 Time OK
+     190   3 9.158E-08 1.888E-03 Time OK
+     191   3 1.205E-07 1.904E-03 Time OK
+     192   3 1.545E-07 1.920E-03 Time OK
+     193   3 1.937E-07 1.936E-03 Time OK
+     194   3 2.382E-07 1.952E-03 Time OK
+     195   3 2.882E-07 1.968E-03 Time OK
+     196   4 5.399E-08 1.984E-03 Time OK
+     197   4 6.786E-08 2.000E-03 Time OK
+     198   4 8.465E-08 2.016E-03 Time OK
+     199   4 1.040E-07 2.032E-03 Time OK
+     200   4 1.261E-07 2.048E-03 Time OK
+     201   4 1.514E-07 2.064E-03 Time OK
+     202   4 1.799E-07 2.080E-03 Time OK
+     203 --- --------- --------- Regridding
+     203 --- --------- --------- Jacobian 00022
+     203   8 2.465E-05 7.813E-03 Steady OK
+     204   2 5.793E-05 3.906E-03 Steady Fail
+     205 --- --------- --------- Regridding
+     205 --- --------- --------- Jacobian 00023
+     205   8 2.959E-05 7.813E-03 Steady OK
+     206   2 7.558E-05 3.906E-03 Steady Fail
+     207 --- --------- --------- Regridding
+     207 --- --------- --------- Jacobian 00024
+     207   8 4.003E-05 3.906E-03 Steady Fail
+     208 --- --------- --------- Regridding
+     208 --- --------- --------- Jacobian 00025
+     208 --- --------- --------- Timestep 3.200E-05
+     208   3 3.113E-08 2.112E-03 Time OK
+     209   3 3.360E-08 2.144E-03 Time OK
+     210   3 6.555E-08 2.176E-03 Time OK
+     211   3 1.480E-07 2.208E-03 Time OK
+     212   3 2.629E-07 2.240E-03 Time OK
+     213   3 4.137E-07 2.272E-03 Time OK
+     214   3 6.077E-07 2.304E-03 Time OK
+     215   4 1.203E-07 2.336E-03 Time OK
+     216   4 1.875E-07 2.368E-03 Time OK
+     217   4 2.795E-07 2.400E-03 Time OK
+     218   4 3.983E-07 2.432E-03 Time OK
+     219   4 5.488E-07 2.464E-03 Time OK
+     220   4 7.351E-07 2.496E-03 Time OK
+     221   5 2.458E-07 2.528E-03 Time OK
+     222   5 3.265E-07 2.560E-03 Time OK
+     223   5 4.330E-07 2.592E-03 Time OK
+     224   5 5.636E-07 2.624E-03 Time OK
+     225   5 7.237E-07 2.656E-03 Time OK
+     226   8 9.011E-06 3.906E-03 Steady Fail
+     227 --- --------- --------- Regridding
+     227 --- --------- --------- Jacobian 00026
+     227   7 3.538E-05 1.563E-02 Steady OK
+     228   3 8.171E-05 3.906E-03 Steady Fail
+     229 --- --------- --------- Regridding
+     229 --- --------- --------- Jacobian 00027
+     229   8 4.234E-05 3.906E-03 Steady Fail
+     230 --- --------- --------- Regridding
+     230 --- --------- --------- Jacobian 00028
+     230 --- --------- --------- Timestep 3.200E-05
+     230   3 2.025E-08 2.688E-03 Time OK
+     231   3 2.783E-08 2.720E-03 Time OK
+     232   3 3.335E-08 2.752E-03 Time OK
+     233   3 4.710E-08 2.784E-03 Time OK
+     234   3 7.738E-08 2.816E-03 Time OK
+     235   3 1.224E-07 2.848E-03 Time OK
+     236   3 1.825E-07 2.880E-03 Time OK
+     237   3 2.584E-07 2.912E-03 Time OK
+     238   3 3.508E-07 2.944E-03 Time OK
+     239   3 4.599E-07 2.976E-03 Time OK
+     240   4 1.035E-07 3.008E-03 Time OK
+     241   4 1.430E-07 3.040E-03 Time OK
+     242   4 1.931E-07 3.072E-03 Time OK
+     243   4 2.535E-07 3.104E-03 Time OK
+     244   4 3.259E-07 3.136E-03 Time OK
+     245   4 4.112E-07 3.168E-03 Time OK
+     246   5 1.175E-07 3.200E-03 Time OK
+     247   5 1.489E-07 3.232E-03 Time OK
+     248   5 1.888E-07 3.264E-03 Time OK
+     249   5 2.358E-07 3.296E-03 Time OK
+     250   5 2.915E-07 3.328E-03 Time OK
+     251   5 3.567E-07 3.360E-03 Time OK
+     252 --- --------- --------- Regridding
+     252 --- --------- --------- Jacobian 00029
+     252   7 2.528E-05 1.563E-02 Steady OK
+     253   3 4.330E-05 3.906E-03 Steady Fail
+     254 --- --------- --------- Regridding
+     254 --- --------- --------- Jacobian 00030
+     254   8 2.940E-05 7.813E-03 Steady OK
+     255   2 3.831E-05 3.906E-03 Steady Fail
+     256 --- --------- --------- Regridding
+     256 --- --------- --------- Jacobian 00031
+     256   8 3.399E-05 7.813E-03 Steady OK
+     257   2 4.126E-05 3.906E-03 Steady Fail
+     258 --- --------- --------- Regridding
+     258 --- --------- --------- Jacobian 00032
+     258   8 3.730E-05 7.813E-03 Steady OK
+     259   2 4.455E-05 3.906E-03 Steady Fail
+     260 --- --------- --------- Regridding
+     260 --- --------- --------- Jacobian 00033
+     260   8 4.200E-05 7.813E-03 Steady OK
+     261   2 4.802E-05 3.906E-03 Steady Fail
+     262 --- --------- --------- Regridding
+     262 --- --------- --------- Jacobian 00034
+     262   8 4.522E-05 7.813E-03 Steady OK
+     263   2 5.024E-05 3.906E-03 Steady Fail
+     264 --- --------- --------- Regridding
+     264 --- --------- --------- Jacobian 00035
+     264   7 5.339E-05 1.563E-02 Steady OK
+     265   3 7.107E-05 3.906E-03 Steady Fail
+     266 --- --------- --------- Regridding
+     266 --- --------- --------- Jacobian 00036
+     266   8 5.793E-05 7.813E-03 Steady OK
+     267   2 6.629E-05 3.906E-03 Steady Fail
+     268 --- --------- --------- Regridding
+     268 --- --------- --------- Jacobian 00037
+     268   8 5.992E-05 7.813E-03 Steady OK
+     269   2 6.760E-05 3.906E-03 Steady Fail
+     270 --- --------- --------- Regridding
+     270 --- --------- --------- Jacobian 00038
+     270   8 6.378E-05 7.813E-03 Steady OK
+     271   2 7.081E-05 3.906E-03 Steady Fail
+     272 --- --------- --------- Regridding
+     272 --- --------- --------- Jacobian 00039
+     272   8 6.575E-05 7.813E-03 Steady OK
+     273   2 7.220E-05 7.813E-03 Steady OK
+     274   2 9.000E-05 3.906E-03 Steady Fail
+     275 --- --------- --------- Regridding
+     275 --- --------- --------- Jacobian 00040
+     275   8 7.705E-05 7.813E-03 Steady OK
+     276   2 8.587E-05 3.906E-03 Steady Fail
+     277 --- --------- --------- Regridding
+     277 --- --------- --------- Jacobian 00041
+     277   8 7.856E-05 7.813E-03 Steady OK
+     278   2 8.679E-05 3.906E-03 Steady Fail
+     279 --- --------- --------- Regridding
+     279 --- --------- --------- Jacobian 00042
+     279   8 8.027E-05 7.813E-03 Steady OK
+     280   2 8.787E-05 7.813E-03 Steady OK
+     281   2 1.060E-04 3.906E-03 Steady Fail
+     282 --- --------- --------- Regridding
+     282 --- --------- --------- Jacobian 00043
+     282   8 9.216E-05 7.813E-03 Steady OK
+     283   2 1.013E-04 3.906E-03 Steady Fail
+     284 --- --------- --------- Regridding
+     284 --- --------- --------- Jacobian 00044
+     284   8 9.342E-05 7.813E-03 Steady OK
+     285   2 1.020E-04 3.906E-03 Steady Fail
+     286 --- --------- --------- Regridding
+     286 --- --------- --------- Jacobian 00045
+     286   8 9.485E-05 7.813E-03 Steady OK
+     287   2 1.028E-04 3.906E-03 Steady Fail
+     288 --- --------- --------- Regridding
+     288 --- --------- --------- Jacobian 00046
+     288   8 9.637E-05 7.813E-03 Steady OK
+     289   2 1.037E-04 3.906E-03 Steady Fail
+     290 --- --------- --------- Regridding
+     290 --- --------- --------- Jacobian 00047
+     290   8 9.781E-05 7.813E-03 Steady OK
+     291   2 1.046E-04 3.906E-03 Steady Fail
+     292 --- --------- --------- Regridding
+     292 --- --------- --------- Jacobian 00048
+     292   8 9.931E-05 7.813E-03 Steady OK
+     293   2 1.054E-04 3.906E-03 Steady Fail
+     294 --- --------- --------- Regridding
+     294 --- --------- --------- Jacobian 00049
+     294   8 1.007E-04 3.906E-03 Steady Fail
+     295 --- --------- --------- Regridding
+     295 --- --------- --------- Jacobian 00050
+     295 --- --------- --------- Timestep 3.200E-05
+     295   2 4.558E-08 3.392E-03 Time OK
+     296   2 6.407E-08 3.424E-03 Time OK
+     297   3 2.364E-08 3.456E-03 Time OK
+     298   3 1.673E-08 3.488E-03 Time OK
+     299   3 3.524E-09 3.520E-03 Time OK
+     300   3 4.908E-09 3.552E-03 Time OK
+     301   3 7.113E-09 3.584E-03 Time OK
+     302   3 1.014E-08 3.616E-03 Time OK
+     303   3 1.397E-08 3.648E-03 Time OK
+     304   3 1.857E-08 3.680E-03 Time OK
+     305   3 2.394E-08 3.712E-03 Time OK
+     306   3 3.014E-08 3.744E-03 Time OK
+     307   3 3.726E-08 3.776E-03 Time OK
+     308   3 4.540E-08 3.808E-03 Time OK
+     309   3 5.472E-08 3.840E-03 Time OK
+     310   3 6.535E-08 3.872E-03 Time OK
+     311   3 7.750E-08 3.904E-03 Time OK
+     312   3 9.129E-08 3.936E-03 Time OK
+     313   3 1.069E-07 3.968E-03 Time OK
+     314   3 1.245E-07 4.000E-03 Time OK
+     315   4 2.313E-08 4.032E-03 Time OK
+     316   4 2.932E-08 4.064E-03 Time OK
+     317 --- --------- --------- Regridding
+     317 --- --------- --------- Jacobian 00051
+     317   7 1.103E-05 1.563E-02 Steady OK
+     318   3 1.724E-05 3.906E-03 Steady Fail
+     319 --- --------- --------- Regridding
+     319 --- --------- --------- Jacobian 00052
+     319   7 1.402E-05 1.563E-02 Steady OK
+     320   3 2.190E-05 3.906E-03 Steady Fail
+     321 --- --------- --------- Regridding
+     321 --- --------- --------- Jacobian 00053
+     321   8 1.791E-05 7.813E-03 Steady OK
+     322   2 2.018E-05 3.906E-03 Steady Fail
+     323 --- --------- --------- Regridding
+     323 --- --------- --------- Jacobian 00054
+     323   7 2.027E-05 1.563E-02 Steady OK
+     324   3 2.624E-05 3.906E-03 Steady Fail
+     325 --- --------- --------- Regridding
+     325 --- --------- --------- Jacobian 00055
+     325   7 2.499E-05 1.563E-02 Steady OK
+     326   3 3.100E-05 3.906E-03 Steady Fail
+     327 --- --------- --------- Regridding
+     327 --- --------- --------- Jacobian 00056
+     327   7 2.954E-05 1.563E-02 Steady OK
+     328   3 3.540E-05 3.906E-03 Steady Fail
+     329 --- --------- --------- Regridding
+     329 --- --------- --------- Jacobian 00057
+     329   7 3.360E-05 1.563E-02 Steady OK
+     330   3 3.926E-05 3.906E-03 Steady Fail
+     331 --- --------- --------- Regridding
+     331 --- --------- --------- Jacobian 00058
+     331   7 3.772E-05 1.563E-02 Steady OK
+     332   3 4.317E-05 3.906E-03 Steady Fail
+     333 --- --------- --------- Regridding
+     333 --- --------- --------- Jacobian 00059
+     333   7 4.153E-05 1.563E-02 Steady OK
+     334   3 4.674E-05 3.906E-03 Steady Fail
+     335 --- --------- --------- Regridding
+     335 --- --------- --------- Jacobian 00060
+     335   7 4.503E-05 1.563E-02 Steady OK
+     336   3 4.998E-05 3.906E-03 Steady Fail
+     337 --- --------- --------- Regridding
+     337 --- --------- --------- Jacobian 00061
+     337   7 4.849E-05 1.563E-02 Steady OK
+     338   3 5.317E-05 7.813E-03 Steady OK
+     339   2 6.199E-05 3.906E-03 Steady Fail
+     340 --- --------- --------- Regridding
+     340 --- --------- --------- Jacobian 00062
+     340   7 5.852E-05 1.563E-02 Steady OK
+     341   3 6.403E-05 7.813E-03 Steady OK
+     342   2 7.330E-05 3.906E-03 Steady Fail
+     343 --- --------- --------- Regridding
+     343 --- --------- --------- Jacobian 00063
+     343   7 6.836E-05 1.563E-02 Steady OK
+     344   3 7.414E-05 7.813E-03 Steady OK
+     345   2 8.341E-05 3.906E-03 Steady Fail
+     346 --- --------- --------- Regridding
+     346 --- --------- --------- Jacobian 00064
+     346   7 7.862E-05 1.563E-02 Steady OK
+     347   3 8.441E-05 7.813E-03 Steady OK
+     348   2 9.347E-05 3.906E-03 Steady Fail
+     349 --- --------- --------- Regridding
+     349 --- --------- --------- Jacobian 00065
+     349   7 8.823E-05 1.563E-02 Steady OK
+     350   3 9.387E-05 7.813E-03 Steady OK
+     351   2 1.026E-04 3.906E-03 Steady Fail
+     352 --- --------- --------- Regridding
+     352 --- --------- --------- Jacobian 00066
+     352   7 9.728E-05 1.563E-02 Steady OK
+     353   3 1.027E-04 3.906E-03 Steady Fail
+     354 --- --------- --------- Regridding
+     354 --- --------- --------- Jacobian 00067
+     354   7 9.830E-05 1.563E-02 Steady OK
+     355   3 1.033E-04 3.906E-03 Steady Fail
+     356 --- --------- --------- Regridding
+     356 --- --------- --------- Jacobian 00068
+     356   7 9.918E-05 1.563E-02 Steady OK
+     357   3 1.038E-04 3.906E-03 Steady Fail
+     358 --- --------- --------- Regridding
+     358 --- --------- --------- Jacobian 00069
+     358   8 9.798E-05 7.813E-03 Steady OK
+     359   2 1.000E-04 3.906E-03 Steady Fail
+     360 --- --------- --------- Regridding
+     360 --- --------- --------- Jacobian 00070
+     360   7 9.838E-05 1.563E-02 Steady OK
+     361   3 1.023E-04 3.906E-03 Steady Fail
+     362 --- --------- --------- Regridding
+     362 --- --------- --------- Jacobian 00071
+     362   7 9.917E-05 1.563E-02 Steady OK
+     363   3 1.027E-04 3.906E-03 Steady Fail
+     364 --- --------- --------- Regridding
+     364 --- --------- --------- Jacobian 00072
+     364   7 9.974E-05 1.563E-02 Steady OK
+     365   3 1.029E-04 3.906E-03 Steady Fail
+     366 --- --------- --------- Regridding
+     366 --- --------- --------- Jacobian 00073
+     366   8 9.906E-05 7.813E-03 Steady OK
+     367   2 1.002E-04 3.906E-03 Steady Fail
+     368 --- --------- --------- Regridding
+     368 --- --------- --------- Jacobian 00074
+     368   7 9.898E-05 1.563E-02 Steady OK
+     369   3 1.015E-04 3.906E-03 Steady Fail
+     370 --- --------- --------- Regridding
+     370 --- --------- --------- Jacobian 00075
+     370   7 9.937E-05 1.563E-02 Steady OK
+     371   3 1.016E-04 3.906E-03 Steady Fail
+     372 --- --------- --------- Regridding
+     372 --- --------- --------- Jacobian 00076
+     372   7 9.965E-05 1.563E-02 Steady OK
+     373   3 1.015E-04 3.906E-03 Steady Fail
+     374 --- --------- --------- Regridding
+     374 --- --------- --------- Jacobian 00077
+     374   7 9.983E-05 1.563E-02 Steady OK
+     375   3 1.014E-04 3.906E-03 Steady Fail
+     376 --- --------- --------- Regridding
+     376 --- --------- --------- Jacobian 00078
+     376   7 9.997E-05 1.563E-02 Steady OK
+     377   3 1.012E-04 3.906E-03 Steady Fail
+     378 --- --------- --------- Regridding
+     378 --- --------- --------- Jacobian 00079
+     378   8 9.984E-05 7.813E-03 Steady OK
+     379   2 1.000E-04 7.813E-03 Steady OK
+     380   2 1.010E-04 3.906E-03 Steady Fail
+     381 --- --------- --------- Regridding
+     381 --- --------- --------- Jacobian 00080
+     381   8 1.000E-04 3.906E-03 Steady Fail
+     382 --- --------- --------- Regridding
+     382 --- --------- --------- Jacobian 00081
+     382 --- --------- --------- Timestep 6.400E-05
+     382   2 1.031E-07 4.128E-03 Time OK
+     383   2 1.265E-07 4.192E-03 Time OK
+     384   9 2.036E-08 4.256E-03 Time OK
+     385  34 2.927E-09 4.320E-03 Time OK
+     386   6 3.738E-07 3.125E-02 Steady OK
+     387   3 3.968E-07 1.563E-02 Steady OK
+     388   2 4.261E-07 1.563E-02 Steady OK
+     389   2 4.601E-07 1.563E-02 Steady OK
+     390   2 4.977E-07 1.563E-02 Steady OK
+     391   2 5.377E-07 1.563E-02 Steady OK
+     392   2 5.794E-07 1.563E-02 Steady OK
+     393   2 6.224E-07 1.563E-02 Steady OK
+     394   2 6.660E-07 1.563E-02 Steady OK
+     395   2 7.101E-07 1.563E-02 Steady OK
+     396   2 7.544E-07 1.563E-02 Steady OK
+     397   2 7.986E-07 1.563E-02 Steady OK
+     398   2 8.428E-07 1.563E-02 Steady OK
+     399   2 8.867E-07 1.563E-02 Steady OK
+     400   1 9.741E-07 3.125E-02 Steady OK
+     401   2 1.060E-06 3.125E-02 Steady OK
+     402   2 1.143E-06 3.125E-02 Steady OK
+     403   2 1.225E-06 3.125E-02 Steady OK
+     404 --- --------- --------- Regridding
+     404 --- --------- --------- Jacobian 00082
+     404   7 6.026E-06 1.563E-02 Steady OK
+     405   3 5.505E-06 7.813E-03 Steady OK
+     406   2 8.810E-06 3.906E-03 Steady Fail
+     407 --- --------- --------- Regridding
+     407 --- --------- --------- Jacobian 00083
+     407   7 8.502E-06 1.563E-02 Steady OK
+     408   3 8.696E-06 7.813E-03 Steady OK
+     409   2 1.148E-05 3.906E-03 Steady Fail
+     410 --- --------- --------- Regridding
+     410 --- --------- --------- Jacobian 00084
+     410   7 1.135E-05 1.563E-02 Steady OK
+     411   3 1.173E-05 7.813E-03 Steady OK
+     412   2 1.408E-05 3.906E-03 Steady Fail
+     413 --- --------- --------- Regridding
+     413 --- --------- --------- Jacobian 00085
+     413   7 1.416E-05 1.563E-02 Steady OK
+     414   3 1.456E-05 7.813E-03 Steady OK
+     415   2 1.652E-05 3.906E-03 Steady Fail
+     416 --- --------- --------- Regridding
+     416 --- --------- --------- Jacobian 00086
+     416   6 1.894E-05 3.125E-02 Steady OK
+     417   4 2.248E-05 3.906E-03 Steady Fail
+     418 --- --------- --------- Regridding
+     418 --- --------- --------- Jacobian 00087
+     418   7 2.139E-05 1.563E-02 Steady OK
+     419   3 2.233E-05 7.813E-03 Steady OK
+     420   2 2.437E-05 7.813E-03 Steady OK
+     421   2 2.785E-05 3.906E-03 Steady Fail
+     422 --- --------- --------- Regridding
+     422 --- --------- --------- Jacobian 00088
+     422   7 2.595E-05 1.563E-02 Steady OK
+     423   3 2.707E-05 7.813E-03 Steady OK
+     424   2 2.914E-05 7.813E-03 Steady OK
+     425   2 3.243E-05 3.906E-03 Steady Fail
+     426 --- --------- --------- Regridding
+     426 --- --------- --------- Jacobian 00089
+     426   7 3.019E-05 1.563E-02 Steady OK
+     427   3 3.131E-05 7.813E-03 Steady OK
+     428   2 3.329E-05 7.813E-03 Steady OK
+     429   2 3.633E-05 7.813E-03 Steady OK
+     430   2 4.057E-05 3.906E-03 Steady Fail
+     431 --- --------- --------- Regridding
+     431 --- --------- --------- Jacobian 00090
+     431   7 3.765E-05 1.563E-02 Steady OK
+     432   2 4.100E-05 1.563E-02 Steady OK
+     433   3 4.398E-05 7.813E-03 Steady OK
+     434   2 4.798E-05 7.813E-03 Steady OK
+     435   2 5.303E-05 3.906E-03 Steady Fail
+     436 --- --------- --------- Regridding
+     436 --- --------- --------- Jacobian 00091
+     436   6 5.256E-05 3.125E-02 Steady OK
+     437   4 5.546E-05 7.813E-03 Steady OK
+     438   2 5.922E-05 7.813E-03 Steady OK
+     439   2 6.387E-05 7.813E-03 Steady OK
+     440   2 6.942E-05 7.813E-03 Steady OK
+     441   2 7.587E-05 7.813E-03 Steady OK
+     442   2 8.320E-05 7.813E-03 Steady OK
+     443   2 9.139E-05 7.813E-03 Steady OK
+     444   2 1.004E-04 3.906E-03 Steady Fail
+     445 --- --------- --------- Regridding
+     445 --- --------- --------- Jacobian 00092
+     445   6 9.070E-05 3.125E-02 Steady OK
+     446   3 9.654E-05 1.563E-02 Steady OK
+     447   3 1.005E-04 3.906E-03 Steady Fail
+     448 --- --------- --------- Regridding
+     448 --- --------- --------- Jacobian 00093
+     448   6 9.634E-05 3.125E-02 Steady OK
+     449   4 9.847E-05 7.813E-03 Steady OK
+     450   2 1.012E-04 3.906E-03 Steady Fail
+     451 --- --------- --------- Regridding
+     451 --- --------- --------- Jacobian 00094
+     451   6 9.666E-05 3.125E-02 Steady OK
+     452   4 9.848E-05 7.813E-03 Steady OK
+     453   2 1.008E-04 3.906E-03 Steady Fail
+     454 --- --------- --------- Regridding
+     454 --- --------- --------- Jacobian 00095
+     454   6 9.629E-05 3.125E-02 Steady OK
+     455   3 9.988E-05 1.563E-02 Steady OK
+     456   3 1.024E-04 3.906E-03 Steady Fail
+     457 --- --------- --------- Regridding
+     457 --- --------- --------- Jacobian 00096
+     457   6 9.774E-05 3.125E-02 Steady OK
+     458   4 9.897E-05 7.813E-03 Steady OK
+     459   2 1.006E-04 3.906E-03 Steady Fail
+     460 --- --------- --------- Regridding
+     460 --- --------- --------- Jacobian 00097
+     460   6 9.602E-05 3.125E-02 Steady OK
+     461   3 9.844E-05 1.563E-02 Steady OK
+     462   3 1.002E-04 3.906E-03 Steady Fail
+     463 --- --------- --------- Regridding
+     463 --- --------- --------- Jacobian 00098
+     463   6 9.556E-05 3.125E-02 Steady OK
+     464   3 9.746E-05 1.563E-02 Steady OK
+     465   3 9.889E-05 7.813E-03 Steady OK
+     466   2 1.007E-04 3.906E-03 Steady Fail
+     467 --- --------- --------- Regridding
+     467 --- --------- --------- Jacobian 00099
+     467   6 9.604E-05 3.125E-02 Steady OK
+     468   3 9.742E-05 1.563E-02 Steady OK
+     469   2 9.994E-05 1.563E-02 Steady OK
+     470   3 1.016E-04 3.906E-03 Steady Fail
+     471 --- --------- --------- Regridding
+     471 --- --------- --------- Jacobian 00100
+     471   6 9.702E-05 3.125E-02 Steady OK
+     472   2 9.984E-05 3.125E-02 Steady OK
+     473   4 1.011E-04 3.906E-03 Steady Fail
+     474 --- --------- --------- Regridding
+     474 --- --------- --------- Jacobian 00101
+     474   5 9.805E-05 6.250E-02 Steady OK
+     475   5 9.902E-05 7.813E-03 Steady OK
+     476   2 1.002E-04 3.906E-03 Steady Fail
+     477 --- --------- --------- Regridding
+     477 --- --------- --------- Jacobian 00102
+     477   5 9.660E-05 6.250E-02 Steady OK
+     478   4 9.806E-05 1.563E-02 Steady OK
+     479   3 9.902E-05 7.813E-03 Steady OK
+     480   2 1.001E-04 3.906E-03 Steady Fail
+     481 --- --------- --------- Regridding
+     481 --- --------- --------- Jacobian 00103
+     481   5 9.588E-05 6.250E-02 Steady OK
+     482   3 9.807E-05 3.125E-02 Steady OK
+     483   3 9.986E-05 1.563E-02 Steady OK
+     484   3 1.009E-04 3.906E-03 Steady Fail
+     485 --- --------- --------- Regridding
+     485 --- --------- --------- Jacobian 00104
+     485   5 9.615E-05 6.250E-02 Steady OK
+     486   2 9.948E-05 6.250E-02 Steady OK
+     487   5 1.002E-04 3.906E-03 Steady Fail
+     488 --- --------- --------- Regridding
+     488 --- --------- --------- Jacobian 00105
+     488   4 9.568E-05 1.250E-01 Steady OK
+     489   4 9.748E-05 3.125E-02 Steady OK
+     490   3 9.867E-05 1.563E-02 Steady OK
+     491   3 9.932E-05 7.813E-03 Steady OK
+     492   2 1.000E-04 3.906E-03 Steady Fail
+     493 --- --------- --------- Regridding
+     493 --- --------- --------- Jacobian 00106
+     493   3 9.816E-05 2.500E-01 Steady OK
+     494   6 9.904E-05 1.563E-02 Steady OK
+     495   2 9.999E-05 1.563E-02 Steady OK
+     496   3 1.005E-04 3.906E-03 Steady Fail
+     497 --- --------- --------- Regridding
+     497 --- --------- --------- Jacobian 00107
+     497   2 9.255E-05 5.000E-01 Steady OK
+     498   2 9.338E-05 5.000E-01 Steady OK
+     499   1 3.727E-05 1.000E+00 Steady OK
+     500   1 3.472E-05 1.000E+00 Steady OK
+     501   1 1.625E-06 1.000E+00 Steady OK
+     502   2 1.171E-06 5.000E-01 Steady OK
+     503   1 1.095E-06 1.000E+00 Steady OK
+     504   1 5.924E-08 1.000E+00 Steady OK
+     505   2 3.591E-08 5.000E-01 Steady OK
+     506   1 3.483E-08 1.000E+00 Steady OK
+     507   1 1.961E-09 1.000E+00 Steady OK
+     508   2 1.042E-09 5.000E-01 Steady OK
+     509   2 9.287E-10 5.000E-01 Steady OK
+     510   1 5.692E-10 1.000E+00 Steady OK
+     511   1 3.134E-11 1.000E+00 Steady OK
+ 
+------------------------------------------------------------------------
+ 
+Simulation stopped:
+  => Converged!
+ 
+------------------------------------------------------------------------
+ 
+Postprocessing output:
+  => Position reaction layer      : -2.8816565E-02 cm
+  => Temperature reaction layer   :  1.4633738E+03 K
+  => Mass burning rate            :  2.2773011E-02 gr/(cm2s)
+  => Burning velocity (unburnt)   :  2.0220705E+01 cm/s
+  => Maximum temperature          :  1.6660000E+03 K
+  => Minimum temperature          :  2.9999974E+02 K
+  => Flame thickness (max grad T) :  7.2064127E-02 cm
+  => Stoichiometric mixture frac. :  0.0000000E+00 -
+  => Position stoich mixture      :  0.0000000E+00 cm
+  => Temperature at stoich mixture:  1.5943206E+03 K
+  => Scalar dissipation at stoich :  4.1083709E-27 1/s
+ 
+========================================================================
+ 
+==> LogClose : Closing logfile
