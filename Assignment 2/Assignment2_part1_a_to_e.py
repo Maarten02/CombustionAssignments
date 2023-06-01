@@ -23,7 +23,7 @@ import numpy as np
 N = 101                             # number of points in the domain
 L = 0.1 * 10**(-3)                  # length of domain in meters
 X_points = np.linspace(0, L, N)     # [m] - the x coordinates
-X_1 = np.linspace(0.4, 0, N)        # H2_OLD
+X_1 = np.linspace(0.4, 0, N)        # H2
 X_2 = np.linspace(0.4, 0, N)        # 02
 X_3 = np.linspace(0.2, 1, N)        # N2
 
@@ -35,17 +35,17 @@ W_1 = 2.016                         # [g/mol]
 W_2 = 15.999*2                      # [g/mol]
 W_3 = 28.0134                       # [g/mol]
 
-Y_1 = np.empty(N)                   # H2_OLD Mass fraction spatial variation
+Y_1 = np.empty(N)                   # H2 Mass fraction spatial variation
 Y_2 = np.empty(N)                   # O2 ''   ''       ''      ''
 Y_3 = np.empty(N)                   # N2 ''   ''       ''      ''
 W = np.empty(N)                     # Mean Molar Mass
 rho = np.empty(N)                   # Mean Mass Density
 
-n_1 = np.empty(N)                   # H2_OLD number of moles
+n_1 = np.empty(N)                   # H2 number of moles
 n_2 = np.empty(N)                   # O2 number of moles
 n_3 = np.empty(N)                   # N2 number of moles
 
-m_1 = np.empty(N)                   # H2_OLD mass
+m_1 = np.empty(N)                   # H2 mass
 m_2 = np.empty(N)                   # O2 mass
 m_3 = np.empty(N)                   # N2 mass
 
@@ -144,7 +144,7 @@ for i in range(N):
     # get X'_j = X_j / (1 - X_i)
     # sum x'_j / D_ij for i =/= j
     # D_i^M = sum^-1
-    # H2_OLD diff Wilke
+    # H2 diff Wilke
     X_h2_prime_o2[i] = X_2[i] / (1-X_1[i])
     X_h2_prime_n2[i] = X_3[i] / (1-X_1[i])
     sum_x_h2_prime = X_h2_prime_o2[i] / D_H2O2 + X_h2_prime_n2[i] / D_H2N2
@@ -156,7 +156,7 @@ for i in range(N):
     sum_x_o2_prime = X_o2_prime_h2[i] / D_H2O2 + X_o2_prime_n2[i] / D_O2N2
     D_o2_wilke[i] = 1 / sum_x_o2_prime
 
-    # H2_OLD diff Wilke
+    # H2 diff Wilke
     X_n2_prime_h2[i] = X_1[i] / (1 - X_3[i])
     X_n2_prime_o2[i] = X_2[i] / (1 - X_3[i])
     sum_x_n2_prime = X_n2_prime_h2[i] / D_H2N2 + X_n2_prime_o2[i] / D_O2N2
@@ -181,7 +181,7 @@ X_points *= 1000 # [m] -> [mm]
 #plots
 #species mass plot
 fig, ax = plt.subplots()
-ax.plot(X_points, Y_1, label='H2_OLD')
+ax.plot(X_points, Y_1, label='H2')
 ax.plot(X_points, Y_2, label='O2')
 ax.plot(X_points, Y_3, label='N2')
 ax.set_xlabel('x [mm]')
@@ -189,11 +189,11 @@ ax.set_ylabel('Y [-]')
 ax.set_title('Species Mass Fraction over Length of Domain')
 ax.grid()
 ax.legend()
-plt.savefig('figures/H2_OLD/species_mass_fractions_h2.pdf')
+plt.savefig('figures/h2/species_mass_fractions_h2.pdf', bbox_inches='tight', pad_inches=0.2)
 
 #species mole fractions
 fig, ax = plt.subplots()
-ax.plot(X_points, X_1, label='H2_OLD')
+ax.plot(X_points, X_1, label='H2')
 ax.plot(X_points, X_2, label='O2', linestyle='dotted')
 ax.plot(X_points, X_3, label='N2')
 ax.set_xlabel('x [mm]')
@@ -201,7 +201,7 @@ ax.set_ylabel('X [-]')
 ax.set_title('Species Mole Fraction Over Length Of Domain. ')
 ax.grid()
 ax.legend()
-plt.savefig('figures/H2_OLD/species_mole_fractions_h2.pdf')
+plt.savefig('figures/h2/species_mole_fractions_h2.pdf', bbox_inches='tight', pad_inches=0.2)
 
 
 # mean molar mass
@@ -211,7 +211,7 @@ ax.set_xlabel('x [mm]')
 ax.set_ylabel('W [g/mol]')
 ax.set_title('Mean Molar Mass Over Length Of Domain. ')
 ax.grid()
-plt.savefig('figures/H2_OLD/mean_molar_mass_h2.pdf')
+plt.savefig('figures/h2/mean_molar_mass_h2.pdf', bbox_inches='tight', pad_inches=0.2)
 
 #density
 fig, ax = plt.subplots()
@@ -220,7 +220,7 @@ ax.set_xlabel('x [mm]')
 ax.set_ylabel(r'$\rho$ [kg/m3]')
 ax.set_title('Mean Density Over Length Of Domain. ')
 ax.grid()
-plt.savefig('figures/H2_OLD/mean_density_h2.pdf')
+plt.savefig('figures/h2/mean_density_h2.pdf', bbox_inches='tight', pad_inches=0.2)
 
 # b) Thermal conductivity of the mixture (see appendix)
 fig, ax = plt.subplots()
@@ -229,7 +229,7 @@ ax.set_xlabel('x [mm]')
 ax.set_ylabel(r'$\lambda$ [W/(m K)]')
 ax.set_title('Mean Lambda Over Length Of Domain. ')
 ax.grid()
-plt.savefig('figures/H2_OLD/mean_lambda_h2.pdf')
+plt.savefig('figures/h2/mean_lambda_h2.pdf', bbox_inches='tight', pad_inches=0.2)
 
 
 
@@ -248,7 +248,7 @@ ax.set_ylabel(r'$D_{ij}$ [m2/s]')
 ax.set_title('Fick\'s Diffusion Coefficiencts\n Over Length Of Domain.')
 ax.grid()
 ax.legend()
-plt.savefig('figures/H2_OLD/fick_diff_coef_h2.pdf', bbox_inches='tight', pad_inches=0.2)
+plt.savefig('figures/h2/fick_diff_coef_h2.pdf', bbox_inches='tight', pad_inches=0.2)
 
 
 ## Model 2: Wilke
@@ -261,7 +261,7 @@ ax.set_ylabel(r'$D_{wilke,i}$ [m2/s]')
 ax.set_title('Wilke Diffusion Coefficients Over Length Of Domain. ')
 ax.grid()
 ax.legend()
-plt.savefig('figures/H2_OLD/wilke_diff_coef_h2.pdf')
+plt.savefig('figures/h2/wilke_diff_coef_h2.pdf', bbox_inches='tight', pad_inches=0.2)
 
 
 
@@ -272,7 +272,7 @@ ax.set_xlabel('x [mm]')
 ax.set_ylabel(r'$D_{Le=1}$ [m2/s]')
 ax.set_title('Le = 1 Diffusion Coefficient Over Length Of Domain. ')
 ax.grid()
-plt.savefig('figures/H2_OLD/Le_1_diff_coef_h2.pdf')
+plt.savefig('figures/h2/Le_1_diff_coef_h2.pdf', bbox_inches='tight', pad_inches=0.2)
 
 ## Model 4: Le=const
 fig, ax = plt.subplots()
@@ -284,7 +284,7 @@ ax.set_ylabel(r'$D_{Le=const,i}$ [m2/s]')
 ax.set_title('Le=const Diffusion Coefficients Over Length Of Domain. ')
 ax.grid()
 ax.legend()
-plt.savefig('figures/H2_OLD/Le_const_diff_coef_h2.pdf')
+plt.savefig('figures/h2/Le_const_diff_coef_h2.pdf', bbox_inches='tight', pad_inches=0.2)
 
 
 
@@ -298,7 +298,7 @@ X_points /= 1000
 ### 3a) use the midpoint rule to approximate gradient of diffusive mass flux
 # 4) calculate abundant species by using sum Yi Vi
 
-# FICK H2_OLD species mass flux
+# FICK H2 species mass flux
 # find dY/dx @ x=0.5 +- h using midpoint rule
 # find Di @ x=0.5 +- h to determine for the diffusive mass flux gradient
 # find rho @ x=0.5 +- h
@@ -332,7 +332,7 @@ rhoYV_n2_min_1 = 0 - (J_h2_min_1+J_o2_min_1)
 grad_J_n2 = -1 * (rhoYV_n2_plus_1 - rhoYV_n2_min_1)/(2*dx)
 
 
-print(f'H2_OLD mass flux (fick) = {J_h2:.4f} kg/s m^2')
+print(f'H2 mass flux (fick) = {J_h2:.4f} kg/s m^2')
 print(f'o2 mass flux (fick) = {J_o2:.4f} kg/s m^2')
 print(f'n2 mass flux (fick) = {rhoYV_n2:.4f} kg/s m^2')
 # FICK 02 species mass flux
@@ -340,7 +340,7 @@ print(f'n2 mass flux (fick) = {rhoYV_n2:.4f} kg/s m^2')
 # FICK N2 species mass flux
 
 
-# Le = const H2_OLD mass flux
+# Le = const H2 mass flux
 dx = L / (N-1)
 
 d_rho_dt_Lec_h2, J_h2, J_h2_min_1, J_h2_plus_1 = get_sp_m_flux_grad_non_ab(rho, D_Le_const_h2, Y_1)
@@ -352,7 +352,7 @@ rhoYV_n2_plus_1 = 0 - (J_h2_plus_1+J_o2_plus_1)
 rhoYV_n2_min_1 = 0 - (J_h2_min_1+J_o2_min_1)
 grad_J_n2 = -1 * (rhoYV_n2_plus_1 - rhoYV_n2_min_1)/(2*dx)
 
-print(f'H2_OLD mass flux (Le=const) = {J_h2:.4f} kg/s m^2')
+print(f'H2 mass flux (Le=const) = {J_h2:.4f} kg/s m^2')
 print(f'o2 mass flux (Le=const) = {J_o2:.4f} kg/s m^2')
 print(f'n2 mass flux (Le=const) = {rhoYV_n2:.4f} kg/s m^2')
 

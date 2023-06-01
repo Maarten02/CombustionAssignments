@@ -187,7 +187,7 @@ ax.set_ylabel('Y [-]')
 ax.set_title('Species Mass Fraction over Length of Domain')
 ax.grid()
 ax.legend()
-plt.savefig('figures/ch4/species_mass_fractions_ch4.pdf')
+plt.savefig('figures/ch4/species_mass_fractions_ch4.pdf', bbox_inches='tight', pad_inches=0.2)
 
 #species mole fractions
 fig, ax = plt.subplots()
@@ -199,7 +199,7 @@ ax.set_ylabel('X [-]')
 ax.set_title('Species Mole Fraction Over Length Of Domain. ')
 ax.grid()
 ax.legend()
-plt.savefig('figures/ch4/species_mole_fractions_ch4.pdf')
+plt.savefig('figures/ch4/species_mole_fractions_ch4.pdf', bbox_inches='tight', pad_inches=0.2)
 
 
 # mean molar mass
@@ -209,7 +209,7 @@ ax.set_xlabel('x [mm]')
 ax.set_ylabel('W [g/mol]')
 ax.set_title('Mean Molar Mass Over Length Of Domain. ')
 ax.grid()
-plt.savefig('figures/ch4/mean_molar_mass_ch4.pdf')
+plt.savefig('figures/ch4/mean_molar_mass_ch4.pdf', bbox_inches='tight', pad_inches=0.2)
 
 #density
 fig, ax = plt.subplots()
@@ -218,7 +218,7 @@ ax.set_xlabel('x [mm]')
 ax.set_ylabel(r'$\rho$ [g/m3]')
 ax.set_title('Mean Density Over Length Of Domain. ')
 ax.grid()
-plt.savefig('figures/ch4/mean_density_ch4.pdf')
+plt.savefig('figures/ch4/mean_density_ch4.pdf', bbox_inches='tight', pad_inches=0.2)
 
 # b) Thermal conductivity of the mixture (see appendix)
 fig, ax = plt.subplots()
@@ -227,7 +227,7 @@ ax.set_xlabel('x [mm]')
 ax.set_ylabel(r'$\lambda$ [W/(m K)]')
 ax.set_title('Mean Lambda Over Length Of Domain. ')
 ax.grid()
-plt.savefig('figures/ch4/mean_lambda_ch4.pdf')
+plt.savefig('figures/ch4/mean_lambda_ch4.pdf', bbox_inches='tight', pad_inches=0.2)
 
 
 
@@ -259,7 +259,7 @@ ax.set_ylabel(r'$D_{wilke,i}$ [m2/s]')
 ax.set_title('Wilke Diffusion Coefficients Over Length Of Domain. ')
 ax.grid()
 ax.legend()
-plt.savefig('figures/wilke_diff_coef_ch4.pdf')
+plt.savefig('figures/wilke_diff_coef_ch4.pdf', bbox_inches='tight', pad_inches=0.2)
 
 
 
@@ -270,7 +270,7 @@ ax.set_xlabel('x [mm]')
 ax.set_ylabel(r'$D_{Le=1}$ [m2/s]')
 ax.set_title('Le = 1 Diffusion Coefficient Over Length Of Domain. ')
 ax.grid()
-plt.savefig('figures/Le_1_diff_coef_ch4.pdf')
+plt.savefig('figures/Le_1_diff_coef_ch4.pdf', bbox_inches='tight', pad_inches=0.2)
 
 ## Model 4: Le=const
 fig, ax = plt.subplots()
@@ -282,7 +282,7 @@ ax.set_ylabel(r'$D_{Le=const,i}$ [m2/s]')
 ax.set_title('Le=const Diffusion Coefficients Over Length Of Domain. ')
 ax.grid()
 ax.legend()
-plt.savefig('figures/Le_const_diff_coef_ch4.pdf')
+plt.savefig('figures/Le_const_diff_coef_ch4.pdf', bbox_inches='tight', pad_inches=0.2)
 
 
 
