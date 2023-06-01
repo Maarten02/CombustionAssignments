@@ -565,207 +565,207 @@ Variables:
        0 --- --------- --------- Start solver
        1 --- --------- --------- Regridding
        1 --- --------- --------- Jacobian 00001
-       1   7 1.876E-04 1.563E-02 Steady OK
+       1   7 1.875E-04 1.563E-02 Steady OK
        2   3 1.885E-04 3.906E-03 Steady Fail
        3 --- --------- --------- Regridding
        3 --- --------- --------- Jacobian 00002
-       3   8 4.594E-04 3.906E-03 Steady Fail
+       3   8 4.565E-04 3.906E-03 Steady Fail
        4 --- --------- --------- Regridding
        4 --- --------- --------- Jacobian 00003
        4 --- --------- --------- Timestep 1.000E-06
-       4   1 1.115E-07 1.000E-06 Time OK
+       4   1 1.116E-07 1.000E-06 Time OK
        5   4 1.884E-06 2.000E-06 Time OK
        6   4 2.012E-06 3.000E-06 Time OK
        7   5 6.699E-07 4.000E-06 Time OK
-       8   5 5.424E-07 5.000E-06 Time OK
+       8   5 5.425E-07 5.000E-06 Time OK
        9   5 4.482E-07 6.000E-06 Time OK
       10   6 1.654E-07 7.000E-06 Time OK
       11   6 1.483E-07 8.000E-06 Time OK
       12   6 1.332E-07 9.000E-06 Time OK
-      13   6 1.203E-07 1.000E-05 Time OK
-      14   6 1.095E-07 1.100E-05 Time OK
-      15   6 1.004E-07 1.200E-05 Time OK
-      16   6 9.269E-08 1.300E-05 Time OK
-      17   6 8.604E-08 1.400E-05 Time OK
-      18   6 8.027E-08 1.500E-05 Time OK
-      19   6 7.523E-08 1.600E-05 Time OK
+      13   6 1.204E-07 1.000E-05 Time OK
+      14   6 1.096E-07 1.100E-05 Time OK
+      15   6 1.005E-07 1.200E-05 Time OK
+      16   6 9.270E-08 1.300E-05 Time OK
+      17   6 8.605E-08 1.400E-05 Time OK
+      18   6 8.028E-08 1.500E-05 Time OK
+      19   6 7.524E-08 1.600E-05 Time OK
       20   7 3.342E-08 1.700E-05 Time OK
-      21   7 3.126E-08 1.800E-05 Time OK
-      22   7 2.956E-08 1.900E-05 Time OK
+      21   7 3.127E-08 1.800E-05 Time OK
+      22   7 2.957E-08 1.900E-05 Time OK
       23   7 2.811E-08 2.000E-05 Time OK
       24   7 2.682E-08 2.100E-05 Time OK
-      25   7 2.565E-08 2.200E-05 Time OK
+      25   7 2.566E-08 2.200E-05 Time OK
       26 --- --------- --------- Regridding
       26 --- --------- --------- Jacobian 00004
-      26   8 1.408E-04 7.813E-03 Steady OK
-      27   2 6.665E-04 3.906E-03 Steady Fail
+      26   8 1.357E-04 7.813E-03 Steady OK
+      27   2 6.560E-04 3.906E-03 Steady Fail
       28 --- --------- --------- Regridding
       28 --- --------- --------- Jacobian 00005
-      28   8 1.842E-04 7.813E-03 Steady OK
-      29   2 5.866E-04 3.906E-03 Steady Fail
+      28   8 1.822E-04 7.813E-03 Steady OK
+      29   2 5.766E-04 3.906E-03 Steady Fail
       30 --- --------- --------- Regridding
       30 --- --------- --------- Jacobian 00006
-      30   8 2.318E-04 7.813E-03 Steady OK
-      31   2 5.215E-04 3.906E-03 Steady Fail
+      30   8 2.320E-04 7.813E-03 Steady OK
+      31   2 5.124E-04 3.906E-03 Steady Fail
       32 --- --------- --------- Regridding
       32 --- --------- --------- Jacobian 00007
-      32   8 2.821E-04 7.813E-03 Steady OK
-      33   2 4.699E-04 3.906E-03 Steady Fail
+      32   8 2.838E-04 7.813E-03 Steady OK
+      33   2 4.623E-04 3.906E-03 Steady Fail
       34 --- --------- --------- Regridding
       34 --- --------- --------- Jacobian 00008
-      34   8 3.346E-04 7.813E-03 Steady OK
-      35   2 4.340E-04 3.906E-03 Steady Fail
+      34   8 3.374E-04 7.813E-03 Steady OK
+      35   2 4.282E-04 3.906E-03 Steady Fail
       36 --- --------- --------- Regridding
       36 --- --------- --------- Jacobian 00009
-      36   7 4.187E-04 1.563E-02 Steady OK
-      37   3 8.111E-04 3.906E-03 Steady Fail
+      36   7 4.149E-04 1.563E-02 Steady OK
+      37   3 8.034E-04 3.906E-03 Steady Fail
       38 --- --------- --------- Regridding
       38 --- --------- --------- Jacobian 00010
-      38   8 4.586E-04 3.906E-03 Steady Fail
+      38   8 4.573E-04 3.906E-03 Steady Fail
       39 --- --------- --------- Regridding
       39 --- --------- --------- Jacobian 00011
       39 --- --------- --------- Timestep 1.000E-06
-      39   1 9.076E-09 2.300E-05 Time OK
-      40   1 1.663E-08 2.400E-05 Time OK
-      41   1 4.692E-09 2.500E-05 Time OK
-      42   1 2.376E-09 2.600E-05 Time OK
-      43   1 3.237E-09 2.700E-05 Time OK
-      44   1 3.491E-09 2.800E-05 Time OK
-      45   1 3.691E-09 2.900E-05 Time OK
-      46   1 3.856E-09 3.000E-05 Time OK
-      47   1 3.989E-09 3.100E-05 Time OK
-      48   1 4.099E-09 3.200E-05 Time OK
-      49   1 4.195E-09 3.300E-05 Time OK
-      50   1 4.278E-09 3.400E-05 Time OK
-      51   1 4.351E-09 3.500E-05 Time OK
-      52   1 4.413E-09 3.600E-05 Time OK
-      53   1 4.466E-09 3.700E-05 Time OK
-      54   1 4.511E-09 3.800E-05 Time OK
-      55   1 4.551E-09 3.900E-05 Time OK
+      39   1 9.146E-09 2.300E-05 Time OK
+      40   1 1.679E-08 2.400E-05 Time OK
+      41   1 4.732E-09 2.500E-05 Time OK
+      42   1 2.395E-09 2.600E-05 Time OK
+      43   1 3.268E-09 2.700E-05 Time OK
+      44   1 3.521E-09 2.800E-05 Time OK
+      45   1 3.719E-09 2.900E-05 Time OK
+      46   1 3.881E-09 3.000E-05 Time OK
+      47   1 4.010E-09 3.100E-05 Time OK
+      48   1 4.116E-09 3.200E-05 Time OK
+      49   1 4.208E-09 3.300E-05 Time OK
+      50   1 4.288E-09 3.400E-05 Time OK
+      51   1 4.358E-09 3.500E-05 Time OK
+      52   1 4.418E-09 3.600E-05 Time OK
+      53   1 4.470E-09 3.700E-05 Time OK
+      54   1 4.514E-09 3.800E-05 Time OK
+      55   1 4.552E-09 3.900E-05 Time OK
       56   1 4.585E-09 4.000E-05 Time OK
-      57   1 4.617E-09 4.100E-05 Time OK
-      58   1 4.647E-09 4.200E-05 Time OK
-      59   1 4.677E-09 4.300E-05 Time OK
-      60   1 4.707E-09 4.400E-05 Time OK
+      57   1 4.616E-09 4.100E-05 Time OK
+      58   1 4.646E-09 4.200E-05 Time OK
+      59   1 4.675E-09 4.300E-05 Time OK
+      60   1 4.705E-09 4.400E-05 Time OK
       61 --- --------- --------- Regridding
       61 --- --------- --------- Jacobian 00012
-      61   8 6.299E-05 7.813E-03 Steady OK
-      62   2 2.986E-04 3.906E-03 Steady Fail
+      61   8 6.323E-05 7.813E-03 Steady OK
+      62   2 2.988E-04 3.906E-03 Steady Fail
       63 --- --------- --------- Regridding
       63 --- --------- --------- Jacobian 00013
-      63   8 9.550E-05 7.813E-03 Steady OK
-      64   2 2.170E-04 3.906E-03 Steady Fail
+      63   8 9.504E-05 7.813E-03 Steady OK
+      64   2 2.173E-04 3.906E-03 Steady Fail
       65 --- --------- --------- Regridding
       65 --- --------- --------- Jacobian 00014
-      65   7 1.648E-04 1.563E-02 Steady OK
-      66   3 4.788E-04 3.906E-03 Steady Fail
+      65   7 1.650E-04 1.563E-02 Steady OK
+      66   3 4.793E-04 3.906E-03 Steady Fail
       67 --- --------- --------- Regridding
       67 --- --------- --------- Jacobian 00015
-      67   8 1.990E-04 7.813E-03 Steady OK
-      68   2 2.540E-04 3.906E-03 Steady Fail
+      67   8 1.988E-04 7.813E-03 Steady OK
+      68   2 2.542E-04 3.906E-03 Steady Fail
       69 --- --------- --------- Regridding
       69 --- --------- --------- Jacobian 00016
-      69   7 2.366E-04 1.563E-02 Steady OK
-      70   3 4.116E-04 3.906E-03 Steady Fail
+      69   7 2.370E-04 1.563E-02 Steady OK
+      70   3 4.122E-04 3.906E-03 Steady Fail
       71 --- --------- --------- Regridding
       71 --- --------- --------- Jacobian 00017
-      71   7 3.154E-04 1.563E-02 Steady OK
-      72   3 4.351E-04 3.906E-03 Steady Fail
+      71   7 3.157E-04 1.563E-02 Steady OK
+      72   3 4.355E-04 3.906E-03 Steady Fail
       73 --- --------- --------- Regridding
       73 --- --------- --------- Jacobian 00018
-      73   8 4.410E-04 7.813E-03 Steady OK
-      74   2 4.537E-04 3.906E-03 Steady Fail
+      73   8 4.411E-04 7.813E-03 Steady OK
+      74   2 4.540E-04 3.906E-03 Steady Fail
       75 --- --------- --------- Regridding
       75 --- --------- --------- Jacobian 00019
-      75   7 4.822E-04 1.563E-02 Steady OK
-      76   3 5.236E-04 3.906E-03 Steady Fail
+      75   7 4.823E-04 1.563E-02 Steady OK
+      76   3 5.240E-04 3.906E-03 Steady Fail
       77 --- --------- --------- Regridding
       77 --- --------- --------- Jacobian 00020
-      77   7 5.696E-04 1.563E-02 Steady OK
-      78   3 5.845E-04 3.906E-03 Steady Fail
+      77   7 5.700E-04 1.563E-02 Steady OK
+      78   3 5.851E-04 3.906E-03 Steady Fail
       79 --- --------- --------- Regridding
       79 --- --------- --------- Jacobian 00021
-      79   7 6.520E-04 1.563E-02 Steady OK
-      80   3 6.489E-04 3.906E-03 Steady Fail
+      79   7 6.523E-04 1.563E-02 Steady OK
+      80   3 6.493E-04 3.906E-03 Steady Fail
       81 --- --------- --------- Regridding
       81 --- --------- --------- Jacobian 00022
-      81   6 7.367E-04 3.125E-02 Steady OK
-      82   4 8.193E-04 3.906E-03 Steady Fail
+      81   6 7.370E-04 3.125E-02 Steady OK
+      82   4 8.197E-04 3.906E-03 Steady Fail
       83 --- --------- --------- Regridding
       83 --- --------- --------- Jacobian 00023
-      83   8 8.532E-04 3.906E-03 Steady Fail
+      83   8 8.529E-04 3.906E-03 Steady Fail
       84 --- --------- --------- Regridding
       84 --- --------- --------- Jacobian 00024
       84 --- --------- --------- Timestep 2.000E-06
       84   2 3.705E-07 4.600E-05 Time OK
       85   2 1.357E-07 4.800E-05 Time OK
-      86   2 4.544E-08 5.000E-05 Time OK
+      86   2 4.543E-08 5.000E-05 Time OK
       87   2 1.522E-08 5.200E-05 Time OK
       88   2 5.105E-09 5.400E-05 Time OK
       89   2 1.711E-09 5.600E-05 Time OK
-      90   2 5.753E-10 5.800E-05 Time OK
-      91   2 2.062E-10 6.000E-05 Time OK
+      90   2 5.752E-10 5.800E-05 Time OK
+      91   2 2.061E-10 6.000E-05 Time OK
       92   2 1.047E-10 6.200E-05 Time OK
       93   2 8.508E-11 6.400E-05 Time OK
-      94   2 7.985E-11 6.600E-05 Time OK
-      95   2 7.665E-11 6.800E-05 Time OK
-      96   2 7.441E-11 7.000E-05 Time OK
-      97   2 7.306E-11 7.200E-05 Time OK
-      98   2 7.247E-11 7.400E-05 Time OK
+      94   2 7.986E-11 6.600E-05 Time OK
+      95   2 7.666E-11 6.800E-05 Time OK
+      96   2 7.442E-11 7.000E-05 Time OK
+      97   2 7.307E-11 7.200E-05 Time OK
+      98   2 7.248E-11 7.400E-05 Time OK
       99   2 7.247E-11 7.600E-05 Time OK
      100   2 7.290E-11 7.800E-05 Time OK
-     101   2 7.364E-11 8.000E-05 Time OK
-     102   2 7.462E-11 8.200E-05 Time OK
-     103   2 7.576E-11 8.400E-05 Time OK
-     104   2 7.703E-11 8.600E-05 Time OK
+     101   2 7.365E-11 8.000E-05 Time OK
+     102   2 7.463E-11 8.200E-05 Time OK
+     103   2 7.577E-11 8.400E-05 Time OK
+     104   2 7.704E-11 8.600E-05 Time OK
      105   2 7.840E-11 8.800E-05 Time OK
      106 --- --------- --------- Regridding
      106 --- --------- --------- Jacobian 00025
-     106   7 1.896E-04 1.563E-02 Steady OK
-     107   3 1.908E-04 3.906E-03 Steady Fail
+     106   7 1.902E-04 1.563E-02 Steady OK
+     107   3 1.913E-04 3.906E-03 Steady Fail
      108 --- --------- --------- Regridding
      108 --- --------- --------- Jacobian 00026
-     108   6 2.551E-04 3.125E-02 Steady OK
-     109   4 3.201E-04 3.906E-03 Steady Fail
+     108   6 2.555E-04 3.125E-02 Steady OK
+     109   4 3.205E-04 3.906E-03 Steady Fail
      110 --- --------- --------- Regridding
      110 --- --------- --------- Jacobian 00027
-     110   7 3.624E-04 1.563E-02 Steady OK
-     111   3 3.594E-04 3.906E-03 Steady Fail
+     110   7 3.630E-04 1.563E-02 Steady OK
+     111   3 3.600E-04 3.906E-03 Steady Fail
      112 --- --------- --------- Regridding
      112 --- --------- --------- Jacobian 00028
-     112   6 4.068E-04 3.125E-02 Steady OK
-     113   4 4.248E-04 3.906E-03 Steady Fail
+     112   6 4.073E-04 3.125E-02 Steady OK
+     113   4 4.253E-04 3.906E-03 Steady Fail
      114 --- --------- --------- Regridding
      114 --- --------- --------- Jacobian 00029
-     114   6 5.365E-04 3.125E-02 Steady OK
-     115   4 5.506E-04 3.906E-03 Steady Fail
+     114   6 5.372E-04 3.125E-02 Steady OK
+     115   4 5.513E-04 3.906E-03 Steady Fail
      116 --- --------- --------- Regridding
      116 --- --------- --------- Jacobian 00030
-     116   6 6.155E-04 3.125E-02 Steady OK
-     117   4 6.208E-04 3.906E-03 Steady Fail
+     116   6 6.161E-04 3.125E-02 Steady OK
+     117   4 6.214E-04 3.906E-03 Steady Fail
      118 --- --------- --------- Regridding
      118 --- --------- --------- Jacobian 00031
-     118   6 6.873E-04 3.125E-02 Steady OK
-     119   4 6.863E-04 3.906E-03 Steady Fail
+     118   6 6.879E-04 3.125E-02 Steady OK
+     119   4 6.869E-04 3.906E-03 Steady Fail
      120 --- --------- --------- Regridding
      120 --- --------- --------- Jacobian 00032
-     120   5 7.762E-04 6.250E-02 Steady OK
-     121   5 8.070E-04 3.906E-03 Steady Fail
+     120   5 7.767E-04 6.250E-02 Steady OK
+     121   5 8.075E-04 3.906E-03 Steady Fail
      122 --- --------- --------- Regridding
      122 --- --------- --------- Jacobian 00033
-     122   6 8.755E-04 3.125E-02 Steady OK
-     123   4 8.771E-04 3.906E-03 Steady Fail
+     122   6 8.761E-04 3.125E-02 Steady OK
+     123   4 8.777E-04 3.906E-03 Steady Fail
      124 --- --------- --------- Regridding
      124 --- --------- --------- Jacobian 00034
-     124   6 9.035E-04 3.125E-02 Steady OK
-     125   4 9.014E-04 3.906E-03 Steady Fail
+     124   6 9.041E-04 3.125E-02 Steady OK
+     125   4 9.020E-04 3.906E-03 Steady Fail
      126 --- --------- --------- Regridding
      126 --- --------- --------- Jacobian 00035
-     126   5 9.344E-04 6.250E-02 Steady OK
-     127   5 9.415E-04 3.906E-03 Steady Fail
+     126   5 9.350E-04 6.250E-02 Steady OK
+     127   5 9.421E-04 3.906E-03 Steady Fail
      128 --- --------- --------- Regridding
      128 --- --------- --------- Jacobian 00036
-     128   5 9.989E-04 6.250E-02 Steady OK
+     128   5 9.995E-04 6.250E-02 Steady OK
      129   5 1.002E-03 3.906E-03 Steady Fail
      130 --- --------- --------- Regridding
      130 --- --------- --------- Jacobian 00037
@@ -777,7 +777,7 @@ Variables:
      133   6 1.123E-03 3.906E-03 Steady Fail
      134 --- --------- --------- Regridding
      134 --- --------- --------- Jacobian 00039
-     134   4 1.159E-03 1.250E-01 Steady OK
+     134   4 1.160E-03 1.250E-01 Steady OK
      135   6 1.165E-03 3.906E-03 Steady Fail
      136 --- --------- --------- Regridding
      136 --- --------- --------- Jacobian 00040
@@ -799,7 +799,7 @@ Variables:
      145   1 4.563E-04 1.000E+00 Steady OK
      146   1 6.918E-05 1.000E+00 Steady OK
      147   1 7.068E-06 1.000E+00 Steady OK
-     148   1 6.410E-07 1.000E+00 Steady OK
+     148   1 6.409E-07 1.000E+00 Steady OK
      149   1 5.568E-08 1.000E+00 Steady OK
      150   1 4.829E-09 1.000E+00 Steady OK
      151   1 4.254E-10 1.000E+00 Steady OK
@@ -813,17 +813,17 @@ Simulation stopped:
 ------------------------------------------------------------------------
  
 Postprocessing output:
-  => Position reaction layer      :  1.9941595E+00 cm
-  => Temperature reaction layer   :  1.8360998E+03 K
-  => Mass burning rate            :  8.3846039E-01 gr/(cm2s)
-  => Burning velocity (unburnt)   :  1.0598695E+03 cm/s
+  => Position reaction layer      :  1.9941599E+00 cm
+  => Temperature reaction layer   :  1.8361000E+03 K
+  => Mass burning rate            :  8.3844423E-01 gr/(cm2s)
+  => Burning velocity (unburnt)   :  1.0598491E+03 cm/s
   => Maximum temperature          :  1.8380000E+03 K
   => Minimum temperature          :  3.0000000E+02 K
   => Flame thickness (max grad T) :  2.1110010E-01 cm
   => Stoichiometric mixture frac. :  0.0000000E+00 -
-  => Position stoich mixture      : -2.1787205E-01 cm
+  => Position stoich mixture      : -2.1787247E-01 cm
   => Temperature at stoich mixture:  3.0002371E+02 K
-  => Scalar dissipation at stoich :  4.9804118E-27 1/s
+  => Scalar dissipation at stoich :  4.8598815E-27 1/s
  
 ========================================================================
  

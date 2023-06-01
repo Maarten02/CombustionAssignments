@@ -1,7 +1,7 @@
 import numpy as np
 
 def readchem1d(fname):
-    y = []
+    #print(f'READING {fname}')
     t = None
     a = []
     y = np.genfromtxt(fname, skip_header=24)
