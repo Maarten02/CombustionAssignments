@@ -19,7 +19,7 @@ Sc in slides: m/s
 # plots used for point a)). Comment on the differences
 
 ############################ Q3A/B - CONSUMPTION SPEED ##########################################
-def get_consumption_speed(yiend_file, siend_file, fuel, _print=False):
+def get_consumption_speed(yiend_file, siend_file, fuel, db=True, _print=False):
     if fuel == 'CH4':
         M_fuel = 16.04 # [g/mol]
     elif fuel == "H2":
@@ -38,10 +38,12 @@ def get_consumption_speed(yiend_file, siend_file, fuel, _print=False):
     rho_u = y[0, rho_col]                 # [g/cm^3] TODO: CHECK IF THIS IS THE CORRECT DENSITY
     Y_fu = y[0, fuel_col]                           # TODO: CHECK IF THIS THE CORRECT MIXTURE FRACTION
 
-    # if fuel == 'H2':
-    #     plt.plot(x_pos, data)
-    #     plt.title('H2 REAC RATE')
-    #     plt.show()
+    if fuel == 'CH4' and db == True:
+        fig_db, ax_db = plt.subplots()
+        ax_db.semilogx(x_pos, data)
+        ax_db.set_title('CH4 REAC RATE')
+        strain = yiend_file[94:-4]
+        fig_db.savefig(f'debug_CH4{strain}.jpg')
 
     # Integrate reaction rate on entire domain
     consumption_speed = 0
@@ -66,8 +68,8 @@ def get_H2O_reac_rate(siend_file):
     return H2O_reac_rate
 
 ############# Q3A/B - FLAME THICKNESSES ##########################################
-flame_thickness_lst_H2 = [100, 200, 500, 1000, 5000, 10000] # TODO: INSERT THE ACTUAL THICKNESSES
-flame_thickness_lst_CH4 = [100, 200, 500, 1000, 5000, 10000] # TODO: INSERT THE ACTUAL THICKNESSES
+flame_thickness_lst_H2 = [4.8316715E-01, 3.3908386E-01, 2.1110010E-01, 1.4724939E-01, 6.3644368E-02, 4.4218311E-02] # TODO: INSERT THE ACTUAL THICKNESSES
+flame_thickness_lst_CH4 = [2.4763448E-02, 8.0425167E-02, 7.7352965E-02, 7.1996035E-02, 5.0697894E-02, 3.5856519E-02] # TODO: INSERT THE ACTUAL THICKNESSES
 
 
 ############# Q3A/B - PLOTTING ##########################################
@@ -79,10 +81,11 @@ fig_rr, ax_rr = plt.subplots()
 fig_ft, ax_ft = plt.subplots()
 
 for fuel, ftl in zip(fuels, [flame_thickness_lst_CH4, flame_thickness_lst_H2]):
+
     consumption_speed_lst = []
     H2O_reac_rate_lst = []
 
-    folder = project + '/' + fuel.lower()
+    folder = project + '/' + fuel
     for strain in strains:
         yiend_file = folder + '/yi_' + fuel.lower() + '_' + str(strain) + '.dat'
         siend_file = folder + '/si_' + fuel.lower() + '_' + str(strain) + '.dat'
@@ -92,9 +95,9 @@ for fuel, ftl in zip(fuels, [flame_thickness_lst_CH4, flame_thickness_lst_H2]):
         consumption_speed_lst.append(cons_spd)
         H2O_reac_rate_lst.append(H2O_reac_rate)
 
-    ax_cs.plot(strains, consumption_speed_lst, label=fuel)
-    ax_rr.plot(strains, H2O_reac_rate_lst, label=fuel)
-    ax_ft.plot(strains, ftl, label=fuel)
+    ax_cs.semilogx(strains, consumption_speed_lst, label=fuel)
+    ax_rr.semilogx(strains, H2O_reac_rate_lst, label=fuel)
+    ax_ft.semilogx(strains, ftl, label=fuel)
 
 ax_cs.set_xlabel('Strain Rate [$s^{-1}$]')
 ax_cs.set_ylabel('Consumption Speed ($S_c$) [$m/s$]')
@@ -122,11 +125,11 @@ fig_ft.savefig('./figures/strain_vs_flame_thick.pdf', bbox_inches='tight', pad_i
 #c) Compute the Markstein length ℒ = − 𝑑𝑠𝑐/𝑑𝐾, where 𝐾 is the stretch rate and 𝑠𝑐 is the consumption
 # speed, for the two mixtures of points a) and b). Explain the differences observed in the results.
 fig_ml, ax_ml = plt.subplots()
-fuels = ['H2']
+#fuels = ['H2']
 for fuel in fuels:
 
     ml_arr = []
-    folder = project + '/' + fuel.upper() + '_markenstein'
+    folder = project + '/' + fuel + '_markenstein'
 
     for strain in strains:
         step = 1
@@ -135,12 +138,12 @@ for fuel in fuels:
             yiend_file = folder + '/yi_' + fuel.lower() + '_' + str(int(strain+h*step)) + '.dat'
             siend_file = folder + '/si_' + fuel.lower() + '_' + str(int(strain+h*step)) + '.dat'
 
-            cons_spd = get_consumption_speed(yiend_file, siend_file, fuel)
+            cons_spd = get_consumption_speed(yiend_file, siend_file, fuel, db=False)
             d_cs += cons_spd * h
         ml = d_cs / (2 * step)
         ml_arr.append(ml)
 
-    ax_ml.plot(strains, ml_arr, label=fuel)
+    ax_ml.semilogx(strains, ml_arr, label=fuel)
 
 ax_ml.set_xlabel('Strain Rate [$s^{-1}$]')
 ax_ml.set_ylabel('Markstein Length [$m$]')  # TODO: VERIFY UNIT

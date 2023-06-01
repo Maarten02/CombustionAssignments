@@ -144,7 +144,7 @@ for i in range(N):
     # get X'_j = X_j / (1 - X_i)
     # sum x'_j / D_ij for i =/= j
     # D_i^M = sum^-1
-    # h2 diff Wilke
+    # H2 diff Wilke
     X_h2_prime_o2[i] = X_2[i] / (1-X_1[i])
     X_h2_prime_n2[i] = X_3[i] / (1-X_1[i])
     sum_x_h2_prime = X_h2_prime_o2[i] / D_H2O2 + X_h2_prime_n2[i] / D_H2N2
@@ -156,7 +156,7 @@ for i in range(N):
     sum_x_o2_prime = X_o2_prime_h2[i] / D_H2O2 + X_o2_prime_n2[i] / D_O2N2
     D_o2_wilke[i] = 1 / sum_x_o2_prime
 
-    # h2 diff Wilke
+    # H2 diff Wilke
     X_n2_prime_h2[i] = X_1[i] / (1 - X_3[i])
     X_n2_prime_o2[i] = X_2[i] / (1 - X_3[i])
     sum_x_n2_prime = X_n2_prime_h2[i] / D_H2N2 + X_n2_prime_o2[i] / D_O2N2
@@ -189,7 +189,7 @@ ax.set_ylabel('Y [-]')
 ax.set_title('Species Mass Fraction over Length of Domain')
 ax.grid()
 ax.legend()
-plt.savefig('figures/h2/species_mass_fractions_h2.pdf')
+plt.savefig('figures/H2/species_mass_fractions_h2.pdf')
 
 #species mole fractions
 fig, ax = plt.subplots()
@@ -201,7 +201,7 @@ ax.set_ylabel('X [-]')
 ax.set_title('Species Mole Fraction Over Length Of Domain. ')
 ax.grid()
 ax.legend()
-plt.savefig('figures/h2/species_mole_fractions_h2.pdf')
+plt.savefig('figures/H2/species_mole_fractions_h2.pdf')
 
 
 # mean molar mass
@@ -211,7 +211,7 @@ ax.set_xlabel('x [mm]')
 ax.set_ylabel('W [g/mol]')
 ax.set_title('Mean Molar Mass Over Length Of Domain. ')
 ax.grid()
-plt.savefig('figures/h2/mean_molar_mass_h2.pdf')
+plt.savefig('figures/H2/mean_molar_mass_h2.pdf')
 
 #density
 fig, ax = plt.subplots()
@@ -220,7 +220,7 @@ ax.set_xlabel('x [mm]')
 ax.set_ylabel(r'$\rho$ [kg/m3]')
 ax.set_title('Mean Density Over Length Of Domain. ')
 ax.grid()
-plt.savefig('figures/h2/mean_density_h2.pdf')
+plt.savefig('figures/H2/mean_density_h2.pdf')
 
 # b) Thermal conductivity of the mixture (see appendix)
 fig, ax = plt.subplots()
@@ -229,7 +229,7 @@ ax.set_xlabel('x [mm]')
 ax.set_ylabel(r'$\lambda$ [W/(m K)]')
 ax.set_title('Mean Lambda Over Length Of Domain. ')
 ax.grid()
-plt.savefig('figures/h2/mean_lambda_h2.pdf')
+plt.savefig('figures/H2/mean_lambda_h2.pdf')
 
 
 
@@ -248,7 +248,7 @@ ax.set_ylabel(r'$D_{ij}$ [m2/s]')
 ax.set_title('Fick\'s Diffusion Coefficiencts\n Over Length Of Domain.')
 ax.grid()
 ax.legend()
-plt.savefig('figures/h2/fick_diff_coef_h2.pdf', bbox_inches='tight', pad_inches=0.2)
+plt.savefig('figures/H2/fick_diff_coef_h2.pdf', bbox_inches='tight', pad_inches=0.2)
 
 
 ## Model 2: Wilke
@@ -261,7 +261,7 @@ ax.set_ylabel(r'$D_{wilke,i}$ [m2/s]')
 ax.set_title('Wilke Diffusion Coefficients Over Length Of Domain. ')
 ax.grid()
 ax.legend()
-plt.savefig('figures/h2/wilke_diff_coef_h2.pdf')
+plt.savefig('figures/H2/wilke_diff_coef_h2.pdf')
 
 
 
@@ -272,7 +272,7 @@ ax.set_xlabel('x [mm]')
 ax.set_ylabel(r'$D_{Le=1}$ [m2/s]')
 ax.set_title('Le = 1 Diffusion Coefficient Over Length Of Domain. ')
 ax.grid()
-plt.savefig('figures/h2/Le_1_diff_coef_h2.pdf')
+plt.savefig('figures/H2/Le_1_diff_coef_h2.pdf')
 
 ## Model 4: Le=const
 fig, ax = plt.subplots()
@@ -284,7 +284,7 @@ ax.set_ylabel(r'$D_{Le=const,i}$ [m2/s]')
 ax.set_title('Le=const Diffusion Coefficients Over Length Of Domain. ')
 ax.grid()
 ax.legend()
-plt.savefig('figures/h2/Le_const_diff_coef_h2.pdf')
+plt.savefig('figures/H2/Le_const_diff_coef_h2.pdf')
 
 
 
@@ -332,7 +332,7 @@ rhoYV_n2_min_1 = 0 - (J_h2_min_1+J_o2_min_1)
 grad_J_n2 = -1 * (rhoYV_n2_plus_1 - rhoYV_n2_min_1)/(2*dx)
 
 
-print(f'h2 mass flux (fick) = {J_h2:.4f} kg/s m^2')
+print(f'H2 mass flux (fick) = {J_h2:.4f} kg/s m^2')
 print(f'o2 mass flux (fick) = {J_o2:.4f} kg/s m^2')
 print(f'n2 mass flux (fick) = {rhoYV_n2:.4f} kg/s m^2')
 # FICK 02 species mass flux
@@ -352,7 +352,7 @@ rhoYV_n2_plus_1 = 0 - (J_h2_plus_1+J_o2_plus_1)
 rhoYV_n2_min_1 = 0 - (J_h2_min_1+J_o2_min_1)
 grad_J_n2 = -1 * (rhoYV_n2_plus_1 - rhoYV_n2_min_1)/(2*dx)
 
-print(f'h2 mass flux (Le=const) = {J_h2:.4f} kg/s m^2')
+print(f'H2 mass flux (Le=const) = {J_h2:.4f} kg/s m^2')
 print(f'o2 mass flux (Le=const) = {J_o2:.4f} kg/s m^2')
 print(f'n2 mass flux (Le=const) = {rhoYV_n2:.4f} kg/s m^2')
 

@@ -79,7 +79,7 @@ X_o2_prime_CH4 = np.empty(N)
 X_CH4_prime_n2 = np.empty(N)
 X_CH4_prime_o2 = np.empty(N)
 
-cp_CH4 =  2226               # [J/kg K]
+cp_CH4 = 2226               # [J/kg K]
 cp_n2 = 1.040 * 1000                # [J/kg K]
 cp_o2 = 0.918 * 1000                # [J/kg K]
 
