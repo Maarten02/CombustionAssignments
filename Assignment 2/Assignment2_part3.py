@@ -9,16 +9,11 @@ Sc in slides: m/s
 4. what is a normal order or magnitude for mass flux (unit: kg/m2 s)
 
 """
-#a) For a methane/air case at equivalence ratio 0.6, compute the flamelet solution in Chem1d for strain
-# rate values of 100 s-1, 200 s-1, 500 s-1, 1000 s-1, 5000 s-1 and 10000 s-1. Plot the peak reaction rate of
-# water, consumption speed and flame thickness with varying strain. Use a logarithmic scale for the x-
-# axis (strain). Explain the behaviour observed
 
-# b) Now for the same conditions at strain rates, compute the solutions for hydrogen/air flamelets. Plot
-# the results of peak reaction rate, consumption speed and flame thickness (add the curves on the same
-# plots used for point a)). Comment on the differences
+########################################################################################################################
+########################################## FUNCTIONS ###################################################################
+########################################################################################################################
 
-############################ Q3A/B - CONSUMPTION SPEED ##########################################
 def get_consumption_speed(yiend_file, siend_file, fuel, db=True, _print=False):
     if fuel == 'CH4':
         M_fuel = 16.04 # [g/mol]
@@ -79,9 +74,22 @@ def get_H2O_reac_rate(siend_file, fuel, db=False):
 
     return H2O_reac_rate
 
+########################################################################################################################
+#AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA - GET TEMP VS. MIXFRAC - BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB#
+########################################################################################################################
+#a) For a methane/air case at equivalence ratio 0.6, compute the flamelet solution in Chem1d for strain
+# rate values of 100 s-1, 200 s-1, 500 s-1, 1000 s-1, 5000 s-1 and 10000 s-1. Plot the peak reaction rate of
+# water, consumption speed and flame thickness with varying strain. Use a logarithmic scale for the x-
+# axis (strain). Explain the behaviour observed
+
+# b) Now for the same conditions at strain rates, compute the solutions for hydrogen/air flamelets. Plot
+# the results of peak reaction rate, consumption speed and flame thickness (add the curves on the same
+# plots used for point a)). Comment on the differences
+
+
 ############# Q3A/B - FLAME THICKNESSES ##########################################
-flame_thickness_lst_H2 = [4.8316715E-01, 3.3908386E-01, 2.1110010E-01, 1.4724939E-01, 6.3644368E-02, 4.4218311E-02] # TODO: INSERT THE ACTUAL THICKNESSES
-flame_thickness_lst_CH4 = [2.4763448E-02, 8.0425167E-02, 7.7352965E-02, 7.1996035E-02, 5.0697894E-02, 3.5856519E-02] # TODO: INSERT THE ACTUAL THICKNESSES
+flame_thickness_lst_H2 = [4.8316715E-01, 3.3908386E-01, 2.1110010E-01, 1.4724939E-01, 6.3644368E-02, 4.4218311E-02]
+flame_thickness_lst_CH4 = [2.4763448E-02, 8.0425167E-02, 7.7352965E-02, 7.1996035E-02, 5.0697894E-02, 3.5856519E-02]
 
 
 ############# Q3A/B - PLOTTING ##########################################
@@ -134,10 +142,13 @@ fig_ft.savefig('./figures/strain_vs_flame_thick.pdf', bbox_inches='tight', pad_i
 
 
 
+########################################################################################################################
+#CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC - MARKSTEIN - CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC#
+########################################################################################################################
 #c) Compute the Markstein length ℒ = − 𝑑𝑠𝑐/𝑑𝐾, where 𝐾 is the stretch rate and 𝑠𝑐 is the consumption
 # speed, for the two mixtures of points a) and b). Explain the differences observed in the results.
+
 fig_ml, ax_ml = plt.subplots()
-#fuels = ['H2_OLD']
 for fuel in fuels:
 
     ml_arr = []
@@ -164,14 +175,15 @@ ax_ml.grid()
 ax_ml.legend()
 fig_ml.savefig('./figures/strain_vs_markstein.pdf', bbox_inches='tight', pad_inches=0.2)
 
+
+
+########################################################################################################################
+#DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD - GET TEMP VS. MIXFRAC - DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD#
+########################################################################################################################
 # d) Now for the same strain rates compute, non-premixed flamelets in a methane to air opposite jet
 # configuration. Plot the peak reaction rate of water, and the stoichiometric scalar dissipation rate of
 # mixture fraction versus strain. Now also plot the variation of flame temperature versus mixture fraction
 # for the different strain rates. Comment on
-
-#########################################################################################
-############################### GET TEMP VS. MIXFRAC ####################################
-#########################################################################################
 
 strains = [100, 200, 500, 1000, 5000, 10000]
 scalar_dissi_rate_ch4 = [2.6507542E-21, 6.6435559E-22, 7.0121529E-23, 2.4917503E-17, 1.5002759E-14, 3.5299822E-14] # VS strain
@@ -198,29 +210,33 @@ for strain in strains:
     y, t, a = readchem1d(yiend_file)
 
     temp_col = a.index('Temp') - 1
-    mixfrac_col = a.index('MixFrac') - 1
+    fuel_col = a.index('CH4') - 1
+    nitro_col = a.index('N2') - 1
+    oxy_col = a.index('O2') - 1
 
     temp = y[:,temp_col]
-    mixfrac = y[:,mixfrac_col]
+
+    deno = y[:, fuel_col] + y[:, oxy_col] + y[:, nitro_col]
+    mixfrac = y[:,fuel_col] / deno
 
     ax_temp.plot(mixfrac, temp, label=f'$a$ = {strain} [$s^{-1}$]')
 
 ax_sdr.semilogx(strains, scalar_dissi_rate_ch4, marker='.')
 ax_sdr.set_xlabel('Strain rate [$s^{-1}$]')
-ax_sdr.set_ylabel('Scalar Dissipation Rate [$mole/cm^3 s$]')
+ax_sdr.set_ylabel('Scalar Dissipation Rate [$s^{-1}$]')
 ax_sdr.set_title('Scalar Dissipation Rate vs. Strain rate')
 ax_sdr.grid()
 fig_sdr.savefig('./figures/strain_vs_sdr_NONPM.pdf', bbox_inches='tight', pad_inches=0.2)
 
 ax_rr_2.semilogx(strains, H2O_reac_rate_lst, marker='.')
 ax_rr_2.set_xlabel('Strain rate [$s^{-1}$]')
-ax_rr_2.set_ylabel('Peak water reaction rate [$m/s$]')
+ax_rr_2.set_ylabel('Peak water reaction rate [$mol/cm^3 s$]')
 ax_rr_2.set_title('Peak water reaction rate vs. strain rate')
 ax_rr_2.grid()
 fig_rr_2.savefig('./figures/strain_vs_water_NONPM.pdf', bbox_inches='tight', pad_inches=0.2)
 
-ax_temp.set_xlabel('Strain rate [$s^{-1}$]')
-ax_temp.set_ylabel('Flame temperature [$k$]')
+ax_temp.set_xlabel('Mixture Fraction [-]')
+ax_temp.set_ylabel('Flame temperature [$K$]')
 ax_temp.set_title('Flame temperature vs. Mixture Fraction for different strain rates')
 ax_temp.grid()
 ax_temp.legend()
