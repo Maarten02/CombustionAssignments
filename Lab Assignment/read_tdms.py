@@ -70,6 +70,9 @@ def list_channels():
 
 
 def main():
+    ref_co2 = 0.033
+    ref_o2 = 20.946
+
     cols = ['GA - NO', 'GA - NO2', 'GA - CO2',  'GA - O2', 'GA - CO', 'GA - CH4']
     units = ['[ppm]', '[ppm]', '[vol %]', '[vol %]', '[ppm]', '[ppm]']
 
@@ -78,6 +81,8 @@ def main():
     # get baseline ave
     baseline_file = read_tdms("Group3_labview/baseline/2023_05_30_08_39_54_Baseline_group3.tdms", False)
     baseline_vals = get_aves(baseline_file, cols, bl=True)
+    baseline_vals[2] -= ref_co2
+    baseline_vals[3] -= ref_o2
 
     # make empty data table [len(files)xlen(cols)]
     table_data = np.empty((len(glob.glob("Group3_labview/*.tdms")), len(cols) + 2))
