@@ -70,8 +70,8 @@ def list_channels():
 
 
 def main():
-    cols = ['GA - NO', 'GA - NO2', 'GA - O2', 'GA - CO', 'GA - CH4', 'GA - CO2']
-    units = ['[PPM]', '[ppm]', '[vol %]', '[vol %]', '[ppm]', '[ppm]']
+    cols = ['GA - NO', 'GA - NO2', 'GA - CO2',  'GA - O2', 'GA - CO', 'GA - CH4']
+    units = ['[ppm]', '[ppm]', '[vol %]', '[vol %]', '[ppm]', '[ppm]']
 
     print_cols = np.empty(len(cols) + 2, dtype=str)
 
