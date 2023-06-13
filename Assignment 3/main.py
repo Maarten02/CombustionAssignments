@@ -20,35 +20,19 @@ from bin.plotting import plot_A_vs_fblrg, plot_layout_2bi, plot_2bii
 # datasets.
 # So: x/d = 2.5, take 4.5 mm, 5.25 mm, 6 mm, 6.75 mm, 7.5 mm and 8.25 mm files, plot A as function of FBLGR
 #
-# Z^(i) = (Z_i - Z_i,2) / (Z_i,1 - Z_i,2)
-# Z_i same as in part a ii
-# Z_i,1 is the mass fraction of i in fuel stream ?
-# Z_i,2_is the mass fraction of i in oxidiser stream ?
-#
-# A = Z^(H) – Z^(O) and
-# B = Z^(H) – Z^(N)
-W_H2 =
-X_H2_1 =
-X_H2_2 =
 
-W_O2 =
-X_O2_1 =
-X_O2_2 =
+x = 2.5
+r_arr = [4.5, 5.25, 6, 6.75, 7.5, 8.25]
 
-W_N2 =
-X_N2_1 =
-X_N2_2 =
 
-W_fuel =
-W_air =
 
-Z_H2_1 =
-Z_O2_1 =
-Z_N2_1 =
+def make_scatter_plot(r_arr, x):
+    fig, ax = plt.subplots()
+    for r in r_arr:
 
-Z_H2_2 =
-Z_O2_2 =
-Z_N2_2 =
+        data = read_sma(x, r)
+        data_with_A = get_A(data)
+        fig, ax = plot_A_vs_fblrg(fig, ax, data_with_A, r)
 
     plot_layout_2bi(fig, ax, x)
 
