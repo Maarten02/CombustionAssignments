@@ -81,6 +81,7 @@ def main():
     # get baseline ave
     baseline_file = read_tdms("Group3_labview/baseline/2023_05_30_08_39_54_Baseline_group3.tdms", False)
     baseline_vals = get_aves(baseline_file, cols, bl=True)
+    baseline_vals[-1] = 0
     baseline_vals[2] -= ref_co2
     baseline_vals[3] -= ref_o2
 
@@ -113,7 +114,7 @@ def main():
     print_table(table_data, print_cols)
 
 
-main()
-
+#main()
+list_channels()
 
 
