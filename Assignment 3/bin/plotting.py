@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
 
 def plot_A_vs_fblrg(fig, ax, data, r):
-    # scatter A vs. FBLGR
     ax.scatter(data['FBLGR'], data['A'], label=f'r/d = {r}')
 
     return fig, ax
