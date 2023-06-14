@@ -5,6 +5,19 @@ from bin.read_sma import read_sma
 from bin.get_A import get_A
 from bin.plotting import plot_A_vs_fblrg, plot_layout_2bi, plot_2bii, plot_2c
 
+
+# TODO - PART 1:
+# [ ] add reasoning for item 5
+# [ ] elaborate item 3
+
+# TODO - PART 2:
+# [ ] read the 2Ai paper and write down explanation
+# [ ] do part 2Di --> draw line, maybe consult literature
+# [ ] do part 2Dii --> find explanation why flamelet SDR is much higher
+
+
+
+
 # ==========================================================================================================
 # ======================================= Part 2Bi =========================================================
 # ==========================================================================================================
