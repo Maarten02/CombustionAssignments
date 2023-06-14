@@ -11,10 +11,9 @@ def plot_layout_2bi(fig, ax, x):
     ax.set_ylabel('A [-]')
     ax.set_title(f'A vs. FBLGR for various r/d positions at x/d = {x}')
 
-    ax.legend()
     ax.grid()
-
     ax.legend(loc='center left', bbox_to_anchor=(-0.42, 0.5))
+
     fig.savefig(f'./figures/A_vs_FBLGR_x_{int(x*10):03}.pdf', bbox_inches='tight', pad_inches=0.2)
 
 
@@ -39,3 +38,15 @@ def plot_2bii(data, bins, x):
     ax.grid()
 
     fig.savefig(f'./figures/A_mean_vs_FBLGR_x_{int(x*10):03}.pdf', bbox_inches='tight', pad_inches=0.2)
+
+def plot_2c(strains, sdr_arr):
+
+    fig, ax = plt.subplots()
+    ax.plot(strains, sdr_arr)
+
+    ax.set_xlabel('a [$s^{-1}$]')
+    ax.set_ylabel('SDR [$s^{-1}$]')
+    ax.set_title('SDR vs. strain rate (a)')
+
+    ax.grid()
+    fig.savefig(f'./figures/a_vs_sdr.pdf', bbox_inches='tight', pad_inches=0.2)
