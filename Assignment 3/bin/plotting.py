@@ -1,7 +1,10 @@
 import matplotlib.pyplot as plt
 
-def plot_A_vs_fblrg(fig, ax, data, r):
-    ax.scatter(data['FBLGR'], data['A'], label=f'r/d = {r}')
+def plot_A_vs_fblrg(fig, ax, data, r, short, N):
+    if not short:
+        ax.scatter(data['FBLGR'], data['A'], label=f'r/d = {r}')
+    else:
+        ax.scatter(data['FBLGR'].head(N), data['A'].head(N), label=f'r/d = {r}')
 
     return fig, ax
 
